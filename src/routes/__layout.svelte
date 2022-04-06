@@ -3,19 +3,20 @@
 	import '../tail.css';
 </script>
 
-<svelte:head>
-	<title>Movie DB</title>
-	<link
-		rel="stylesheet"
-		crossorigin="anonymous"
-		href="https://cdn.jsdelivr.net/npm/modern-normalize@1.1.0/modern-normalize.min.css"
-	/>
-</svelte:head>
-
 <header>
 	<Nav />
 </header>
 
+<svelte:head>
+	<title>Movie Database</title>
+</svelte:head>
+
 <main class="px-5 w-full">
 	<slot />
 </main>
+
+<footer class="footer footer-center p-4 bg-base-300 text-base-content">
+	<div>
+		<p>Copyright © 2022 - All right reserved by Auri corp.</p>
+	</div>
+</footer>

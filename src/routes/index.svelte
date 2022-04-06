@@ -21,6 +21,8 @@
 	import MovieCards from '$lib/components/MovieCards.svelte';
 	import type { MovieDef } from '$lib/types';
 	export let popular: MovieDef[];
+
+	console.log('Popular', popular);
 </script>
 
 <h1 class="text-2xl my-10">Popular Movies</h1>
