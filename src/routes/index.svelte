@@ -1,9 +1,10 @@
 <script lang="ts" context="module">
 	import type { LoadInput } from '@sveltejs/kit/types/internal';
 
+	const API_KEY = import.meta.env.VITE_API_KEY;
 	export async function load({ fetch }: LoadInput) {
 		const res = await fetch(
-			'https://api.themoviedb.org/3/movie/popular?api_key=f295bce4fa72bbbd435ff8c2ef63d56d&language=en-US&page=1'
+			`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
 		);
 		const data = await res.json();
 		if (res.ok) {

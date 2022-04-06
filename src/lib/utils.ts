@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 
-// @ts-ignore
 export const formatDate = (date: string) =>
+	// @ts-ignore
 	DateTime.local(date.split('-')).toLocaleString(DateTime.DATE_SHORT);
 
 export const formatNumberToMoney = (num: number) =>

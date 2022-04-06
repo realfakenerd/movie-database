@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
 	import type { LoadInput } from '@sveltejs/kit/types/internal';
-	const API_KEY = 'f295bce4fa72bbbd435ff8c2ef63d56d';
+	const API_KEY = import.meta.env.VITE_API_KEY;
 
 	export async function load({ fetch, params }: LoadInput) {
 		const res = await fetch(
@@ -24,7 +24,7 @@
 	export let searchedMovies: MovieDef[];
 </script>
 
-<div class="grid grid-cols-5 gap-8">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
 	{#each searchedMovies as movie (movie.id)}
 		<Movie {movie} />
 	{/each}

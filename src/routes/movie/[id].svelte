@@ -1,7 +1,7 @@
 <script lang="ts" context="module">
 	import type { LoadInput } from '@sveltejs/kit/types/internal';
 
-	const API_KEY = 'f295bce4fa72bbbd435ff8c2ef63d56d';
+	const API_KEY = import.meta.env.VITE_API_KEY;
 
 	export async function load({ fetch, params }: LoadInput) {
 		const resMovieDetails = await fetch(
