@@ -20,8 +20,13 @@
 <script lang="ts">
 	import Movie from '$lib/components/Movie.svelte';
 	import type { MovieDef } from '$lib/types';
+	import { onMount } from 'svelte';
 
 	export let searchedMovies: MovieDef[];
+
+	onMount(() => {
+		document.title = 'Pop Korn';
+	});
 </script>
 
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">

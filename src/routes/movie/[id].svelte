@@ -30,15 +30,19 @@
 
 <script lang="ts">
 	import type { MovieDef, MovieVideo } from '$lib/types';
+
 	import VideoCarousel from '$lib/components/VideoCarousel.svelte';
 	import MovieStats from '$lib/components/MovieStats.svelte';
 	import Reviews from '$lib/components/Reviews.svelte';
+	import { onMount } from 'svelte';
 
 	export let movieVideoDetails: MovieVideo[];
 	export let movieDetails: MovieDef;
 	export let movieComents;
 
-	console.log('MOVIEVIDEODETAILS', movieVideoDetails);
+	onMount(() => {
+		document.title = 'Pop Korn/' + movieDetails.title;
+	});
 
 	const backdropPath = movieDetails.backdrop_path;
 	const posterPath = movieDetails.poster_path;
@@ -48,8 +52,6 @@
 	const budget = movieDetails.budget;
 
 	const releaseDate = movieDetails.release_date;
-
-	console.log(movieDetails);
 </script>
 
 <div class="flex flex-col items-center w-full py-10">

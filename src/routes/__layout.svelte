@@ -8,7 +8,7 @@
 </header>
 
 <svelte:head>
-	<title>Movie Database</title>
+	<title>Pop Korn</title>
 </svelte:head>
 
 <main class="px-5 w-full">
