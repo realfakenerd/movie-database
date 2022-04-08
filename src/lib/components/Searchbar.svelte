@@ -17,6 +17,8 @@
 			placeholder="search movies..."
 			class="input input-primary"
 		/>
-		<button class="btn btn-primary">search</button>
+		<button class="btn btn-outline btn-primary">
+			<span class="material-icons-round bg-transparent text-secondary"> search </span>
+		</button>
 	</div>
 </form>

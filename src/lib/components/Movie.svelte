@@ -8,10 +8,10 @@
 	export let movie: MovieDef;
 </script>
 
-<div class="card bg-base-100 image-full">
+<div class="card bg-base-100 image-full mx-3 md:mx-auto">
 	<figure>
 		<img
-			class="object-cover w-full rounded-2xl"
+			class="object-cover w-full"
 			width="236"
 			height="354"
 			src={'https://image.tmdb.org/t/p/w500' + movie.poster_path}
@@ -26,17 +26,7 @@
 			<span class="pr-2">
 				{movie.vote_average}
 			</span>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				enable-background="new 0 0 24 24"
-				height="24px"
-				viewBox="0 0 24 24"
-				width="24px"
-				fill="#FFFFFF"
-				><g><path d="M0,0h24v24H0V0z" fill="none" /><path d="M0,0h24v24H0V0z" fill="none" /></g><g
-					><path d={starDPath} /></g
-				></svg
-			>
+			<span class="material-icons-round"> star </span>
 		</div>
 		<div class="card-actions">
 			<a sveltekit:prefetch class="btn btn-primary" href={'/movie/' + movie.id}>see more</a>

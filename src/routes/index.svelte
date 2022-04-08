@@ -2,17 +2,25 @@
 	import type { LoadInput } from '@sveltejs/kit/types/internal';
 
 	const API_KEY = import.meta.env.VITE_API_KEY;
-	const indexUrl = 'https://api.themoviedb.org/3/movie/';
-	export async function load({ fetch }: LoadInput) {
-		const res = await fetch(`${indexUrl}popular?api_key=${API_KEY}&language=en-US&page=1`);
-		const resUpcoming = await fetch(`${indexUrl}upcoming?api_key=${API_KEY}&language=en-US&page=1`);
+	const indexUrl = 'https://api.themoviedb.org/3';
+	export async function load({ fetch }: LoadInput): Promise<LoadOutput> {
+		const res = await fetch(`${indexUrl}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`);
+		const apiConfig = await fetch(`${indexUrl}/configuration?api_key=${API_KEY}`);
+		const resUpcoming = await fetch(
+			`${indexUrl}/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`
+		);
 		const data = await res.json();
 		const upcomingData = await resUpcoming.json();
+		const confData = await apiConfig.json();
+
 		if (res.ok) {
 			return {
 				props: {
 					popular: data.results,
 					upcomingData
+				},
+				stuff: {
+					confData
 				}
 			};
 		}
@@ -24,6 +32,7 @@
 	import UpcomingMovies from '$lib/components/UpcomingMovies.svelte';
 	import type { MovieDef, UpcomingData } from '$lib/types';
 	import { onMount } from 'svelte';
+	import type { LoadOutput } from '@sveltejs/kit/types/internal';
 	export let popular: MovieDef[];
 	export let upcomingData: UpcomingData;
 

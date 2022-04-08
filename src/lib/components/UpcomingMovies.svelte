@@ -1,26 +1,31 @@
 <script lang="ts">
 	import type { UpcomingData } from '$lib/types';
+	import { formatDate } from '$lib/utils';
 
 	export let upcomingData: UpcomingData;
 </script>
 
-<div class="hero min-h-screen bg-base-200">
+<h2 class="text-2xl my-3">Upcoming Movies:</h2>
+<div class="hero bg-base-200">
 	<div class="hero-content flex-col lg:flex-row">
-		<div class="carousel">
+		<div class="carousel p-4 space-x-4">
 			{#each upcomingData.results as updata (updata.id)}
 				<div class="carousel-item" id={updata.id}>
-					<img
-						src={'https://image.tmdb.org/t/p/w500' + updata.poster_path}
-						alt={updata.title}
-						class="max-w-sm rounded-lg shadow-2xl"
-					/>
-					<div>
-						<h1 class="text-5xl font-bold">Box Office News!</h1>
-						<p class="py-6">
-							Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi
-							exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.
-						</p>
-						<button class="btn btn-primary">Get Started</button>
+					<div class="card card-compact lg:card-side">
+						<figure>
+							<img
+								src={'https://image.tmdb.org/t/p/w500' + updata.poster_path}
+								alt={updata.title}
+								class="w-1/2 rounded-lg shadow-2xl"
+							/>
+						</figure>
+						<div class="card-body">
+							<h1 class="text-5xl font-bold">{updata.title}</h1>
+							<p class="max-w-md">Release date: {formatDate(updata.release_date)}</p>
+							<div class="card-actions">
+								<button class="btn btn-primary">Get Started</button>
+							</div>
+						</div>
 					</div>
 				</div>
 			{/each}

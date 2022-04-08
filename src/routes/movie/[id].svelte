@@ -2,26 +2,22 @@
 	import type { LoadInput } from '@sveltejs/kit/types/internal';
 
 	const API_KEY = import.meta.env.VITE_API_KEY;
-	const url = 'https://api.themoviedb.org/3/movie/';
+	const API_URL = 'https://api.themoviedb.org/3/movie/';
 	export async function load({ fetch, params }: LoadInput) {
-		const resMovieDetails = await fetch(`${url}${params.id}?api_key=${API_KEY}&language=en-US`);
-		const resMovieVideoDetails = await fetch(
-			`${url}${params.id}/videos?api_key=${API_KEY}&language=en-US`
+		const resMovieDetails = await fetch(
+			`${API_URL}${params.id}?api_key=${API_KEY}&language=en-US&append_to_response=videos,images,reviews`
 		);
 
-		const resComments = await fetch(
-			`${url}${params.id}/reviews?api_key=${API_KEY}&language=en-US&page=1`
-		);
 		const movieDetails = await resMovieDetails.json();
-		const movieVideoDetails = await resMovieVideoDetails.json();
-		const movieComents = await resComments.json();
+		const movieVideoDetails = movieDetails.videos.results;
+		const movieComents = movieDetails.reviews.results;
 
-		if (resMovieDetails.ok && resMovieVideoDetails.ok) {
+		if (resMovieDetails.ok) {
 			return {
 				props: {
 					movieDetails,
-					movieVideoDetails: movieVideoDetails.results,
-					movieComents: movieComents.results
+					movieVideoDetails,
+					movieComents
 				}
 			};
 		}
@@ -35,6 +31,7 @@
 	import MovieStats from '$lib/components/MovieStats.svelte';
 	import Reviews from '$lib/components/Reviews.svelte';
 	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
 
 	export let movieVideoDetails: MovieVideo[];
 	export let movieDetails: MovieDef;
@@ -57,7 +54,13 @@
 <div class="flex flex-col items-center w-full py-10">
 	<div class="hero min-h-screen" style="background-image: url({backgroundImage}) ;">
 		<div class="hero-overlay bg-opacity-80" />
-		<div class="hero-content text-center text-neutral-content">
+		<div class="hero-content flex-col lg:flex-row text-center text-neutral-content">
+			<img
+				class="max-w-sm bg-base-100 rounded-lg shadow-2xl"
+				width="384"
+				src={imgUrl + posterPath}
+				alt="Movie poster"
+			/>
 			<div class="max-w-md">
 				<h1 class="text-5xl font-bold mb-5 uppercase">{movieDetails.original_title}</h1>
 				<div class="divider">

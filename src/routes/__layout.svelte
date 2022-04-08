@@ -9,9 +9,10 @@
 
 <svelte:head>
 	<title>Pop Korn</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
 </svelte:head>
 
-<main class="px-5 w-full">
+<main class="container mx-auto">
 	<slot />
 </main>
 
