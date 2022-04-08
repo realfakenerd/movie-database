@@ -28,7 +28,7 @@
 					<div class="space-y-4">
 						<h1 class="text-xl md:text-3xl font-bold">{upd.title}</h1>
 						<p>Release date: {formatDate(upd.release_date)}</p>
-						<a class="btn btn-primary" href={'/movie/' + upd.id}>see more</a>
+						<a sveltekit:prefetch class="btn btn-primary" href={'/movie/' + upd.id}>see more</a>
 					</div>
 				</div>
 			</div>
