@@ -12,7 +12,7 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
 </svelte:head>
 
-<main class="container mx-auto">
+<main class="container mx-auto px-4">
 	<slot />
 </main>
 

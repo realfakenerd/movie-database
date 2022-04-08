@@ -14,7 +14,7 @@
 	{#each videos.slice(0, currentItems) as video, index (video.key)}
 		<a href={'#' + video.key} class="btn btn-xs">{index + 1}</a>
 	{/each}
-	{#if currentItems >= 5 && videos.length >= 5}
-		<button class="btn btn-xs" on:click={() => (currentItems += 5)}>...</button>
+	{#if videos.length >= currentItems}
+		<button class="btn btn-xs" on:click={() => (currentItems += 5)}> ... </button>
 	{/if}
 </div>

@@ -44,6 +44,6 @@
 <UpcomingMovies {upcomingData} />
 
 <div class="divider pt-10 pb-5">
-	<h1 class="text-2xl">Popular Movies</h1>
+	<h1 class="text-2xl">See what's popular</h1>
 </div>
 <MovieCards {popular} />

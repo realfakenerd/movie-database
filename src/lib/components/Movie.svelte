@@ -2,34 +2,40 @@
 	import type { MovieDef } from '$lib/types';
 	import { formatDate } from '$lib/utils';
 
-	const starDPath =
-		'M12,17.27l4.15,2.51c0.76,0.46,1.69-0.22,1.49-1.08l-1.1-4.72l3.67-3.18c0.67-0.58,0.31-1.68-0.57-1.75l-4.83-0.41 l-1.89-4.46c-0.34-0.81-1.5-0.81-1.84,0L9.19,8.63L4.36,9.04c-0.88,0.07-1.24,1.17-0.57,1.75l3.67,3.18l-1.1,4.72 c-0.2,0.86,0.73,1.54,1.49,1.08L12,17.27z';
-
 	export let movie: MovieDef;
+
+	const pop = (movie.popularity / 100).toFixed(0);
 </script>
 
-<div class="card bg-base-100 image-full mx-3 md:mx-auto">
-	<figure>
-		<img
-			class="object-cover w-full"
-			width="236"
-			height="354"
-			src={'https://image.tmdb.org/t/p/w500' + movie.poster_path}
-			alt={movie.title}
-			loading="lazy"
-		/>
-	</figure>
-	<div class="card-body">
-		<h2 class="card-title">{movie.title}</h2>
-		<p>{formatDate(movie.release_date)}</p>
-		<div class="badge badge-secondary">
-			<span class="pr-2">
-				{movie.vote_average}
-			</span>
-			<span class="material-icons-round"> star </span>
+<div class="indicator">
+	<div class="indicator-item z-50">
+		<div class="radial-progress text-secondary text-sm" style="--value:{pop}; --size:2.5rem;">
+			{pop}%
 		</div>
-		<div class="card-actions">
-			<a sveltekit:prefetch class="btn btn-primary" href={'/movie/' + movie.id}>see more</a>
+	</div>
+	<div class="card bg-base-100 image-full">
+		<figure>
+			<img
+				class="object-cover"
+				width="236"
+				height="354"
+				src={'https://image.tmdb.org/t/p/w500' + movie.poster_path}
+				alt={movie.title}
+				loading="lazy"
+			/>
+		</figure>
+		<div class="card-body">
+			<h2 class="card-title">{movie.title}</h2>
+			<p>{formatDate(movie.release_date)}</p>
+			<div class="badge badge-secondary">
+				<span class="pr-2">
+					{movie.vote_average}
+				</span>
+				<span class="material-icons-round"> star </span>
+			</div>
+			<div class="card-actions">
+				<a sveltekit:prefetch class="btn btn-primary" href={'/movie/' + movie.id}>see more</a>
+			</div>
 		</div>
 	</div>
 </div>

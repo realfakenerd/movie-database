@@ -31,7 +31,7 @@
 	import MovieStats from '$lib/components/MovieStats.svelte';
 	import Reviews from '$lib/components/Reviews.svelte';
 	import { onMount } from 'svelte';
-	import { page } from '$app/stores';
+	import { fade } from 'svelte/transition';
 
 	export let movieVideoDetails: MovieVideo[];
 	export let movieDetails: MovieDef;
@@ -51,12 +51,12 @@
 	const releaseDate = movieDetails.release_date;
 </script>
 
-<div class="flex flex-col items-center w-full py-10">
+<div in:fade={{ duration: 600 }} class="flex flex-col items-center w-full py-10">
 	<div class="hero min-h-screen" style="background-image: url({backgroundImage}) ;">
 		<div class="hero-overlay bg-opacity-80" />
 		<div class="hero-content flex-col lg:flex-row text-center text-neutral-content">
 			<img
-				class="max-w-sm bg-base-100 rounded-lg shadow-2xl"
+				class="w-100 md:max-w-sm bg-base-100 rounded-lg shadow-2xl"
 				width="384"
 				src={imgUrl + posterPath}
 				alt="Movie poster"
