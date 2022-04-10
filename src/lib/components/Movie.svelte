@@ -16,6 +16,7 @@
 			${srcsetURL}${sizes[2]}${movie.poster_path} 780w`}
 			src={srcsetURL + sizes[0] + movie.poster_path}
 			alt={movie.title}
+			decoding="async"
 			loading="lazy"
 		/>
 	</figure>
