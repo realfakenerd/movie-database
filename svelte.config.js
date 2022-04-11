@@ -10,6 +10,9 @@ const config = {
 	preprocess: preprocess(),
 	kit: {
 		adapter: adapter(),
+		version: {
+			name: Date.now().toString().slice(0, 3)
+		},
 		vite: {
 			build: {
 				reportCompressedSize: false,
@@ -17,7 +20,9 @@ const config = {
 				minify: "terser",
 			},
 			plugins: [
-				ViteWebfontDownload(),
+				ViteWebfontDownload([
+					'https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap'
+				]),
 				viteCompression({
 					algorithm: "brotliCompress",
 					threshold: 512,
