@@ -1,6 +1,9 @@
 <script lang="ts">
 	import Nav from '$lib/components/Nav.svelte';
 	import '../tail.css';
+	import "@fontsource/material-icons-rounded";
+	import '@fontsource/lato/400.css';
+	import '@fontsource/lato/700.css';
 </script>
 
 <header>
@@ -9,7 +12,6 @@
 
 <svelte:head>
 	<title>Pop Korn</title>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
 </svelte:head>
 
 <main class="container mx-auto px-4">

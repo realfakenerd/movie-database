@@ -33,7 +33,12 @@
 		"vite-plugin-remove-console": "^0.0.7",
 		"vite-plugin-webfont-dl": "^2.0.0",
 		"workbox-core": "^6.5.2",
-		"workbox-recipes": "^6.5.2"
+		"workbox-recipes": "^6.5.2",
+		"@sveltejs/adapter-vercel": "next"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@fontsource/lato": "^4.5.5",
+		"@fontsource/material-icons-rounded": "^4.5.4"
+	}
 }
