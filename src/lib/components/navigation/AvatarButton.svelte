@@ -18,12 +18,14 @@
 			</div>
 		</div>
 	</label>
-	<ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+	<ul tabindex="0" class="dropdown-content menu rounded-box w-52 bg-base-100 p-2 shadow">
 		<ul class="menu">
-			<li class="hover-bordered"><a href="/login">
-				<span class="material-icons-rounded">login</span>
-				login/sigin
-			</a></li>
+			<li class="hover-bordered">
+				<a href="/login">
+					<span class="material-icons-rounded">login</span>
+					login/sigin
+				</a>
+			</li>
 		</ul>
 	</ul>
 </div>

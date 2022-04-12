@@ -10,7 +10,7 @@ const config = {
 	kit: {
 		adapter: vercel(),
 		version: {
-			name: Date.now().toString().slice(0, 3)
+			name: Math.ceil(Math.random() * Date.now()).toString().slice(0, 3)
 		},
 		vite: {
 			build: {
