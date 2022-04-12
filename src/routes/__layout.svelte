@@ -1,12 +1,12 @@
 <script lang="ts">
-	import Nav from '$lib/components/Nav.svelte';
+	import Nav from '$lib/components/navigation/Nav.svelte';
 	import '../tail.css';
-	import "@fontsource/material-icons-rounded";
+	import '@fontsource/material-icons-rounded';
 	import '@fontsource/lato/400.css';
 	import '@fontsource/lato/700.css';
 </script>
 
-<header>
+<header class="mb-5">
 	<Nav />
 </header>
 
@@ -18,7 +18,7 @@
 	<slot />
 </main>
 
-<footer class="footer footer-center p-4 bg-base-300 text-base-content">
+<footer class="footer footer-center bg-base-300 p-4 text-base-content">
 	<div>
 		<p>Copyright © 2022 - All right reserved by Auri corp.</p>
 	</div>

@@ -13,14 +13,14 @@
 	};
 </script>
 
-<section class="my-5 p-5 bg-base-300 rounded-2xl">
+<section class="my-5 rounded-2xl bg-base-300 p-5">
 	<h2 class="text-4xl font-bold">Reviews: {movieComents.length}</h2>
-	<div class="grid grid-cols-1 md:grid-cols-2 gap-x-8">
+	<div class="grid grid-cols-1 gap-x-8 md:grid-cols-2">
 		{#each movieComents as comm (comm.id)}
-			<div tabindex="0" class="collapse collapse-arrow rounded-2xl my-5">
+			<div tabindex="0" class="collapse collapse-arrow my-5 rounded-2xl">
 				<input type="checkbox" class="peer" />
 				<div
-					class="collapse-title capitalize text-xl font-medium bg-primary 
+					class="collapse-title bg-primary text-xl font-medium capitalize 
                 text-primary-content peer-checked:bg-base-100 peer-checked:text-base-content"
 				>
 					<div class="flex flex-row items-center space-x-5">
@@ -49,7 +49,7 @@
 					class="collapse-content bg-primary text-primary-content 
                 peer-checked:bg-base-100 peer-checked:text-base-content"
 				>
-					<p class="p-5 bg-base-200 rounded-2xl">{comm.content}</p>
+					<p class="rounded-2xl bg-base-200 p-5">{comm.content}</p>
 				</div>
 			</div>
 		{/each}

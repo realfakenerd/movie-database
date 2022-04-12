@@ -27,11 +27,11 @@
 <script lang="ts">
 	import type { MovieDef, MovieVideo } from '$lib/types';
 
-	import VideoCarousel from '$lib/components/VideoCarousel.svelte';
-	import MovieStats from '$lib/components/MovieStats.svelte';
-	import Reviews from '$lib/components/Reviews.svelte';
+	import VideoCarousel from '$lib/components/MoviePage/VideoCarousel.svelte';
+	import MovieStats from '$lib/components/MoviePage/MovieStats.svelte';
+	import Reviews from '$lib/components/MoviePage/Reviews.svelte';
 	import { onMount } from 'svelte';
-	import { fade } from 'svelte/transition';
+	import { animate } from 'motion';
 
 	export let movieVideoDetails: MovieVideo[];
 	export let movieDetails: MovieDef;
@@ -39,6 +39,16 @@
 
 	onMount(() => {
 		document.title = 'Pop Korn/' + movieDetails.title;
+		animate(
+			'.hero',
+			{
+				opacity: [0, 1]
+			},
+			{
+				duration: 1,
+				easing: 'ease-in-out'
+			}
+		);
 	});
 
 	const backdropPath = movieDetails.backdrop_path;
@@ -51,18 +61,19 @@
 	const releaseDate = movieDetails.release_date;
 </script>
 
-<div in:fade={{ duration: 600 }} class="flex flex-col items-center w-full py-10">
+<div class="flex w-full flex-col items-center py-10">
 	<div class="hero min-h-screen" style="background-image: url({backgroundImage}) ;">
 		<div class="hero-overlay bg-opacity-80" />
-		<div class="hero-content flex-col lg:flex-row text-center text-neutral-content">
+		<div class="hero-content flex-col text-center text-neutral-content lg:flex-row">
 			<img
-				class="w-100 md:max-w-sm bg-base-100 rounded-lg shadow-2xl"
+				class="w-100 rounded-lg bg-base-100 shadow-2xl md:max-w-sm"
 				width="384"
+				height="576"
 				src={imgUrl + posterPath}
 				alt="Movie poster"
 			/>
 			<div class="max-w-md">
-				<h1 class="text-5xl font-bold mb-5 uppercase">{movieDetails.original_title}</h1>
+				<h1 class="mb-5 text-5xl font-bold uppercase">{movieDetails.original_title}</h1>
 				<div class="divider">
 					<span class="badge badge-secondary">
 						{movieDetails.status}

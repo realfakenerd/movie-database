@@ -1,8 +1,7 @@
 import vercel from '@sveltejs/adapter-vercel';
 import preprocess from 'svelte-preprocess';
 import viteCompression from 'vite-plugin-compression';
-import { ViteWebfontDownload } from 'vite-plugin-webfont-dl';
-
+import viteImagemin from 'vite-plugin-imagemin';
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	// Consult https://github.com/sveltejs/svelte-preprocess
@@ -20,12 +19,16 @@ const config = {
 				minify: 'terser'
 			},
 			plugins: [
-				ViteWebfontDownload([
-					'https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap'
-				]),
+				viteImagemin({
+					optipng: {
+						optimizationLevel: 7
+					},
+					verbose: false
+				}),
 				viteCompression({
 					algorithm: 'brotliCompress',
 					threshold: 512,
+					verbose: false,
 					compressionOptions: {
 						level: 3
 					}

@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "svelte-kit dev --host",
-		"build": "svelte-kit build",
+		"build": "pnpm format && pnpm lint && svelte-kit build",
 		"package": "svelte-kit package",
 		"preview": "svelte-kit preview",
 		"prepare": "svelte-kit sync",
@@ -16,13 +16,15 @@
 	"devDependencies": {
 		"@playwright/test": "^1.20.0",
 		"@sveltejs/adapter-auto": "next",
+		"@sveltejs/adapter-vercel": "next",
 		"@sveltejs/kit": "next",
 		"@types/luxon": "^2.3.1",
 		"autoprefixer": "^10.4.4",
 		"daisyui": "^2.13.6",
 		"postcss": "^8.4.12",
-		"prettier": "^2.5.1",
+		"prettier": "^2.6.2",
 		"prettier-plugin-svelte": "^2.5.0",
+		"prettier-plugin-tailwindcss": "^0.1.8",
 		"svelte": "^3.44.0",
 		"svelte-check": "^2.2.6",
 		"svelte-preprocess": "^4.10.1",
@@ -30,15 +32,15 @@
 		"tslib": "^2.3.1",
 		"typescript": "~4.6.2",
 		"vite-plugin-compression": "^0.5.1",
+		"vite-plugin-imagemin": "^0.6.1",
 		"vite-plugin-remove-console": "^0.0.7",
-		"vite-plugin-webfont-dl": "^2.0.0",
 		"workbox-core": "^6.5.2",
-		"workbox-recipes": "^6.5.2",
-		"@sveltejs/adapter-vercel": "next"
+		"workbox-recipes": "^6.5.2"
 	},
 	"type": "module",
 	"dependencies": {
 		"@fontsource/lato": "^4.5.5",
-		"@fontsource/material-icons-rounded": "^4.5.4"
+		"@fontsource/material-icons-rounded": "^4.5.4",
+		"motion": "^10.7.0"
 	}
 }

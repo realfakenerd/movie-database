@@ -5,12 +5,12 @@
 	let currentItems = 5;
 </script>
 
-<section class="carousel carousel-center w-full p-4 space-x-4 bg-neutral rounded-box">
+<section class="carousel carousel-center rounded-box w-full space-x-4 bg-neutral p-4">
 	{#each videos.slice(0, currentItems) as video (video.key)}
 		<Video {video} />
 	{/each}
 </section>
-<div class="flex justify-center w-full py-2 gap-2">
+<div class="flex w-full justify-center gap-2 py-2">
 	{#each videos.slice(0, currentItems) as video, index (video.key)}
 		<a href={'#' + video.key} class="btn btn-xs">{index + 1}</a>
 	{/each}

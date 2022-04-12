@@ -18,7 +18,7 @@
 </script>
 
 <script lang="ts">
-	import Movie from '$lib/components/Movie.svelte';
+	import Movie from '$lib/components/MoviePage/Movie.svelte';
 	import type { MovieDef } from '$lib/types';
 	import { onMount } from 'svelte';
 
@@ -29,7 +29,7 @@
 	});
 </script>
 
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+<div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
 	{#each searchedMovies as movie (movie.id)}
 		<Movie {movie} />
 	{/each}

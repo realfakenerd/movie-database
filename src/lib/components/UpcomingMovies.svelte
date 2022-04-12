@@ -1,32 +1,56 @@
 <script lang="ts">
 	import type { UpcomingData } from '$lib/types';
 	import { formatDate } from '$lib/utils';
-
+	import { onMount } from 'svelte';
+	import { animate } from 'motion';
 	export let upcomingData: UpcomingData;
+
 	let currentIndex = 5;
+	const srcsetURL = 'https://image.tmdb.org/t/p/';
+	const sizes = ['w342', 'w500', 'w780'];
+
+	onMount(() => {
+		animate(
+			'.carousel-item',
+			{
+				opacity: [0, 1],
+				y: [-500, 0]
+			},
+			{
+				duration: 1,
+				easing: 'ease-in-out'
+			}
+		);
+	});
 </script>
 
 <div class="carousel w-full">
 	{#each upcomingData.results.slice(0, currentIndex) as upd (upd.id)}
-		<div class="carousel-item w-full" id={upd.id}>
+		<div class="carousel-item min-h-[482px] w-full" id={upd.id}>
 			<div
 				class="hero"
 				style="background-image: url({upd.backdrop_path === null
 					? ''
-					: 'https://image.tmdb.org/t/p/original' + upd.backdrop_path});"
+					: srcsetURL + 'w1280' + upd.backdrop_path});"
 			>
 				<div class="hero-overlay bg-opacity-60" />
 				<div
-					class="hero-content flex-col md:flex-row space-x-0 md:space-x-40 text-center text-neutral-content"
+					class="hero-content flex-col space-x-0 text-center text-neutral-content md:flex-row md:space-x-40"
 				>
 					<img
-						class="w-[300px] bg-base-100 rounded-lg shadow-2xl"
-						width="384"
-						src={'https://image.tmdb.org/t/p/w500' + upd.poster_path}
+						class="rounded-lg bg-base-100 shadow-2xl"
+						width="300"
+						height="450"
+						srcset={`${srcsetURL}${sizes[0]}${upd.poster_path} 1x,
+							${srcsetURL}${sizes[1]}${upd.poster_path} 2x,
+							${srcsetURL}${sizes[2]}${upd.poster_path} 3x`}
+						src={srcsetURL + sizes[0] + upd.poster_path}
+						decoding="async"
+						loading="lazy"
 						alt="Movie poster"
 					/>
 					<div class="space-y-4">
-						<h1 class="text-xl md:text-3xl font-bold">{upd.title}</h1>
+						<h1 class="text-xl font-bold md:text-3xl">{upd.title}</h1>
 						<p>Release date: {formatDate(upd.release_date)}</p>
 						<a sveltekit:prefetch class="btn btn-primary" href={'/movie/' + upd.id}>see more</a>
 					</div>
@@ -35,7 +59,7 @@
 		</div>
 	{/each}
 </div>
-<div class="flex justify-center w-full py-2 gap-2">
+<div class="flex w-full justify-center gap-2 py-2">
 	{#each upcomingData.results.slice(0, currentIndex) as d, index}
 		<a href={'#' + d.id} class="btn btn-xs">{index + 1}</a>
 	{/each}

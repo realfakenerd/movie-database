@@ -16,9 +16,10 @@
 			id="searchBar"
 			placeholder="search movies..."
 			class="input input-primary"
+			required
 		/>
 		<button class="btn btn-outline btn-primary">
-			<span class="material-icons-round bg-transparent text-secondary"> search </span>
+			<span class="material-icons-rounded bg-transparent text-secondary"> search </span>
 		</button>
 	</div>
 </form>

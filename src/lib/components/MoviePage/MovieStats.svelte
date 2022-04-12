@@ -7,7 +7,7 @@
 	export let movieDetails: MovieDef;
 </script>
 
-<section class="stats stats-vertical lg:stats-horizontal shadow">
+<section class="stats stats-vertical shadow lg:stats-horizontal">
 	<div class="stat">
 		<span class="stat-title">Release Date </span>
 		<div class="stat-value">
