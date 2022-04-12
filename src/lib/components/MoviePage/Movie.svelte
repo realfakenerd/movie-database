@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { MovieDef } from '$lib/types';
 	import { formatDate } from '$lib/utils';
-
 	const srcsetURL = 'https://image.tmdb.org/t/p/';
 	const sizes = ['w342', 'w500', 'w780'];
 	export let movie: MovieDef;

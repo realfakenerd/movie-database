@@ -26,29 +26,18 @@
 
 <script lang="ts">
 	import type { MovieDef, MovieVideo } from '$lib/types';
-
 	import VideoCarousel from '$lib/components/MoviePage/VideoCarousel.svelte';
 	import MovieStats from '$lib/components/MoviePage/MovieStats.svelte';
 	import Reviews from '$lib/components/MoviePage/Reviews.svelte';
 	import { onMount } from 'svelte';
 	import { animate } from 'motion';
-
 	export let movieVideoDetails: MovieVideo[];
 	export let movieDetails: MovieDef;
 	export let movieComents;
 
 	onMount(() => {
 		document.title = 'Pop Korn/' + movieDetails.title;
-		animate(
-			'.hero',
-			{
-				opacity: [0, 1]
-			},
-			{
-				duration: 1,
-				easing: 'ease-in-out'
-			}
-		);
+		animate('.hero', { opacity: [0, 1] }, { duration: 1, easing: 'ease-in-out' });
 	});
 
 	const backdropPath = movieDetails.backdrop_path;
@@ -66,7 +55,7 @@
 		<div class="hero-overlay bg-opacity-80" />
 		<div class="hero-content flex-col text-center text-neutral-content lg:flex-row">
 			<img
-				class="w-100 rounded-lg bg-base-100 shadow-2xl md:max-w-sm"
+				class="w-100 rounded-lg bg-base-100 shadow-lg md:max-w-sm"
 				width="384"
 				height="576"
 				src={imgUrl + posterPath}

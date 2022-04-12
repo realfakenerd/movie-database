@@ -4,10 +4,10 @@
 	}
 </script>
 
-<div class="dropdown">
+<div class="dropdown ">
 	<!-- svelte-ignore a11y-label-has-associated-control -->
 	<label tabindex="0">
-		<div class="avatar">
+		<div class="avatar cursor-pointer">
 			<div class="w-8 rounded-full bg-accent">
 				<img
 					width="12"

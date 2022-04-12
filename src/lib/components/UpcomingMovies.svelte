@@ -13,11 +13,11 @@
 		animate(
 			'.carousel-item',
 			{
-				opacity: [0, 1],
-				y: [-500, 0]
+				opacity: [0, 1]
 			},
 			{
 				duration: 1,
+				delay: 0.5,
 				easing: 'ease-in-out'
 			}
 		);
