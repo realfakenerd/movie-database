@@ -13,16 +13,19 @@
 	};
 </script>
 
-<nav class="navbar flex-col space-y-3 p-5 shadow-lg md:flex-row md:space-y-0">
-	<div class="flex-1 items-end space-x-3">
-		<a sveltekit:prefetch href="/">
-			<img src="popcorn512.png" width="64" height="64" class="w-16" alt="Pop Korn Logo" />
-		</a>
-		<h3 class="text-3xl font-bold uppercase">Pop Korn</h3>
+<nav class="navbar fixed w-full z-50 bg-base-100/50 px-5 md:space-y-0">
+	<div class="navbar-start">
+		<Searchbar />
 	</div>
-	<div class="flex-none flex-col md:flex-row">
+	<div class="navbar-center items-end space-x-0 md:space-x-3">
+		<div class="btn btn-ghost">Movie</div>
+		<div class="btn btn-ghost">
+			<a sveltekit:prefetch href="/">Home</a>
+		</div>
+		<div class="btn btn-ghost">Tv</div>
+	</div>
+	<div class="navbar-end flex-col md:flex-row">
 		<div class="inline-flex items-center justify-center">
-			<AvatarButton />
 			<div class="mx-5">
 				<label class="swap swap-rotate">
 					<!-- this hidden checkbox controls the state -->
@@ -31,8 +34,7 @@
 					<span class="material-icons-rounded swap-off"> dark_mode </span>
 				</label>
 			</div>
+			<AvatarButton />
 		</div>
-
-		<Searchbar />
 	</div>
 </nav>

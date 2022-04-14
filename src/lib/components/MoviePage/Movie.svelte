@@ -6,7 +6,7 @@
 	export let movie: MovieDef;
 </script>
 
-<div class="card image-full max-w-fit bg-base-100">
+<div class="before:rounded-none card image-full  max-w-fit bg-base-100">
 	<figure>
 		<img
 			width="221"

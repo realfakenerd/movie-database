@@ -6,7 +6,7 @@
 	import '@fontsource/lato/700.css';
 </script>
 
-<header class="mb-5">
+<header>
 	<Nav />
 </header>
 
@@ -14,7 +14,7 @@
 	<title>Pop Korn</title>
 </svelte:head>
 
-<main class="container mx-auto px-4">
+<main>
 	<slot />
 </main>
 

@@ -1,15 +1,15 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	let inputVal = '';
-
+	let show = true
 	const search = () => {
 		goto('/search/' + inputVal);
 		inputVal = '';
 	};
 </script>
 
-<form class="form-control" on:submit|preventDefault={search}>
-	<div class="input-group">
+<form  on:submit|preventDefault={search}>
+	<div class:hidden={show} class="mr-3">
 		<input
 			bind:value={inputVal}
 			type="text"
@@ -18,8 +18,8 @@
 			class="input input-primary"
 			required
 		/>
-		<button class="btn btn-outline btn-primary">
-			<span class="material-icons-rounded bg-transparent text-secondary"> search </span>
-		</button>
 	</div>
 </form>
+<button on:click={() => show ? show = false : show = true} class="btn btn-ghost">
+	<span class="material-icons-rounded bg-transparent text-secondary"> search </span>
+</button>
