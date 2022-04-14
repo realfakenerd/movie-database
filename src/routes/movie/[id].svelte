@@ -33,7 +33,7 @@
 
 	onMount(() => {
 		document.title = 'Pop Korn/' + movieDetails.title;
-		animate('.hero', {opacity: [0,1]}, {duration: 1, delay: .6})
+		animate('.hero', { opacity: [0, 1] }, { duration: 1, delay: 0.6 });
 	});
 
 	const backdropPath = movieDetails.backdrop_path;
@@ -46,21 +46,21 @@
 </script>
 
 <svelte:head>
-	<link rel="preload" href={srcsetURL + 'w1280' + backdropPath} as="image">
-	<link 
-		rel="preload" 
-		href={srcsetURL+ 'w342' + posterPath} 
-		imagesrcset="{srcsetURL + 'w500' + posterPath} w500, {srcsetURL+'w780'+posterPath} w780"
+	<link rel="preload" href={srcsetURL + 'w1280' + backdropPath} as="image" />
+	<link
+		rel="preload"
+		href={srcsetURL + 'w342' + posterPath}
+		imagesrcset="{srcsetURL + 'w500' + posterPath} w500, {srcsetURL + 'w780' + posterPath} w780"
 		imagesizes="w342"
 		as="image"
-	>
+	/>
 </svelte:head>
 
-
 <div class="flex w-full flex-col items-center py-10">
-	<div 
-		class="hero min-h-screen" 
-		style="background-image: url({srcsetURL+'w1280'+backdropPath});">
+	<div
+		class="hero min-h-screen"
+		style="background-image: url({srcsetURL + 'w1280' + backdropPath});"
+	>
 		<div class="hero-overlay bg-opacity-80" />
 		<div class="hero-content flex-col text-center text-neutral-content lg:flex-row">
 			<img
@@ -95,5 +95,4 @@
 		<MovieStats {budget} {releaseDate} {movieDetails} />
 		<Reviews {movieComents} />
 	</div>
-	
 </div>

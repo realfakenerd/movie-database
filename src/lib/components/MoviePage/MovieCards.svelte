@@ -24,7 +24,7 @@
 </script>
 
 <section
-	class="grid grid-cols-2 place-items-center gap-0 md:gap-8 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
+	class="grid grid-cols-2 place-items-center gap-0 md:grid-cols-3 md:gap-8 lg:grid-cols-4 xl:grid-cols-5"
 >
 	{#each popular.slice(0, currentItems) as movie (movie.id)}
 		<Movie {movie} />
