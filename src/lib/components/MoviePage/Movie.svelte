@@ -9,16 +9,15 @@
 <div class="card image-full max-w-fit  bg-base-100 before:rounded-none">
 	<figure>
 		<img
-			width="221"
-			height="332"
-			class="bg-center object-cover"
-			srcset={`${srcsetURL}${sizes[0]}${movie.poster_path} 342w,
-			${srcsetURL}${sizes[1]}${movie.poster_path} 500w,
-			${srcsetURL}${sizes[2]}${movie.poster_path} 780w`}
-			src={srcsetURL + sizes[0] + movie.poster_path}
-			alt={movie.title}
+			class="rounded-lg bg-base-100 shadow-2xl"
+			width="300"
+			height="450"
+			srcset={`${srcsetURL}${sizes[1]}${movie.poster_path} 500w,
+							${srcsetURL}${sizes[2]}${movie.poster_path} 780w`}
+			src={srcsetURL + sizes[1] + movie.poster_path}
 			decoding="async"
 			loading="lazy"
+			alt="Movie poster"
 		/>
 	</figure>
 	<div class="card-body">

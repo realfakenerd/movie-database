@@ -25,11 +25,11 @@
 						class="rounded-lg bg-base-100 shadow-2xl"
 						width="300"
 						height="450"
-						srcset={`${srcsetURL}${sizes[0]}${upd.poster_path} 1x,
-							${srcsetURL}${sizes[1]}${upd.poster_path} 2x,
-							${srcsetURL}${sizes[2]}${upd.poster_path} 3x`}
-						src={srcsetURL + sizes[0] + upd.poster_path}
+						srcset={`${srcsetURL}${sizes[1]}${upd.poster_path} 500w,
+							${srcsetURL}${sizes[2]}${upd.poster_path} 780w`}
+						src={srcsetURL + sizes[1] + upd.poster_path}
 						decoding="async"
+						loading="lazy"
 						alt="Movie poster"
 					/>
 					<div class="space-y-4">
