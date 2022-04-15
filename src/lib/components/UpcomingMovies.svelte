@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { UpcomingData } from '$lib/types';
+	import type { UpcomingMoviesRes } from '$lib/types';
 	import { formatDate } from '$lib/utils';
-	export let upcomingData: UpcomingData;
+	export let upcomingData: UpcomingMoviesRes[];
 
 	let currentIndex = 5;
 	const srcsetURL = 'https://image.tmdb.org/t/p/';
@@ -9,9 +9,9 @@
 </script>
 
 <div class="carousel w-full">
-	{#each upcomingData.results.slice(0, currentIndex) as upd (upd.id)}
+	{#each upcomingData.slice(0, currentIndex) as upd (upd.id)}
 		<div class="carousel-item min-h-[482px] w-full" id={upd.id}>
-			<div
+			<section
 				class="hero"
 				style="background-image: url({upd.backdrop_path === null
 					? ''
@@ -38,15 +38,15 @@
 						<a sveltekit:prefetch class="btn btn-primary" href={'/movie/' + upd.id}>see more</a>
 					</div>
 				</div>
-			</div>
+			</section>
 		</div>
 	{/each}
 </div>
 <div class="flex w-full justify-center gap-2 py-2">
-	{#each upcomingData.results.slice(0, currentIndex) as d, index}
+	{#each upcomingData.slice(0, currentIndex) as d, index}
 		<a href={'#' + d.id} class="btn btn-xs">{index + 1}</a>
 	{/each}
-	{#if upcomingData.results.length > currentIndex}
+	{#if upcomingData.length > currentIndex}
 		<button class="btn btn-xs" on:click={() => (currentIndex += 5)}>...</button>
 	{/if}
 </div>

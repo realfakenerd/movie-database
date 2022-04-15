@@ -5,6 +5,7 @@
 	const search = () => {
 		goto('/search/' + inputVal);
 		inputVal = '';
+		show = false;
 	};
 </script>
 

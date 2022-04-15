@@ -56,7 +56,7 @@
 	/>
 </svelte:head>
 
-<div class="flex w-full flex-col items-center py-10">
+<div class="flex w-full flex-col items-center py-20">
 	<div
 		class="hero min-h-screen"
 		style="background-image: url({srcsetURL + 'w1280' + backdropPath});"

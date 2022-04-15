@@ -1,39 +1,35 @@
-export interface MovieDef {
-	tagline: string;
-	backdrop_path: string | null;
+export interface BaseMovieDef {
 	id: number;
+	title: string;
+	poster_path: string | null;
+	backdrop_path: string | null;
+	vote_average: number;
+	release_date: string;
+	vote_count: number;
+	overview: string;
+	original_title: string;
+}
+
+export interface MovieDef extends BaseMovieDef {
+	reviews: { results: Reviews[] };
 	budget: number;
+	original_title: string;
+	status: Status;
+	homepage: string | null;
+	tagline: string;
 	revenue: number;
 	runtime: string;
-	title: string;
-	original_title: string;
-	overview: string;
-	popularity: number;
-	poster_path: string;
-	vote_average: number;
-	video: boolean;
-	vote_count: number;
-	release_date: 'string';
-	homepage: string | null;
-	status: Status;
+}
+
+export interface PopDef {
+	results: BaseMovieDef[];
 }
 
 export interface UpcomingMoviesDate {
 	minimum: string;
 	maximum: string;
 }
-export interface UpcomingMoviesRes {
-	poster_path: string | null;
-	overview: string;
-	release_date: string;
-	id: string;
-	original_title: string;
-	title: string;
-	backdrop_path: string | null;
-	popularity: number;
-	vote_count: number;
-	vote_average: number;
-}
+export interface UpcomingMoviesRes extends BaseMovieDef {}
 
 export type UpcomingData = {
 	dates: UpcomingMoviesDate;

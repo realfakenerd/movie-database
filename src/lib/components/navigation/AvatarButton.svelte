@@ -1,10 +1,8 @@
 <script>
-	function random() {
-		return Math.ceil(Math.random() * 999);
-	}
+	import { random } from '$lib/utils';
 </script>
 
-<div class="dropdown ">
+<div class="dropdown dropdown-left">
 	<!-- svelte-ignore a11y-label-has-associated-control -->
 	<label tabindex="0">
 		<div class="avatar cursor-pointer">
@@ -12,7 +10,7 @@
 				<img
 					width="12"
 					height="12"
-					src={'https://avatars.dicebear.com/api/croodles-neutral/' + random() + '.svg'}
+					src={'https://avatars.dicebear.com/api/croodles-neutral/' + random(1, 999) + '.svg'}
 					alt="avatar"
 				/>
 			</div>

@@ -11,3 +11,7 @@ export const formatNumberToMoney = (num: number) =>
 		style: 'currency',
 		currency: 'USD'
 	}).format(num);
+
+export function random(min: number, max: number): number {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+}

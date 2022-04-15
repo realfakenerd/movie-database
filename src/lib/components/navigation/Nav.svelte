@@ -13,7 +13,9 @@
 	};
 </script>
 
-<nav class="navbar fixed z-50 w-full bg-base-100/50 px-5 md:space-y-0">
+<nav
+	class="navbar fixed z-50 w-full bg-base-100/20 px-5 backdrop-blur-md transition-colors duration-1000 md:space-y-0"
+>
 	<div class="navbar-start">
 		<Searchbar />
 	</div>
