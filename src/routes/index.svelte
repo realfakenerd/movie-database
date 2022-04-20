@@ -13,10 +13,12 @@
 	});
 </script>
 
-<IndexHero />
-<section class="mt-16 scroll-mt-16 md:container md:mx-auto md:px-4">
+<IndexHero/>
+<section id="mainContainer" class="grid place-items-center min-h-screen mt-16 scroll-mt-16">
 	{#await $upcoming}
-		<div>hello</div>
+		<div>
+			loading data
+		</div>
 	{:then up}
 		<UpcomingMovies upcomingData={up} />
 	{/await}
@@ -24,7 +26,7 @@
 		<h1 class="text-2xl">See what's popular</h1>
 	</div>
 	{#await $popular}
-		<div>hello</div>
+		<div>loading data</div>
 	{:then pop}
 		<MovieCards popular={pop} />
 	{/await}
