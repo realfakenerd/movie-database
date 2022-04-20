@@ -137,7 +137,7 @@
 				<path fill-rule="evenodd" d={dPath} clip-rule="evenodd" />
 			</svg>
 		</label>
-		<ul tabindex="0" class="menu dropdown-content p-2 shadow-lg bg-base-100 rounded-box w-52 mt-4">
+		<ul tabindex="0" class="dropdown-content menu rounded-box mt-4 w-52 bg-base-100 p-2 shadow-lg">
 			<li>
 				<div class="btn btn-ghost">Movie</div>
 			</li>

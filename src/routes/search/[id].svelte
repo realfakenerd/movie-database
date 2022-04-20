@@ -30,7 +30,9 @@
 </script>
 
 <section class="px-10 py-20">
-	<div class="grid grid-cols-1 md:p-4 place-items-center gap-4 md:grid-cols-3 md:gap-8 lg:grid-cols-4">
+	<div
+		class="grid grid-cols-1 place-items-center gap-4 md:grid-cols-3 md:gap-8 md:p-4 lg:grid-cols-4"
+	>
 		{#each searchedMovies as movie (movie.id)}
 			<Movie {movie} />
 		{/each}

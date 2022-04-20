@@ -1,7 +1,7 @@
 <script>
 	import AvatarButton from './AvatarButton.svelte';
 	import Searchbar from './Searchbar.svelte';
-    export let darkMode
+	export let darkMode;
 </script>
 
 <div class="navbar-start">

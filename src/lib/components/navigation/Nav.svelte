@@ -1,8 +1,8 @@
 <script lang="ts">
 	import MediaQuery from '../MediaQuery.svelte';
-import LargeNav from './LargeNav.svelte';
-import MobileNav from './MobileNav.svelte';
-	
+	import LargeNav from './LargeNav.svelte';
+	import MobileNav from './MobileNav.svelte';
+
 	const darkMode = () => {
 		let currentTheme = document.documentElement.getAttribute('data-theme');
 
@@ -19,9 +19,9 @@ import MobileNav from './MobileNav.svelte';
 >
 	<MediaQuery query="(min-width: 768px)" let:matches>
 		{#if matches}
-			<LargeNav {darkMode}/>
+			<LargeNav {darkMode} />
 		{:else}
-			<MobileNav/>
+			<MobileNav />
 		{/if}
 	</MediaQuery>
 </nav>

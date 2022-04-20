@@ -1,7 +1,7 @@
 import vercel from '@sveltejs/adapter-vercel';
 import preprocess from 'svelte-preprocess';
 import viteCompression from 'vite-plugin-compression';
-import  removeConsole from 'vite-plugin-remove-console';
+import removeConsole from 'vite-plugin-remove-console';
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	// Consult https://github.com/sveltejs/svelte-preprocess

@@ -9,14 +9,14 @@ module.exports = {
 		themes: [
 			{
 				cusdark: {
-					primary: "#e44e46",
-					secondary: "#418eff",
-					accent: "#c6a727",
-					neutral: "#3d4451",
-					"base-100": "#1d252e",
-				},
+					primary: '#e44e46',
+					secondary: '#418eff',
+					accent: '#c6a727',
+					neutral: '#3d4451',
+					'base-100': '#1d252e'
+				}
 			},
-			"light",
-		],
+			'light'
+		]
 	}
 };

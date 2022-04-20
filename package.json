@@ -38,7 +38,6 @@
 	"type": "module",
 	"dependencies": {
 		"@fontsource/lato": "^4.5.5",
-		"@fontsource/material-icons-rounded": "^4.5.4",
 		"motion": "^10.7.0"
 	}
 }

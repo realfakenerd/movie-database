@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Nav from '$lib/components/navigation/Nav.svelte';
 	import '../tail.css';
-	import '@fontsource/material-icons-rounded';
 	import '@fontsource/lato/400.css';
 	import '@fontsource/lato/700.css';
 	import { fetchPopular, fetchUpcoming } from '$lib/stores/popularStore';
