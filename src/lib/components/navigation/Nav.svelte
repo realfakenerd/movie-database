@@ -2,6 +2,12 @@
 	import MediaQuery from '../MediaQuery.svelte';
 	import LargeNav from './LargeNav.svelte';
 	import MobileNav from './MobileNav.svelte';
+	import { animate} from 'motion';
+import { onMount } from 'svelte';
+
+	onMount(() => {
+		animate('nav',{opacity: 1}, {duration:1, delay: .6})
+	})
 
 	const darkMode = () => {
 		let currentTheme = document.documentElement.getAttribute('data-theme');
@@ -15,13 +21,14 @@
 </script>
 
 <nav
+style="opacity: 0;"
 	class="navbar fixed z-50 w-full bg-base-100/20 px-5 backdrop-blur-md transition-colors duration-1000 md:space-y-0"
 >
-	<MediaQuery query="(min-width: 768px)" let:matches>
+	<MediaQuery query="(max-width: 768px)" let:matches>
 		{#if matches}
-			<LargeNav {darkMode} />
+		<MobileNav />
 		{:else}
-			<MobileNav />
+		<LargeNav {darkMode} />
 		{/if}
 	</MediaQuery>
 </nav>
