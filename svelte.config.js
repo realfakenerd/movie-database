@@ -18,7 +18,7 @@ const config = {
 			build: {
 				reportCompressedSize: false,
 				target: 'esnext',
-				minify: 'esbuild',
+				minify: 'esbuild'
 			},
 			plugins: [
 				removeConsole(),

@@ -1,10 +1,10 @@
 {
-    "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+	"$schema": "https://json.schemastore.org/web-manifest-combined.json",
 	"name": "The Pop Korn Time ",
 	"short_name": "Pop Korn",
-    "description": "watch, review, see what's new. Repeat.",
+	"description": "watch, review, see what's new. Repeat.",
 	"icons": [
-        {
+		{
 			"src": "icons/maskable_icon_x48.png",
 			"sizes": "48x48",
 			"type": "image/png",
@@ -28,12 +28,12 @@
 			"type": "image/png",
 			"purpose": "maskable"
 		},
-        {
-            "src": "icons/maskable_icon_x144.png",
-            "sizes": "144x144",
-            "type": "image/png",
-            "purpose": "any"
-        },
+		{
+			"src": "icons/maskable_icon_x144.png",
+			"sizes": "144x144",
+			"type": "image/png",
+			"purpose": "any"
+		},
 		{
 			"src": "icons/maskable_icon_x192.png",
 			"sizes": "192x192",
@@ -56,9 +56,9 @@
 	"theme_color": "#d24e4a",
 	"background_color": "#d24e4a",
 	"start_url": "/?source=pwa",
-    "scope": "/",
-    "id": "/?popkorn",
-    "orientation": "any",
-    "categories": ["movies", "shows", "reviews"],
+	"scope": "/",
+	"id": "/?popkorn",
+	"orientation": "any",
+	"categories": ["movies", "shows", "reviews"],
 	"display": "standalone"
 }
