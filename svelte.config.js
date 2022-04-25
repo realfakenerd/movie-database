@@ -18,14 +18,14 @@ const config = {
 			build: {
 				reportCompressedSize: false,
 				target: 'esnext',
-				minify: 'terser'
+				minify: 'esbuild',
 			},
 			plugins: [
 				removeConsole(),
 				viteCompression({
 					algorithm: 'brotliCompress',
-					threshold: 512,
 					verbose: false,
+					threshold: 512,
 					compressionOptions: {
 						level: 3
 					}
