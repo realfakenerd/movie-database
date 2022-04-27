@@ -15,10 +15,12 @@ specifiers:
   prettier-plugin-tailwindcss: ^0.1.8
   svelte: ^3.44.0
   svelte-check: ^2.2.6
+  svelte-local-storage-store: ^0.2.6
   svelte-preprocess: ^4.10.1
   tailwindcss: ^3.0.23
   tslib: ^2.3.1
   typescript: ~4.6.2
+  uuid: ^8.3.2
   vite-plugin-compression: ^0.5.1
   vite-plugin-remove-console: ^0.0.7
   workbox-core: ^6.5.2
@@ -30,8 +32,8 @@ dependencies:
 
 devDependencies:
   '@playwright/test': 1.20.2
-  '@sveltejs/adapter-vercel': 1.0.0-next.47
-  '@sveltejs/kit': 1.0.0-next.316_svelte@3.46.6
+  '@sveltejs/adapter-vercel': 1.0.0-next.50
+  '@sveltejs/kit': 1.0.0-next.321_svelte@3.46.6
   autoprefixer: 10.4.4_postcss@8.4.12
   daisyui: 2.13.6_081650f2f4dba35b17265937ab2a2ec0
   husky: 7.0.4
@@ -41,10 +43,12 @@ devDependencies:
   prettier-plugin-tailwindcss: 0.1.8_prettier@2.6.2
   svelte: 3.46.6
   svelte-check: 2.4.6_postcss@8.4.12+svelte@3.46.6
+  svelte-local-storage-store: 0.2.6_svelte@3.46.6
   svelte-preprocess: 4.10.5_c809e873852dddf03bf3fd6b8515098a
   tailwindcss: 3.0.23_autoprefixer@10.4.4
   tslib: 2.3.1
   typescript: 4.6.3
+  uuid: 8.3.2
   vite-plugin-compression: 0.5.1
   vite-plugin-remove-console: 0.0.7
   workbox-core: 6.5.2
@@ -941,19 +945,19 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@sveltejs/adapter-vercel/1.0.0-next.47:
+  /@sveltejs/adapter-vercel/1.0.0-next.50:
     resolution:
       {
-        integrity: sha512-VV3vP8KqL9XOc7xfQLVhXTM5jrTme+r1qJy98u5/dhAhkdjqrGDwAKo/s7MoB3rTYxLb2b8I4QxAaoz2Y2aIBg==
+        integrity: sha512-yta0AkuWEr7qrm8LB34F4ZdCtMxj+cHD4huwrRYCgjv+PSJHLPwe7aH53+Mhrv6La0TgeyQ/f2lTyhBMXZXn9Q==
       }
     dependencies:
       esbuild: 0.14.31
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.316_svelte@3.46.6:
+  /@sveltejs/kit/1.0.0-next.321_svelte@3.46.6:
     resolution:
       {
-        integrity: sha512-oLjWOWzjriJD2t210r7ALuH/8ZADrJGsOODzRCRSJvRBCt0Q7VKVLqwKbM/RlZzD1k8Af2uRodQT11kP98hAIA==
+        integrity: sha512-Egdmxc+oxmKKhXAtLLHj6LnZQnfxgk/DpdRitDxDlSQq/hj1zSVswe3kGjPDaquNMkxXbvZcHwhbZvNnVTnWag==
       }
     engines: { node: '>=14.13' }
     hasBin: true
@@ -961,6 +965,7 @@ packages:
       svelte: ^3.44.0
     dependencies:
       '@sveltejs/vite-plugin-svelte': 1.0.0-next.40_svelte@3.46.6+vite@2.9.1
+      chokidar: 3.5.3
       sade: 1.8.1
       svelte: 3.46.6
       vite: 2.9.1
@@ -3202,6 +3207,18 @@ packages:
       svelte: 3.46.6
     dev: true
 
+  /svelte-local-storage-store/0.2.6_svelte@3.46.6:
+    resolution:
+      {
+        integrity: sha512-7QLCZ4V/0ydvZRyVChNYx7gVkprzrkACD63PpZINy5oFv9nE+5CAP94QN3NBI2awPeDB+cpUzNCB4Q0Yjr9CYQ==
+      }
+    engines: { node: '>=0.14' }
+    peerDependencies:
+      svelte: ^3.44.1
+    dependencies:
+      svelte: 3.46.6
+    dev: true
+
   /svelte-preprocess/4.10.5_c809e873852dddf03bf3fd6b8515098a:
     resolution:
       {
@@ -3341,6 +3358,14 @@ packages:
 
   /util-deprecate/1.0.2:
     resolution: { integrity: sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8= }
+    dev: true
+
+  /uuid/8.3.2:
+    resolution:
+      {
+        integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
+      }
+    hasBin: true
     dev: true
 
   /vite-plugin-compression/0.5.1:

@@ -1,11 +1,10 @@
 <script lang="ts">
-	import type { MovieDef } from '$lib/types';
-	import { onMount } from 'svelte';
+	import type { PopularMovies } from '$lib/types';
 	import { animate, stagger } from 'motion';
+	import { onMount } from 'svelte';
 	import Movie from './Movie.svelte';
 
-	export let popular: MovieDef[];
-
+	export let popular: PopularMovies[];
 	let currentItems = 5;
 
 	onMount(() => {

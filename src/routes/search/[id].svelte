@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
 	import type { LoadInput } from '@sveltejs/kit/types/internal';
-	const API_KEY = import.meta.env.VITE_API_KEY;
+	const API_KEY = import.meta.env.VITE_TMDB_KEY;
 
 	export async function load({ fetch, params }: LoadInput) {
 		const res = await fetch(

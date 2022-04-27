@@ -16,6 +16,7 @@
 	"devDependencies": {
 		"@playwright/test": "^1.20.0",
 		"@sveltejs/adapter-vercel": "next",
+		"svelte-local-storage-store": "^0.2.6",
 		"@sveltejs/kit": "next",
 		"autoprefixer": "^10.4.4",
 		"daisyui": "^2.13.6",
@@ -33,6 +34,7 @@
 		"vite-plugin-compression": "^0.5.1",
 		"vite-plugin-remove-console": "^0.0.7",
 		"workbox-core": "^6.5.2",
+		"uuid": "^8.3.2",
 		"workbox-recipes": "^6.5.2"
 	},
 	"type": "module",

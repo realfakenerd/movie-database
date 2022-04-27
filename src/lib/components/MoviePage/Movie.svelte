@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type { MovieDef } from '$lib/types';
+	import type { PopularMovies } from '$lib/types';
 	import { formatDate } from '$lib/utils';
 	const srcsetURL = 'https://image.tmdb.org/t/p/';
 	const sizes = ['w342', 'w500', 'w780'];
-	export let movie: MovieDef;
+	export let movie: PopularMovies;
 </script>
 
 <div class="card image-full max-w-full bg-base-100 before:rounded-none">
@@ -22,7 +22,7 @@
 	</figure>
 	<div class="card-body">
 		<h2 class="card-title max-w-fit">{movie.title}</h2>
-		<p>{formatDate(movie.release_date)}</p>
+		<p>{movie.year}</p>
 		<div class="badge badge-secondary">
 			<span class="pr-2">
 				{movie.vote_average}

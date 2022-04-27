@@ -22,7 +22,7 @@ export interface MovieDef extends BaseMovieDef {
 }
 
 export interface PopDef {
-	results: BaseMovieDef[];
+	results: MovieDef[];
 }
 
 export interface UpcomingMoviesDate {
@@ -60,3 +60,28 @@ interface AuthorDetails {
 	avatar_path: string | null;
 	rating: number | null;
 }
+
+export interface PopularMovies {
+	fanarts: FanartMovie;
+	title: string;
+	year: number;
+	ids: IDS;
+}
+
+export interface Fanart {
+	movieposter: { url: string }[];
+	moviebackground: { url: string }[];
+}
+
+export interface FanartMovie {
+	movieposter: string;
+	moviebackground: string;
+}
+
+interface IDS {
+	trakt: number;
+	slug: string;
+	tmdb: number;
+}
+
+export type MovieApiNames = 'upcoming' | 'popular' | 'trending';

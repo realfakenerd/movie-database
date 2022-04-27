@@ -1,23 +1,21 @@
 <script lang="ts" context="module">
 	import type { LoadInput } from '@sveltejs/kit/types/internal';
-
-	const API_KEY = import.meta.env.VITE_API_KEY;
-	const API_URL = 'https://api.themoviedb.org/3/movie/';
 	export async function load({ fetch, params }: LoadInput) {
-		const resMovieDetails = await fetch(
-			`${API_URL}${params.id}?api_key=${API_KEY}&language=en-US&append_to_response=images,reviews`
-		);
-
-		const movieDetails = await resMovieDetails.json();
-		const movieComents = movieDetails.reviews.results;
-
-		if (resMovieDetails.ok) {
-			return {
-				props: {
-					movieDetails,
-					movieComents
-				}
-			};
+		try {
+			const res = await fetch('/api/movie/' + params.id);
+			const data = await res.json();
+			const movieDetails = data.movie;
+			const movieComents = data.reviews;
+			if (res.ok) {
+				return {
+					props: {
+						movieDetails,
+						movieComents
+					}
+				};
+			}
+		} catch (error) {
+			console.log('ERROR', error);
 		}
 	}
 </script>
