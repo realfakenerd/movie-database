@@ -1,20 +1,25 @@
 import { load, TMDB_URL } from '$lib/utils';
 
-export async function get(req) {
+interface Req {
+	params: {
+		type: string;
+		query: string;
+	};
+}
+
+export async function get({ params }: Req) {
 	const API_KEY = import.meta.env.VITE_TMDB_KEY;
-	const type = req.params.type;
-	const q = req.params.query;
+	const type = params.type;
+	const q = params.query.replace(' ', '%20');
 	const url = ` ${TMDB_URL}/search/${type}?api_key=${API_KEY}&language=en-US&query=${q}&page=1&include_adult=false`;
 	try {
-		const data = await load(url);
-		console.log(data);
+		const data: any = await load(url);
+		return {
+			body: {
+				result: data
+			}
+		};
 	} catch (error) {
 		throw new Error(error);
 	}
-
-	return {
-		body: {
-			param: req
-		}
-	};
 }

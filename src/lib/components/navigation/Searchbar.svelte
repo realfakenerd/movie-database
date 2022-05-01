@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { searchVal } from '$lib/stores/statsStore';
 	let inputVal = '';
 	let show = false;
 	const search = () => {
-		goto('/search/' + inputVal);
+		goto('/search/movie/' + inputVal);
+		searchVal.set(inputVal);
 		show = false;
 		inputVal = '';
 	};

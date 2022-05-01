@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<!-- <script lang="ts" context="module">
 	import type { LoadInput } from '@sveltejs/kit/types/internal';
 	export async function load({ fetch, params }: LoadInput) {
 		try {
@@ -33,6 +33,11 @@
 		document.title = 'Pop Korn/' + movieDetails.title;
 		animate('.hero', { opacity: [0, 1] }, { duration: 1, delay: 0.6 });
 	});
+
+	const movieRating = {
+		total: movieDetails.vote_count,
+		average: movieDetails.vote_average
+	};
 
 	const backdropPath = movieDetails.backdrop_path;
 	const posterPath = movieDetails.poster_path;
@@ -91,6 +96,6 @@
 	<div class="p-10">
 		<div class="divider" />
 		<MovieStats {budget} {releaseDate} {movieDetails} />
-		<Reviews {movieComents} />
+		<Reviews {movieRating} {movieComents} />
 	</div>
-</div>
+</div> -->

@@ -1,5 +1,5 @@
-import type { MovieDef, Reviews } from '$lib/types';
-import { TMDB_URL, load } from '$lib/utils';
+import type { MovieDef } from '$lib/types';
+import { TMDB_URL, load, parseMd } from '$lib/utils';
 
 export async function get(req) {
 	const API_KEY = import.meta.env.VITE_TMDB_KEY;
@@ -13,7 +13,7 @@ export async function get(req) {
 			const ret = {
 				id: val.id,
 				author: val.author,
-				content: val.content,
+				content: parseMd(val.content),
 				author_details: {
 					avatar_path: a_d.avatar_path,
 					rating: a_d.rating
@@ -36,7 +36,8 @@ export async function get(req) {
 			revenue: data.revenue,
 			vote_average: data.vote_average,
 			runtime: data.runtime,
-			original_title: data.original_title
+			original_title: data.original_title,
+			vote_count: data.vote_count
 		};
 		return {
 			body: {

@@ -7,7 +7,6 @@ export async function get(req) {
 	const url = `${TMDB_URL}/movie/${type}?api_key=${API_KEY}&language=en-US&page=1`;
 	try {
 		const data = await load<PopDef>(url);
-
 		const result = switchAPI(type, data);
 		return {
 			body: {

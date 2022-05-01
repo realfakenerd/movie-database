@@ -1,22 +1,59 @@
-export interface BaseMovieDef {
+export interface BaseDef {
 	id: number | string;
-	title: string;
+	adult: boolean;
 	poster_path: string | null;
 	backdrop_path: string | null;
 	vote_average: number;
 	release_date: string;
 	vote_count: number;
 	overview: string;
-	original_title: string;
+	media_type: 'movie' | 'tv';
+	homepage: string | null;
+	tagline: string;
 }
 
-export interface MovieDef extends BaseMovieDef {
+export interface Season {
+	id: number;
+	air_date: string;
+	episode_count: number;
+	name: string;
+	original_name: string;
+	overview: string;
+	poster_path: string;
+	season_number: 1;
+}
+
+export interface Newtwork {
+	id: number;
+	logo_path: string;
+	name: string;
+}
+
+export interface TvShow extends BaseDef {
+	name: string;
+	original_name: string;
+	first_air_date: string;
+	episode_run_time: number[];
+	type: string;
+	status: string;
+	networks: Newtwork[];
+	seasons: Season[];
+	reviews: { results: Reviews[] };
+}
+
+export interface Person {
+	name: string;
+	known_for_department: string;
+	profile_path: string | null;
+	known_for: MovieDef[];
+}
+
+export interface MovieDef extends BaseDef {
+	title: string;
 	reviews: { results: Reviews[] };
 	budget: number;
 	original_title: string;
 	status: Status;
-	homepage: string | null;
-	tagline: string;
 	revenue: number;
 	runtime: string;
 }
@@ -29,7 +66,7 @@ export interface UpcomingMoviesDate {
 	minimum: string;
 	maximum: string;
 }
-export interface UpcomingMoviesRes extends BaseMovieDef {}
+export interface UpcomingMoviesRes extends BaseDef {}
 
 export type UpcomingData = {
 	dates: UpcomingMoviesDate;

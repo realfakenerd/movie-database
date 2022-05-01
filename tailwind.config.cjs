@@ -4,7 +4,7 @@ module.exports = {
 		extend: {}
 	},
 	mode: 'jit',
-	plugins: [require('daisyui')],
+	plugins: [require('daisyui'), require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 	daisyui: {
 		themes: [
 			{

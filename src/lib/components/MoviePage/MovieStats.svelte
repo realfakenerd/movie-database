@@ -29,12 +29,6 @@
 		</div>
 	{/if}
 	<div class="stat">
-		<span class="stat-title">Rating </span>
-		<div class="stat-value">
-			{movieDetails.vote_average}
-		</div>
-	</div>
-	<div class="stat">
 		<span class="stat-title">Runtime</span>
 		<div class="stat-value">
 			{movieDetails.runtime}min
