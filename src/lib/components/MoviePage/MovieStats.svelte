@@ -8,8 +8,8 @@
 </script>
 
 <section class="text-center">
-	<div class="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
-		<ul class="grid grid-cols-2 gap-4 border-2 border-primary rounded-xl lg:grid-cols-4">
+	<div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+		<ul class="grid grid-cols-2 gap-4 rounded-xl border-2 border-primary lg:grid-cols-4">
 			<li class="p-8">
 				<p class="text-2xl font-extrabold text-secondary">{formatDate(releaseDate)}</p>
 				<p class="mt-1 text-lg font-medium">Release Date</p>

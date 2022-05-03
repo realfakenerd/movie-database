@@ -133,7 +133,7 @@
 
 				<p class="mt-4 max-w-lg text-xl">Watch, review, see what's new, repeat.</p>
 			</div>
-			<div class="mt-8 flex justify-center flex-wrap gap-4 text-center">
+			<div class="mt-8 flex flex-wrap justify-center gap-4 text-center">
 				<a
 					class="inline-block rounded-lg bg-gradient-to-r from-primary to-secondary p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75"
 					href="#mainContainer"
