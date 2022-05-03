@@ -2,14 +2,14 @@
 	import type { LoadInput } from '@sveltejs/kit';
 	export async function load({ fetch }: LoadInput) {
 		try {
-			const popRes = await fetch('/api/movies/popular');
+			// const popRes = await fetch('/api/movies/popular');
 			const upcomingRes = await fetch('/api/movies/upcoming');
 			const upcomingData = await upcomingRes.json();
-			const popData = await popRes.json();
-			if (popRes.ok) {
+			// const popData = await popRes.json();
+			if (upcomingRes.ok) {
 				return {
 					props: {
-						popular: popData.result,
+						// popular: popData.result,
 						upcoming: upcomingData.result
 					}
 				};
@@ -27,18 +27,21 @@
 	import { onMount } from 'svelte';
 	import { animate } from 'motion';
 	import type { PopularMovies } from '$lib/types';
-	export let popular: PopularMovies[];
+	// export let popular: PopularMovies[];
 	export let upcoming;
 
 	onMount(() => {
 		animate('.hero', { opacity: [0, 1] }, { duration: 1, delay: 0.5 });
 		animate('.hero-overlay', { opacity: [0, 1] }, { duration: 1, delay: 0.9 });
-		document.title = 'Pop Korn';
 	});
 </script>
 
+<svelte:head>
+	<title>Pop Korn</title>
+</svelte:head>
+
 <IndexHero />
-<section id="mainContainer" class="mt-16 grid min-h-screen scroll-mt-16 place-items-center">
+<section id="mainContainer" class="mt-16 min-h-screen scroll-mt-16">
 	<div class="divider py-5">
 		<div class="text-2xl">See what's new</div>
 	</div>
@@ -48,6 +51,6 @@
 		<div class="divider py-5">
 			<h1 class="text-2xl">See what's popular</h1>
 		</div>
-		<MovieCards {popular} />
+		<MovieCards />
 	</section>
 </section>

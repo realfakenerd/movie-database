@@ -1,14 +1,14 @@
 <svelte:head>
 	<link
 		rel="preload"
-		href="https://image.tmdb.org/t/p/original/egoyMDLqCxzjnSrWOz50uLlJWmD.jpg"
+		href="https://image.tmdb.org/t/p/original/tRS6jvPM9qPrrnx2KRp3ew96Yot.jpg"
 		as="image"
 	/>
 </svelte:head>
 <section class="relative min-h-screen">
 	<img
 		class="absolute inset-0 h-full w-full object-cover object-center opacity-25 sm:opacity-100"
-		src="https://image.tmdb.org/t/p/original/egoyMDLqCxzjnSrWOz50uLlJWmD.jpg"
+		src="https://image.tmdb.org/t/p/original/tRS6jvPM9qPrrnx2KRp3ew96Yot.jpg"
 		alt="Couple on a bed with a dog"
 	/>
 
@@ -17,7 +17,7 @@
 	/>
 
 	<div class="relative mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center">
-		<div class="mx-auto max-w-xl text-center sm:text-left">
+		<div class="mx-auto max-w-xl text-center">
 			<div class="divide-y-2 divide-primary/50">
 				<div class="inline-flex items-end space-x-5">
 					<svg class="w-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 449"
@@ -133,7 +133,7 @@
 
 				<p class="mt-4 max-w-lg text-xl">Watch, review, see what's new, repeat.</p>
 			</div>
-			<div class="mt-8 flex flex-wrap gap-4 text-center">
+			<div class="mt-8 flex justify-center flex-wrap gap-4 text-center">
 				<a
 					class="inline-block rounded-lg bg-gradient-to-r from-primary to-secondary p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75"
 					href="#mainContainer"

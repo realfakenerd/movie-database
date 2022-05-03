@@ -19,15 +19,15 @@
 		"@sveltejs/kit": "next",
 		"@tailwindcss/forms": "^0.5.0",
 		"@tailwindcss/typography": "^0.5.2",
-		"autoprefixer": "^10.4.5",
-		"daisyui": "^2.14.2",
+		"autoprefixer": "^10.4.7",
+		"daisyui": "^2.14.3",
 		"husky": "^7.0.4",
-		"postcss": "^8.4.12",
+		"postcss": "^8.4.13",
 		"postcss-nested": "^5.0.6",
 		"prettier": "^2.6.2",
 		"prettier-plugin-svelte": "^2.7.0",
 		"prettier-plugin-tailwindcss": "^0.1.10",
-		"svelte": "^3.47.0",
+		"svelte": "^3.48.0",
 		"svelte-check": "^2.7.0",
 		"svelte-local-storage-store": "^0.2.6",
 		"svelte-preprocess": "^4.10.6",
@@ -42,7 +42,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@fontsource/lato": "^4.5.5",
+		"@fontsource/lato": "^4.5.8",
 		"motion": "^10.8.1"
 	}
 }

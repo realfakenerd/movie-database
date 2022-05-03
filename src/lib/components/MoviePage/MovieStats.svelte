@@ -7,31 +7,30 @@
 	export let movieDetails: MovieDef;
 </script>
 
-<section class="stats stats-vertical shadow lg:stats-horizontal">
-	<div class="stat">
-		<span class="stat-title">Release Date </span>
-		<div class="stat-value">
-			{formatDate(releaseDate)}
-		</div>
-	</div>
-	{#if budget > 0 || movieDetails.revenue > 0}
-		<div class="stat">
-			<span class="stat-title">Budget</span>
-			<div class="stat-value">
-				{formatNumberToMoney(budget)}
-			</div>
-		</div>
-		<div class="stat">
-			<span class="stat-title">Revenue</span>
-			<div class="stat-value">
-				{formatNumberToMoney(movieDetails.revenue)}
-			</div>
-		</div>
-	{/if}
-	<div class="stat">
-		<span class="stat-title">Runtime</span>
-		<div class="stat-value">
-			{movieDetails.runtime}min
-		</div>
+<section class="text-center">
+	<div class="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
+		<ul class="grid grid-cols-2 gap-4 border-2 border-primary rounded-xl lg:grid-cols-4">
+			<li class="p-8">
+				<p class="text-2xl font-extrabold text-secondary">{formatDate(releaseDate)}</p>
+				<p class="mt-1 text-lg font-medium">Release Date</p>
+			</li>
+
+			<li class="p-8">
+				<p class="text-2xl font-extrabold text-secondary">{formatNumberToMoney(budget)}</p>
+				<p class="mt-1 text-lg font-medium">Budget</p>
+			</li>
+
+			<li class="p-8">
+				<p class="text-2xl font-extrabold text-secondary">
+					{formatNumberToMoney(movieDetails.revenue)}
+				</p>
+				<p class="mt-1 text-lg font-medium">Revenue</p>
+			</li>
+
+			<li class="p-8">
+				<p class="text-2xl font-extrabold text-secondary">{movieDetails.runtime}</p>
+				<p class="mt-1 text-lg font-medium">Runtime</p>
+			</li>
+		</ul>
 	</div>
 </section>

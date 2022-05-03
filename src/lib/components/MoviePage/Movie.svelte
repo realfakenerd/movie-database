@@ -1,11 +1,27 @@
 <script lang="ts">
 	import { formatDate, Img_URL } from '$lib/utils';
+	import { onMount } from 'svelte/internal';
+	import { animate } from 'motion';
 	export let movie;
 	export let img: any;
 	const sizes = ['w342', 'w500', 'w780'];
+
+	onMount(() => {
+		animate(
+			'.cartao',
+			{
+				opacity: [0, 1],
+				y: [20, 0]
+			},
+			{
+				duration: 1,
+				delay: 0.5
+			}
+		);
+	});
 </script>
 
-<a href={'/movie/' + movie.id}>
+<a sveltekit:prefetch class="cartao" href={'/movie/' + movie.id}>
 	<figure>
 		<img
 			width="300"

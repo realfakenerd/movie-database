@@ -4,6 +4,7 @@
 	import { onMount } from 'svelte';
 	import Searchbar from './Searchbar.svelte';
 	import { page } from '$app/stores';
+	import Button from '../utils/Button.svelte';
 
 	onMount(() => {
 		animate('nav', { opacity: 1 }, { duration: 1, delay: 0.6 });
@@ -24,24 +25,34 @@
 
 		<nav class="hidden space-x-8 text-sm font-medium md:flex">
 			{#each urls as url}
-				<a
-					class:text-primary={$page.url.pathname === url.path}
-					class="btn btn-link text-gray-500"
-					href={url.path}>{url.title}</a
-				>
+				<Button
+					additionalClass="uppercase font-semibold btn-link"
+					type="a"
+					href={url.path}
+					text={url.title}
+				/>
 			{/each}
 		</nav>
 
 		<div class="hidden flex-1 items-center justify-end space-x-4 lg:flex">
-			<a class="btn btn-ghost rounded-lg bg-white text-secondary-content" href="/login"> Log in </a>
-
-			<a class="btn btn-secondary rounded-lg  text-white" href="/login"> Sign up </a>
+			<Button
+				additionalClass="hover:bg-secondary text-white border-secondary"
+				type="a"
+				href="/login"
+				text="Log in"
+			/>
+			<Button
+				additionalClass="bg-secondary hover:bg-transparent text-white border-secondary"
+				type="a"
+				href="/login"
+				text="Sign in"
+			/>
 		</div>
 
 		<div class="lg:hidden">
 			<div class="dropdown dropdown-end">
 				<!-- svelte-ignore a11y-label-has-associated-control -->
-				<label tabindex="0" class="btn m-1">
+				<label tabindex="0" class="btn btn-ghost m-1">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						class="h-5 w-5"

@@ -1,8 +1,23 @@
 <script lang="ts">
 	import type { MovieDef } from '$lib/types';
 	import { Img_URL } from '$lib/utils';
-
+	import { animate, stagger } from 'motion';
+	import { onMount } from 'svelte/internal';
 	export let details: MovieDef;
+
+	onMount(() => {
+		animate(
+			'#secao > *',
+			{
+				opacity: [0, 1]
+			},
+			{
+				duration: 1,
+				easing: 'ease-in-out',
+				delay: stagger(1)
+			}
+		);
+	});
 </script>
 
 <section class="relative min-h-screen">
@@ -13,13 +28,16 @@
 	/>
 
 	<div
-		class="hidden sm:absolute sm:inset-0 sm:block sm:bg-gradient-to-r sm:from-base-100 sm:to-base-100/30"
+		class="hidden sm:absolute sm:inset-0 sm:block sm:bg-gradient-to-l sm:from-base-100 sm:to-base-100/30"
 	/>
 
-	<div class="relative mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center">
+	<section
+		id="secao"
+		class="relative mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center"
+	>
 		<figure class="p-5">
 			<img
-				class="mx-auto rounded-xl bg-base-100 object-cover shadow-lg"
+				class="mx-auto rounded-xl bg-primary object-cover shadow-lg"
 				height="500"
 				width="330"
 				src={Img_URL + 'w500' + details.poster_path}
@@ -43,9 +61,11 @@
 
 			<div class="mt-8 flex flex-wrap justify-center gap-4 text-center">
 				<a class="btn btn-link" href={details.homepage}>
-					{details.tagline}
+					<span>
+						{details.tagline}
+					</span>
 				</a>
 			</div>
 		</div>
-	</div>
+	</section>
 </section>
