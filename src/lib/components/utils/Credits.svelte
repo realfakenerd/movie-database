@@ -10,13 +10,13 @@
 <div class="py-3 pl-10">
 	<h2 class="text-2xl">Top Billed Cast</h2>
 </div>
-<div class="carousel carousel-center bg-neutral shadow-inner p-4 max-w-full space-x-5">
+<div class="carousel carousel-center max-w-full space-x-5 bg-neutral p-4 shadow-inner">
 	{#each cast as ac}
-		<a href="#" class="carousel-item w-36 flex flex-col items-center">
+		<a href="#" class="carousel-item flex w-36 flex-col items-center">
 			{#if ac.profile_path}
 				<figure>
 					<img
-						class="object-cover bg-base-300 rounded-lg shadow-lg"
+						class="rounded-lg bg-base-300 object-cover shadow-lg"
 						width="100"
 						height="150"
 						src={Img_URL + 'w500' + ac.profile_path}

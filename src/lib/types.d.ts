@@ -1,6 +1,6 @@
 /* Defining the interface for the BaseDef. */
 export interface BaseDef {
-/* Saying that the id can be a number or a string. */
+	/* Saying that the id can be a number or a string. */
 	id: number | string;
 	adult: boolean;
 	poster_path: string | null;

@@ -25,7 +25,7 @@
 			<label class="sr-only" for="searchBar"> Search </label>
 
 			<input
-				class="w-full py-3 text-sm text-neutral border-2 border-secondary rounded"
+				class="w-full rounded border-2 border-secondary py-3 text-sm text-neutral"
 				id="searchBar"
 				type="text"
 				placeholder="Search movies, tv or people..."

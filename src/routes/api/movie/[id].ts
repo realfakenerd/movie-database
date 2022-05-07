@@ -1,7 +1,6 @@
 import type { MovieDef } from '$lib/types';
 import { TMDB_URL, load, parseMd } from '$lib/utils';
 
-
 /**
  * We're getting the movie data from the TMDB API and returning it to the frontend
  * @param req - The request object.
