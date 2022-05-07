@@ -16,7 +16,9 @@
 			</li>
 
 			<li class="p-8">
-				<p class="text-2xl font-extrabold text-secondary">{formatNumberToMoney(budget)}</p>
+				<p class="text-2xl font-extrabold text-secondary">
+					{formatNumberToMoney(budget)}
+				</p>
 				<p class="mt-1 text-lg font-medium">Budget</p>
 			</li>
 

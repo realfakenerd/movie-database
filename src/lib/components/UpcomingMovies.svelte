@@ -2,6 +2,7 @@
 	import type { UpcomingMoviesRes } from '$lib/types';
 	import { formatDate } from '$lib/utils';
 	export let upcomingData: UpcomingMoviesRes[];
+	console.log(upcomingData);
 
 	let currentIndex = 5;
 	const srcsetURL = 'https://image.tmdb.org/t/p/';

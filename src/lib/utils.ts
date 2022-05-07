@@ -1,7 +1,14 @@
 import type { MovieApiNames, PopDef } from './types';
 
+/* A constant that is readonly. */
 export const TMDB_URL: Readonly<string> = 'https://api.themoviedb.org/3';
+/* A constant that is readonly. */
 export const Img_URL: Readonly<string> = 'https://image.tmdb.org/t/p/';
+/**
+ * It takes a string in the format of MM-DD-YYYY and returns a string in the format of MM/DD/YYYY
+ * @param {string} dateStr - the date string that we want to format
+ * @returns A string with the date in the format of "MM/DD/YYYY"
+ */
 export function formatDate(dateStr: string) {
 	const d = dateStr.split('-');
 	if (!d.includes('')) {
@@ -10,21 +17,42 @@ export function formatDate(dateStr: string) {
 		return dateFormated;
 	} else return 'no release date yet :(';
 }
+/**
+ * It takes a number, formats it to a currency, and returns it as a string
+ * @param {number} num - number - The number to format
+ */
 export const formatNumberToMoney = (num: number) =>
 	new Intl.NumberFormat('en-US', {
 		style: 'currency',
 		currency: 'USD'
 	}).format(num);
-
+/**
+ * Return a random number between min and max, inclusive.
+ * @param {number} min - The minimum number that can be returned.
+ * @param {number} max - The maximum number to return.
+ * @returns A random number between min and max.
+ */
 export function random(min: number, max: number): number {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+/**
+ * It loads a JSON file from a URL and returns the parsed JSON
+ * @param {string} url - The URL to load.
+ * @returns A Promise that resolves to the JSON representation of the response body.
+ */
 export async function load<T = any>(url: string): Promise<Awaited<T>> {
 	const res = await fetch(url);
 	return await res.json();
 }
 
+/**
+ * It takes in an API name and the data from that API, and returns an array of objects that have the
+ * same properties as the API data, but with only the properties we want
+ * @param {MovieApiNames} api - MovieApiNames - This is the name of the API we're using.
+ * @param {PopDef} apiData - The data returned from the API call
+ * @returns An array of objects.
+ */
 export function switchAPI(api: MovieApiNames, apiData: PopDef) {
 	switch (api) {
 		case 'popular':
@@ -51,7 +79,11 @@ export function switchAPI(api: MovieApiNames, apiData: PopDef) {
 			});
 	}
 }
-
+/**
+ * It takes a string of Markdown and returns a string of HTML
+ * @param {string} md - The markdown string to parse.
+ * @returns A function that takes a string and returns a string.
+ */
 export function parseMd(md: string) {
 	//ul
 	md = md.replace(/^\s*\n\*/gm, '<ul>\n*');

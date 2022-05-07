@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { searchVal } from '$lib/stores/statsStore';
+	import { fly } from 'svelte/transition';
 	let inputVal = '';
 	let show = false;
 	const search = () => {
@@ -15,15 +16,19 @@
 </script>
 
 {#if show === true}
-	<form on:submit|preventDefault={search}>
-		<div class="mr-3">
+	<form
+		transition:fly={{ x: -20, delay: 180, duration: 200 }}
+		id="searchForm"
+		on:submit|preventDefault={search}
+	>
+		<div class="relative mr-3">
+			<label class="sr-only" for="searchBar"> Search </label>
+
 			<input
-				bind:value={inputVal}
-				type="text"
+				class="w-full py-3 text-sm text-neutral border-2 border-secondary rounded"
 				id="searchBar"
-				placeholder="search movies..."
-				class="input input-primary"
-				required
+				type="text"
+				placeholder="Search movies, tv or people..."
 			/>
 		</div>
 	</form>

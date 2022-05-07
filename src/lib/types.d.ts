@@ -1,4 +1,6 @@
+/* Defining the interface for the BaseDef. */
 export interface BaseDef {
+/* Saying that the id can be a number or a string. */
 	id: number | string;
 	adult: boolean;
 	poster_path: string | null;
@@ -12,6 +14,7 @@ export interface BaseDef {
 	tagline: string;
 }
 
+/* Defining the interface for the Season. */
 export interface Season {
 	id: number;
 	air_date: string;
@@ -29,6 +32,7 @@ export interface Newtwork {
 	name: string;
 }
 
+/* Defining the interface for the TvShow. */
 export interface TvShow extends BaseDef {
 	name: string;
 	original_name: string;
@@ -122,3 +126,33 @@ interface IDS {
 }
 
 export type MovieApiNames = 'upcoming' | 'popular' | 'trending';
+
+/* Defining the interface for the Cast. */
+interface Cast {
+	gender: number;
+	id: number;
+	known_for_department: string;
+	name: string;
+	original_name: string;
+	popularity: number;
+	profile_path: string;
+	cast_id: number;
+	credit_id: string;
+}
+
+/* Extending the interface Cast. */
+export interface Actor extends Cast {
+	character: string;
+}
+
+/* Extending the interface Cast. */
+export interface CrewMember extends Cast {
+	job: string;
+	department: string;
+}
+
+/* Defining the interface for the Credits. */
+export interface Credits {
+	cast: Cast[];
+	crew: CrewMember[];
+}

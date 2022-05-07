@@ -15,9 +15,7 @@ export async function get({ params }: Req) {
 	try {
 		const data: any = await load(url);
 		return {
-			body: {
-				result: data
-			}
+			body: data
 		};
 	} catch (error) {
 		throw new Error(error);

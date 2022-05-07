@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import type { MovieDef, TvShow } from '$lib/types';
 	import { Img_URL } from '$lib/utils';
 	import { animate, stagger } from 'motion';
@@ -49,7 +48,7 @@
 			<h1
 				class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl"
 			>
-				{$page.params.type === 'tv' ? details.name : details.title}
+				{details.title}
 			</h1>
 
 			<div class="divider">

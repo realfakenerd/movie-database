@@ -1,14 +1,22 @@
-import type { MovieDef, Reviews, TvShow } from '$lib/types';
+import type { Credits, MovieDef, Reviews, TvShow } from '$lib/types';
 import { load } from '$lib/utils';
 import { writable } from 'svelte/store';
 
-export const popularMovies = writable<MovieDef[]>([]);
+export const popular = writable<MovieDef[]>([]);
 
+let loaded = false;
+
+/**
+ * It fetches the popular movies from the API and sets the popular movies state
+ * @returns the data from the fetch request.
+ */
 export const fetchPopular = async () => {
+	if (loaded) return;
 	try {
 		const res = await fetch('/api/movies/popular');
 		const data = await res.json();
-		return data.result;
+		loaded = true;
+		popular.set(data);
 	} catch (error) {}
 };
 
@@ -25,4 +33,15 @@ export async function fetchDetails(
 	} catch (error) {
 		throw new Error('FETCH DETAILS' + error);
 	}
+}
+
+export async function fetchCredits(type: string, id: string): Promise<{ data: Credits }> {
+	try {
+		const data = await load(`/api/${type}/${id}/credits`);
+		console.log(data);
+
+		return {
+			data
+		};
+	} catch (err) {}
 }

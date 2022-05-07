@@ -10,7 +10,7 @@
 				return {
 					props: {
 						// popular: popData.result,
-						upcoming: upcomingData.result
+						upcoming: upcomingData
 					}
 				};
 			}
@@ -27,7 +27,6 @@
 	import { onMount } from 'svelte';
 	import { animate } from 'motion';
 	import type { PopularMovies } from '$lib/types';
-	// export let popular: PopularMovies[];
 	export let upcoming;
 
 	onMount(() => {

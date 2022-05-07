@@ -1,13 +1,24 @@
 import type { MovieDef } from '$lib/types';
 import { TMDB_URL, load, parseMd } from '$lib/utils';
 
+
+/**
+ * We're getting the movie data from the TMDB API and returning it to the frontend
+ * @param req - The request object.
+ * @returns The movie and reviews data.
+ */
 export async function get(req) {
+	/* Getting the API key from the environment variable. */
 	const API_KEY = import.meta.env.VITE_TMDB_KEY;
+	/* Getting the id from the url. */
 	const id = req.params.id;
+	/* Creating a url to get the movie data from the TMDB API. */
 	const url = `${TMDB_URL}/movie/${id}?api_key=${API_KEY}&language=en-US&append_to_response=reviews`;
 	try {
+		/* Using the `load` function to get the data from the url. */
 		const data = await load<MovieDef>(url);
 
+		/* Mapping the reviews to a new array. */
 		const reviews = data.reviews.results.map((val) => {
 			const a_d = val.author_details;
 			const ret = {
@@ -22,6 +33,7 @@ export async function get(req) {
 			return ret;
 		});
 
+		/* Creating a new object with the same properties as the `MovieDef` type. */
 		const movie: Partial<MovieDef> = {
 			id: data.id,
 			title: data.title,
@@ -39,6 +51,7 @@ export async function get(req) {
 			original_title: data.original_title,
 			vote_count: data.vote_count
 		};
+		/* Returning the movie and reviews data to the frontend. */
 		return {
 			body: {
 				movie,
