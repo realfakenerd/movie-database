@@ -6,7 +6,7 @@
 </script>
 
 <header
-	class="fixed z-50 w-full bg-base-100/20 shadow-sm backdrop-blur-md transition-colors duration-1000"
+	class="fixed z-50 w-full bg-base-100/20 text-base-content shadow-sm backdrop-blur-md transition-colors duration-1000"
 >
 	<Nav />
 </header>
@@ -15,11 +15,11 @@
 	<title>Pop Korn</title>
 </svelte:head>
 
-<main>
+<main class="bg-base-300 text-base-content">
 	<slot />
 </main>
 
-<footer class="bg-gradient-to-r from-primary to-secondary text-white">
+<footer class="bg-gradient-to-r from-primary to-secondary text-base-content">
 	<div class="mx-auto max-w-screen-xl px-4 pt-6 pb-6 sm:px-6 lg:px-8">
 		<div class="mx-auto max-w-3xl text-center">
 			<p class="text-2xl font-extrabold">Made with ❤ and Svelte</p>

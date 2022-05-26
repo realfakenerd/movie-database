@@ -2,14 +2,14 @@
 	import type { LoadInput } from '@sveltejs/kit';
 	export async function load({ fetch }: LoadInput) {
 		try {
-			// const popRes = await fetch('/api/movies/popular');
+			const popRes = await fetch('/api/movies/popular');
 			const upcomingRes = await fetch('/api/movies/upcoming');
 			const upcomingData = await upcomingRes.json();
-			// const popData = await popRes.json();
+			const popData = await popRes.json();
 			if (upcomingRes.ok) {
 				return {
 					props: {
-						// popular: popData.result,
+						popular: popData,
 						upcoming: upcomingData
 					}
 				};
@@ -24,15 +24,8 @@
 	import IndexHero from '../lib/components/IndexHero.svelte';
 	import MovieCards from '$lib/components/MoviePage/MovieCards.svelte';
 	import UpcomingMovies from '$lib/components/UpcomingMovies.svelte';
-	import { onMount } from 'svelte';
-	import { animate } from 'motion';
-	import type { PopularMovies } from '$lib/types';
+	export let popular;
 	export let upcoming;
-
-	onMount(() => {
-		animate('.hero', { opacity: [0, 1] }, { duration: 1, delay: 0.5 });
-		animate('.hero-overlay', { opacity: [0, 1] }, { duration: 1, delay: 0.9 });
-	});
 </script>
 
 <svelte:head>
@@ -40,16 +33,16 @@
 </svelte:head>
 
 <IndexHero />
-<section id="mainContainer" class="mt-16 min-h-screen scroll-mt-16">
-	<div class="divider py-5">
+<section id="mainContainer" class="mt-16 min-h-screen scroll-mt-16 text-center">
+	<div class="divider">
 		<div class="text-2xl">See what's new</div>
 	</div>
-	<UpcomingMovies upcomingData={upcoming} />
+	<UpcomingMovies upcomingData={upcoming.splice(0, 7)} />
 
 	<section>
-		<div class="divider py-5">
+		<div class="divider">
 			<h1 class="text-2xl">See what's popular</h1>
 		</div>
-		<MovieCards />
+		<MovieCards {popular} />
 	</section>
 </section>

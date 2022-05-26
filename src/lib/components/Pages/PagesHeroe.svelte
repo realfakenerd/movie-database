@@ -1,28 +1,16 @@
 <script lang="ts">
+	import { fly, slide } from 'svelte/transition';
 	import { page } from '$app/stores';
 	import type { MovieDef, TvShow } from '$lib/types';
 	import { Img_URL } from '$lib/utils';
-	import { animate, stagger } from 'motion';
-	import { onMount } from 'svelte/internal';
-	export let details: MovieDef | TvShow;
 
-	onMount(() => {
-		animate(
-			'#secao > *',
-			{
-				opacity: [0, 1]
-			},
-			{
-				duration: 1,
-				easing: 'ease-in-out',
-				delay: stagger(1)
-			}
-		);
-	});
+	export let details: MovieDef | TvShow;
 </script>
 
 <section class="relative min-h-screen">
 	<img
+		in:fly={{ x: 60, duration: 500, delay: 2000, opacity: 0 }}
+		id="bgIMG"
 		class="absolute inset-0 h-full w-full object-cover object-center opacity-25 sm:opacity-100"
 		src={Img_URL + 'w1280' + details.backdrop_path}
 		alt="Movie poster"

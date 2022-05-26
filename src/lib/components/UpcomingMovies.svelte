@@ -1,53 +1,120 @@
 <script lang="ts">
 	import type { UpcomingMoviesRes } from '$lib/types';
 	import { formatDate } from '$lib/utils';
+	import { onMount } from 'svelte';
 	export let upcomingData: UpcomingMoviesRes[];
-	console.log(upcomingData);
 
-	let currentIndex = 5;
+	let currentImg = 0;
+	function handleImgChange(direction) {
+		if (direction == 'forward') {
+			currentImg = (currentImg + 1) % upcomingData.length;
+		} else {
+			currentImg = (currentImg - 1 + upcomingData.length) % upcomingData.length;
+		}
+	}
+
 	const srcsetURL = 'https://image.tmdb.org/t/p/';
 	const sizes = ['w342', 'w500', 'w780'];
+	let sliderIndex = 0;
+	function carousel() {
+		let i = 0;
+		const x = document.getElementsByClassName('fade') as HTMLCollectionOf<HTMLDivElement>;
+		const dot = document.getElementsByClassName('dot') as HTMLCollectionOf<HTMLDivElement>;
+		for (i; i < x.length; i++) {
+			x[i].style.display = 'none';
+			dot[i].classList.remove('ring-2', 'ring-4');
+		}
+		sliderIndex++;
+		if (sliderIndex > x.length) {
+			sliderIndex = 1;
+		}
+		x[sliderIndex - 1].style.display = 'block';
+		dot[sliderIndex - 1].classList.add('ring-2');
+		setTimeout(() => {
+			carousel();
+			handleImgChange('forward');
+		}, 2000);
+	}
+
+	function currentDiv(n: number) {
+		showDivs((sliderIndex = n));
+	}
+	function showDivs(num: number) {
+		let i = 0;
+		const x = document.getElementsByClassName('fade') as HTMLCollectionOf<HTMLDivElement>;
+		const dot = document.getElementsByClassName('dot') as HTMLCollectionOf<HTMLDivElement>;
+		if (num > x.length) {
+			sliderIndex = 1;
+		}
+		if (num < 1) {
+			sliderIndex = x.length;
+		}
+		for (i; i < x.length; i++) {
+			x[i].style.display = 'none';
+			dot[i].classList.remove('ring-4', 'ring-2');
+		}
+		x[sliderIndex - 1].style.display = 'block';
+		dot[sliderIndex - 1].classList.add('ring-4');
+	}
+	onMount(carousel);
 </script>
 
-<div class="carousel w-full">
-	{#each upcomingData.slice(0, currentIndex) as upd (upd.id)}
-		<div class="carousel-item min-h-[482px] w-full" id={upd.id}>
-			<section
-				class="hero"
-				style="background-image: url({upd.backdrop_path === null
-					? ''
-					: srcsetURL + 'w1280' + upd.backdrop_path});"
-			>
-				<div class="hero-overlay bg-opacity-60" />
-				<div
-					class="hero-content flex-col space-x-0 text-center text-neutral-content md:flex-row md:space-x-40"
-				>
-					<img
-						class="rounded-lg bg-base-100 shadow-2xl"
-						width="300"
-						height="450"
-						srcset={`${srcsetURL}${sizes[1]}${upd.poster_path} 500w,
-							${srcsetURL}${sizes[2]}${upd.poster_path} 780w`}
-						src={srcsetURL + sizes[1] + upd.poster_path}
-						decoding="async"
-						loading="lazy"
-						alt="Movie poster"
-					/>
-					<div class="space-y-4">
-						<h1 class="text-xl font-bold md:text-3xl">{upd.title}</h1>
-						<p>Release date: {formatDate(upd.release_date)}</p>
-						<a sveltekit:prefetch class="btn btn-primary" href={'/movie/' + upd.id}>see more</a>
-					</div>
+<div class="container p-4">
+	{#each upcomingData as upd, i (upd.id)}
+		<section style="display: none;" id={String(i)} class="fade relative rounded-t-2xl bg-white">
+			<img
+				class="absolute inset-0 h-full w-full rounded-xl object-cover object-[75%] opacity-25 sm:object-[25%] sm:opacity-100"
+				src={upd.backdrop_path === null ? '' : srcsetURL + 'w1280' + upd.backdrop_path}
+				alt="Movie backdrop poster"
+			/>
+
+			<div
+				class="hidden sm:absolute sm:inset-0 sm:block sm:bg-gradient-to-t sm:from-base-100 sm:to-base-200/50"
+			/>
+
+			<div class="relative mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center">
+				<div class="max-w-xl text-center sm:text-left">
+					<h1 class="text-3xl font-extrabold sm:text-5xl">
+						<strong class="font-extrabold text-secondary sm:block"> {upd.title} </strong>
+					</h1>
+
+					<p class="mt-4 max-w-lg sm:text-xl sm:leading-relaxed">
+						Release date: {formatDate(upd.release_date)}
+					</p>
 				</div>
-			</section>
-		</div>
+			</div>
+		</section>
 	{/each}
 </div>
-<div class="flex w-full justify-center gap-2 py-2">
-	{#each upcomingData.slice(0, currentIndex) as d, index}
-		<a href={'#' + d.id} class="btn btn-xs">{index + 1}</a>
+<div class="relative bottom-64 flex justify-center gap-2">
+	{#each upcomingData as d, index (d.id)}
+		<a sveltekit:prefetch href={'/movie/' + d.id}>
+			<img
+				on:mouseenter={() => currentDiv(index + 1)}
+				class="dot rounded-lg bg-base-100 shadow-2xl"
+				width="150"
+				height="225"
+				srcset={`${srcsetURL}${sizes[1]}${d.poster_path} 500w,
+							${srcsetURL}${sizes[2]}${d.poster_path} 780w`}
+				src={srcsetURL + sizes[1] + d.poster_path}
+				decoding="async"
+				loading="lazy"
+				alt="Movie poster"
+			/>
+		</a>
 	{/each}
-	{#if upcomingData.length > currentIndex}
-		<button class="btn btn-xs" on:click={() => (currentIndex += 5)}>...</button>
-	{/if}
 </div>
+
+<style>
+	.fade {
+		animation: fading 700ms normal;
+	}
+	@keyframes fading {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+</style>

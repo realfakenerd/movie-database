@@ -26,7 +26,7 @@
 		<nav class="hidden space-x-8 text-sm font-medium md:flex">
 			{#each urls as url}
 				<Button
-					additionalClass="uppercase font-semibold btn-link"
+					additionalClass="uppercase font-semibold hover:text-[#fff]"
 					type="a"
 					href={url.path}
 					text={url.title}
@@ -36,13 +36,13 @@
 
 		<div class="hidden flex-1 items-center justify-end space-x-4 lg:flex">
 			<Button
-				additionalClass="hover:bg-secondary text-white border-secondary"
+				additionalClass="hover:bg-secondary text-[#fff] border-secondary"
 				type="a"
 				href="/login"
 				text="Log in"
 			/>
 			<Button
-				additionalClass="bg-secondary hover:bg-transparent text-white border-secondary"
+				additionalClass="bg-secondary hover:bg-[transparent] text-[#fff] border-secondary"
 				type="a"
 				href="/login"
 				text="Sign in"

@@ -14,6 +14,8 @@
 		const dataTv = await resTv.json();
 		const dataPerson = await resPerson.json();
 
+		console.log(params);
+
 		if (resMovie.ok) {
 			return {
 				props: {
@@ -25,9 +27,9 @@
 	}
 </script>
 
-<script>
+<script lang="ts">
 	import Stats from '$lib/components/SearchPage/Stats.svelte';
-	export let searchLength;
+	export let searchLength: readonly [number, number, number];
 </script>
 
 <section class="px-10 py-20">

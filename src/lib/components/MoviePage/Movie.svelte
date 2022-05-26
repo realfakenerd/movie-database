@@ -1,27 +1,19 @@
 <script lang="ts">
 	import { formatDate, Img_URL } from '$lib/utils';
-	import { onMount } from 'svelte/internal';
-	import { animate } from 'motion';
-	export let movie;
-	export let img: any;
-	const sizes = ['w342', 'w500', 'w780'];
+	import { fade } from 'svelte/transition';
 
-	onMount(() => {
-		animate(
-			'.cartao',
-			{
-				opacity: [0, 1],
-				y: [20, 0]
-			},
-			{
-				duration: 1,
-				delay: 0.5
-			}
-		);
-	});
+	export let movie;
+
+	let img: any;
+	const sizes = ['w342', 'w500', 'w780'];
 </script>
 
-<a sveltekit:prefetch class="cartao" href={'/movie/' + movie.id}>
+<a
+	transition:fade={{ delay: 500, duration: 1500 }}
+	sveltekit:prefetch
+	class="cartao"
+	href={'/movie/' + movie.id}
+>
 	<figure>
 		<img
 			width="300"
@@ -59,11 +51,11 @@
 
 <style>
 	a {
-		@apply rounded-box relative grid h-full overflow-hidden;
+		@apply relative grid h-full overflow-hidden rounded-2xl;
 	}
 	a::before {
 		content: var(--tw-content);
-		@apply rounded-box relative z-10 bg-base-300 opacity-80;
+		@apply relative z-10 rounded-2xl bg-base-300 opacity-80;
 	}
 
 	a::before,
@@ -88,6 +80,6 @@
 		@apply col-span-2 row-start-2 mx-auto mb-10 self-end;
 	}
 	h3 {
-		@apply flex items-center gap-2 text-xl leading-7;
+		@apply flex max-w-[16rem] items-center gap-2 text-xl leading-7;
 	}
 </style>
