@@ -33,7 +33,7 @@
 		setTimeout(() => {
 			carousel();
 			handleImgChange('forward');
-		}, 2000);
+		}, 6000);
 	}
 
 	function currentDiv(n: number) {
