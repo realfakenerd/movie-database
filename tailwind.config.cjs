@@ -1,22 +1,19 @@
 module.exports = {
-	content: [
-		'./src/**/*.{html,js,svelte,ts}',
-	],
+	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
-		
 		extend: {
 			colors: {
-				'primary': '#e44e46',
-				'secondary': '#418eff',
-				'accent': '#c6a727',
-				'neutral': "#191D24",
-				"neutral-focus": "#111318",
-				"neutral-content": "#A6ADBB",
+				primary: '#e44e46',
+				secondary: '#418eff',
+				accent: '#c6a727',
+				neutral: '#191D24',
+				'neutral-focus': '#111318',
+				'neutral-content': '#A6ADBB',
 				'base-100': '#1d252e',
-				"base-200": "#242933",
-				"base-300": "#20252E",
-				"base-content": "#A6ADBB"
-			},
+				'base-200': '#242933',
+				'base-300': '#20252E',
+				'base-content': '#A6ADBB'
+			}
 		}
 	},
 	mode: 'jit',
