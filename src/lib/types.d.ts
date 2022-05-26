@@ -12,6 +12,7 @@ export interface BaseDef {
 	media_type: 'movie' | 'tv';
 	homepage: string | null;
 	tagline: string;
+	title: string;
 }
 
 /* Defining the interface for the Season. */
