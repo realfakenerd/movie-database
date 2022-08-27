@@ -1,21 +1,25 @@
 <script lang="ts" context="module">
-	import type { LoadInput } from '@sveltejs/kit';
+	throw new Error("@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)");
 
-	export async function load({ stuff }: LoadInput) {
-		// @ts-expect-error
-		const { dataMovie, dataTv, dataPerson } = stuff;
+	// import type { LoadInput } from '@sveltejs/kit';
 
-		return {
-			props: {
-				dataMovie,
-				dataTv,
-				dataPerson
-			}
-		};
-	}
+	// export async function load({ stuff }: LoadInput) {
+	// 	// @ts-expect-error
+	// 	const { dataMovie, dataTv, dataPerson } = stuff;
+
+	// 	return {
+	// 		props: {
+	// 			dataMovie,
+	// 			dataTv,
+	// 			dataPerson
+	// 		}
+	// 	};
+	// }
 </script>
 
 <script lang="ts">
+	throw new Error("@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)");
+
 	import Movie from '$lib/components/MoviePage/Movie.svelte';
 	import { onMount } from 'svelte';
 

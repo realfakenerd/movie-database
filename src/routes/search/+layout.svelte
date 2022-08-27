@@ -1,33 +1,37 @@
 <script lang="ts" context="module">
-	import type { LoadInput } from '@sveltejs/kit';
+	throw new Error("@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)");
 
-	export async function load({ fetch, params }: LoadInput) {
-		const urlMovie = '/api/search/movie/' + params.id;
-		const urlTv = '/api/search/tv/' + params.id;
-		const urlPerson = '/api/search/person/' + params.id;
+	// import type { LoadInput } from '@sveltejs/kit';
 
-		const resMovie = await fetch(urlMovie);
-		const resTv = await fetch(urlTv);
-		const resPerson = await fetch(urlPerson);
+	// export async function load({ fetch, params }: LoadInput) {
+	// 	const urlMovie = '/api/search/movie/' + params.id;
+	// 	const urlTv = '/api/search/tv/' + params.id;
+	// 	const urlPerson = '/api/search/person/' + params.id;
 
-		const dataMovie = await resMovie.json();
-		const dataTv = await resTv.json();
-		const dataPerson = await resPerson.json();
+	// 	const resMovie = await fetch(urlMovie);
+	// 	const resTv = await fetch(urlTv);
+	// 	const resPerson = await fetch(urlPerson);
 
-		console.log(params);
+	// 	const dataMovie = await resMovie.json();
+	// 	const dataTv = await resTv.json();
+	// 	const dataPerson = await resPerson.json();
 
-		if (resMovie.ok) {
-			return {
-				props: {
-					searchLength: [dataMovie.results.length, dataTv.results.length, dataPerson.results.length]
-				},
-				stuff: { dataMovie, dataTv, dataPerson }
-			};
-		}
-	}
+	// 	console.log(params);
+
+	// 	if (resMovie.ok) {
+	// 		return {
+	// 			props: {
+	// 				searchLength: [dataMovie.results.length, dataTv.results.length, dataPerson.results.length]
+	// 			},
+	// 			stuff: { dataMovie, dataTv, dataPerson }
+	// 		};
+	// 	}
+	// }
 </script>
 
 <script lang="ts">
+	throw new Error("@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)");
+
 	import Stats from '$lib/components/SearchPage/Stats.svelte';
 	export let searchLength: readonly [number, number, number];
 </script>

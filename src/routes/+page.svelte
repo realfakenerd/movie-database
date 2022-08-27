@@ -1,26 +1,30 @@
 <script context="module" lang="ts">
-	import type { LoadInput } from '@sveltejs/kit';
-	export async function load({ fetch }: LoadInput) {
-		try {
-			const popRes = await fetch('/api/movies/popular');
-			const upcomingRes = await fetch('/api/movies/upcoming');
-			const upcomingData = await upcomingRes.json();
-			const popData = await popRes.json();
-			if (upcomingRes.ok) {
-				return {
-					props: {
-						popular: popData,
-						upcoming: upcomingData
-					}
-				};
-			}
-		} catch (error) {
-			throw new Error(error);
-		}
-	}
+	throw new Error("@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)");
+
+	// import type { LoadInput } from '@sveltejs/kit';
+	// export async function load({ fetch }: LoadInput) {
+	// 	try {
+	// 		const popRes = await fetch('/api/movies/popular');
+	// 		const upcomingRes = await fetch('/api/movies/upcoming');
+	// 		const upcomingData = await upcomingRes.json();
+	// 		const popData = await popRes.json();
+	// 		if (upcomingRes.ok) {
+	// 			return {
+	// 				props: {
+	// 					popular: popData,
+	// 					upcoming: upcomingData
+	// 				}
+	// 			};
+	// 		}
+	// 	} catch (error) {
+	// 		throw new Error(error);
+	// 	}
+	// }
 </script>
 
 <script lang="ts">
+	throw new Error("@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)");
+
 	import IndexHero from '../lib/components/IndexHero.svelte';
 	import MovieCards from '$lib/components/MoviePage/MovieCards.svelte';
 	import UpcomingMovies from '$lib/components/UpcomingMovies.svelte';
