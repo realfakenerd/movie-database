@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { formatDate, Img_URL } from '$lib/utils';
+	import { formatDate } from '$lib/utils';
 	import type { PageData } from './$types';
-	import { fly } from 'svelte/transition';
 
 	export let data: PageData;
 	const { movie, config } = data;
@@ -12,7 +11,7 @@
 
 <section class="hero min-h-screen" style="background-image: url({backdrop_path});">
 	<div class="hero-overlay bg-opacity-60" />
-	<section class="hero-content">
+	<section class="hero-content px-10">
 		<div class="grid grid-cols-4 gap-10">
 			<div class="col-span-3 grid grid-cols-3 gap-10">
 				<div class="col-span-3 grid grid-cols-2">
@@ -81,4 +80,49 @@
 		</div>
 	</section>
 </section>
+<section id="mainHeroContainer" class="p-10 grid grid-cols-2">
+	<div class="flex flex-col gap-4">
+		<h2 class="text-2xl font-semibold">Movie cast</h2>
 
+		{#each movie.credits.cast.slice(0, 14) as cast}
+			<div
+				class="flex items-center gap-3 transition-colors duration-300 group hover:bg-base-200 w-1/2 p-2 rounded-box"
+			>
+				<div class="avatar ">
+					<div class="group-hover:shadow-md group-hover:shadow-slate-500/30 w-16 rounded-full">
+						<img
+							alt="cast profile"
+							src={config.images.secure_base_url +
+								config.images.profile_sizes[3] +
+								cast.profile_path}
+						/>
+					</div>
+				</div>
+
+				<span class="font-semibold group-hover:text-white">{cast.name}</span>
+			</div>
+		{/each}
+	</div>
+	<div>
+		<h2 class="text-2xl font-semibold">Movie videos</h2>
+		<div class="carousel p-4 space-x-4 bg-neutral rounded-box">
+			<div class="carousel-item">
+				{#each movie.videos.results.slice(0, 3) as video}
+					<div class="p-2">
+						<h3>{video.name}</h3>
+						<iframe
+							class="rounded-box"
+							width="560"
+							height="315"
+							src="https://www.youtube.com/embed/{video.key}"
+							title={video.name}
+							frameborder="0"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+							allowfullscreen
+						/>
+					</div>
+				{/each}
+			</div>
+		</div>
+	</div>
+</section>

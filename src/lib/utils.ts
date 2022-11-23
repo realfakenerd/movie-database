@@ -8,7 +8,7 @@ export const Img_URL: Readonly<string> = 'https://image.tmdb.org/t/p/';
  * @param {string} dateStr - the date string that we want to format
  * @returns A string with the date in the format of "MM/DD/YYYY"
  */
-export function formatDate(dateStr: string) {
+export function formatDate(dateStr: string | Date) {
 	const d = dateStr.split('-');
 	if (d.length > 0) return d.reverse().join('/');
 	else return 'no release date yet :(';

@@ -4,19 +4,23 @@
 	import { fly } from 'svelte/transition';
 	import Searchbar from './Searchbar.svelte';
 
+	
 	let init = false;
 	let navbar: HTMLDivElement;
 	onMount(() => {
 		init = true;
 		const observed = document.getElementById('mainContainer');
-		const observer = new IntersectionObserver((entry) => {
-			if (entry[0].isIntersecting) {
-				navbar.classList.replace('bg-transparent', 'bg-base-100/60');
-				navbar.classList.add('backdrop-blur-md');
+		const observer = new IntersectionObserver(
+			(entry) => {
+				if (entry[0].isIntersecting) {
+					navbar.classList.replace('bg-transparent', 'bg-base-100/60');
+					navbar.classList.add('backdrop-blur-md');
+				}
+			},
+			{
+				threshold: 0.1
 			}
-		}, {
-			threshold: 0.1
-		});
+		);
 
 		if (observed) observer.observe(observed);
 	});
