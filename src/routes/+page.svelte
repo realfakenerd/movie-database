@@ -33,7 +33,7 @@
 		</div>
 
 		<section
-			class="grid grid-cols-1 place-items-center gap-6 md:grid-cols-3 md:gap-6 lg:grid-cols-4 xl:grid-cols-5"
+			class="grid grid-cols-1 place-items-center gap-6 md:grid-cols-3 md:gap-4 lg:grid-cols-4 xl:grid-cols-5"
 		>
 			{#each popular.results.slice(0, currentItems) as movie, index (movie.id)}
 				<div in:fly={{ delay: 150 * index, y: 50, easing: backOut }}>

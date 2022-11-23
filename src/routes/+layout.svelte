@@ -9,9 +9,7 @@
 	export let data: LayoutData;
 </script>
 
-<header
-	class="fixed z-50 w-full bg-base-100/20 text-base-content shadow-sm backdrop-blur-md transition-colors duration-1000"
->
+<header class="fixed z-10 w-full py-5 px-10">
 	<Nav />
 </header>
 
