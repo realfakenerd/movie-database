@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@fontsource/lato': ^4.5.8
+  '@fontsource/metropolis': ^4.5.3
   '@playwright/test': ^1.21.1
   '@sveltejs/adapter-vercel': next
   '@sveltejs/kit': next
@@ -30,10 +30,8 @@ specifiers:
   workbox-core: ^6.5.3
   workbox-recipes: ^6.5.3
 
-dependencies:
-  '@fontsource/lato': 4.5.8
-
 devDependencies:
+  '@fontsource/metropolis': 4.5.3
   '@playwright/test': 1.21.1
   '@sveltejs/adapter-vercel': 1.0.0-next.84
   '@sveltejs/kit': 1.0.0-next.560_svelte@3.48.0+vite@3.2.4
@@ -596,9 +594,9 @@ packages:
     dev: true
     optional: true
 
-  /@fontsource/lato/4.5.8:
-    resolution: {integrity: sha512-IoSvhhzHsSzJu5XEOmDqzqcSmtfcJ788nz2TDgGXac076DApUsYIPHHBd0dh9guMBIVuHZ8Y2dlXNHFl4bCyLA==}
-    dev: false
+  /@fontsource/metropolis/4.5.3:
+    resolution: {integrity: sha512-jxtbEVaYriPYYaFk9uyt/K+cJISEBQsxoFvCCugoqqkgHpMUUJSrMvS741F15h5+xbGTsgBTBv+pxrvn52TsRw==}
+    dev: true
 
   /@ioredis/commands/1.1.1:
     resolution: {integrity: sha512-fsR4P/ROllzf/7lXYyElUJCheWdTJVJvOTps8v9IWKFATxR61ANOlnoPqhH099xYLrJGpc2ZQ28B3rMeUt5VQg==}

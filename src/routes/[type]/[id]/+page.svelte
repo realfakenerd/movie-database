@@ -66,18 +66,19 @@
 					</div>
 				</div>
 			</div>
-			<div class="">
-				<div class="mt-8 flex flex-wrap justify-center gap-4 text-center">
+			<div class="flex flex-col items-center justify-center ">
+				<div class="text-center">
 					<a class="btn btn-link text-secondary" href={movie.homepage}>
 						<span>
 							{movie.tagline}
 						</span>
 					</a>
 				</div>
-				<div>
+				<div class="backdrop-blur-sm bg-base-100/30 rounded-box p-3">
 					{movie.overview}
 				</div>
 			</div>
 		</div>
 	</section>
 </section>
+
