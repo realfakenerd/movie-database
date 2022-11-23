@@ -1,5 +1,5 @@
-export * from './movies'
-
+export * from './movies';
+export * from './movie';
 export interface Config {
 	images: Images;
 	change_keys: [

@@ -1,16 +1,9 @@
-import type { LoadInput } from '@sveltejs/kit';
-export async function load({ params, fetch }: LoadInput) {
-	try {
-		const res = await fetch(`/api/${params.type}/${params.id}`);
-		const data = await res.json();
-
-		const dataType = params.type === 'movie' ? data.movie : data.tv;
-		console.log(dataType);
-
-		return {
-			data: dataType
-		};
-	} catch (e) {
-		throw new Error(e);
-	}
+import type { Movie } from '$lib/types';
+import type {PageLoad} from './$types';
+export const load: PageLoad = async ({params, fetch}) => {
+	const res = await fetch(`/api/${params.type}/${params.id}`);
+	const data = await res.json();
+	return {
+		movie: data as Movie
+	};
 }

@@ -11,7 +11,7 @@
 		const observed = document.getElementById('mainContainer');
 		const observer = new IntersectionObserver((entry) => {
 			if (entry[0].isIntersecting) {
-				navbar.classList.replace('bg-transparent', 'bg-base-100/30');
+				navbar.classList.replace('bg-transparent', 'bg-base-100/60');
 				navbar.classList.add('backdrop-blur-md');
 			}
 		}, {
@@ -33,6 +33,7 @@
 		{#if init}
 			{#each urls as url, index (index)}
 				<a
+					data-sveltekit-prefetch
 					in:fly={{ delay: 200 * index, y: -20, easing: backOut }}
 					class="btn btn-ghost"
 					href={url.path}
