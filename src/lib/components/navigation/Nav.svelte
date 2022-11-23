@@ -1,14 +1,12 @@
 <script lang="ts">
 	import MediaQuery from '../MediaQuery.svelte';
-	import { animate } from 'motion';
+	
 	import { onMount } from 'svelte';
-	import Searchbar from './Searchbar.svelte';
-	import { page } from '$app/stores';
 	import Button from '../utils/Button.svelte';
+	import Searchbar from './Searchbar.svelte';
 
-	onMount(() => {
-		animate('nav', { opacity: 1 }, { duration: 1, delay: 0.6 });
-	});
+	let init = false;
+	onMount(() => init = true);
 
 	const urls = [
 		{ title: 'Home', path: '/' },

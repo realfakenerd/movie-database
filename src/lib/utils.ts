@@ -1,4 +1,3 @@
-import type { MovieApiNames, PopDef } from './types';
 
 /* A constant that is readonly. */
 export const TMDB_URL: Readonly<string> = 'https://api.themoviedb.org/3';
@@ -11,11 +10,8 @@ export const Img_URL: Readonly<string> = 'https://image.tmdb.org/t/p/';
  */
 export function formatDate(dateStr: string) {
 	const d = dateStr.split('-');
-	if (!d.includes('')) {
-		const date = new Date(Date.UTC(parseInt(d[0]), parseInt(d[1]), parseInt(d[2]) + 1));
-		const dateFormated = new Intl.DateTimeFormat('en-Us').format(date);
-		return dateFormated;
-	} else return 'no release date yet :(';
+	if (d.length > 0) return d.reverse().join('/');
+	else return 'no release date yet :(';
 }
 /**
  * It takes a number, formats it to a currency, and returns it as a string
@@ -46,39 +42,7 @@ export async function load<T = any>(url: string): Promise<Awaited<T>> {
 	return await res.json();
 }
 
-/**
- * It takes in an API name and the data from that API, and returns an array of objects that have the
- * same properties as the API data, but with only the properties we want
- * @param {MovieApiNames} api - MovieApiNames - This is the name of the API we're using.
- * @param {PopDef} apiData - The data returned from the API call
- * @returns An array of objects.
- */
-export function switchAPI(api: MovieApiNames, apiData: PopDef) {
-	switch (api) {
-		case 'popular':
-			return apiData.results.map((val) => {
-				const ret = {
-					id: val.id,
-					title: val.title,
-					poster_path: val.poster_path,
-					release_date: val.release_date,
-					vote_average: val.vote_average
-				};
-				return ret;
-			});
-		case 'upcoming':
-			return apiData.results.map((val) => {
-				const ret = {
-					id: val.id,
-					title: val.title,
-					poster_path: val.poster_path,
-					release_date: val.release_date,
-					backdrop_path: val.backdrop_path
-				};
-				return ret;
-			});
-	}
-}
+
 /**
  * It takes a string of Markdown and returns a string of HTML
  * @param {string} md - The markdown string to parse.

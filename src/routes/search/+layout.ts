@@ -16,7 +16,9 @@ export async function load({ fetch, params }: LoadInput) {
 	console.log(params);
 
 	if (resMovie.ok) {
-		throw new Error("@migration task: Migrate this return statement (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292693)");
+		throw new Error(
+			'@migration task: Migrate this return statement (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292693)'
+		);
 		return {
 			props: {
 				searchLength: [dataMovie.results.length, dataTv.results.length, dataPerson.results.length]

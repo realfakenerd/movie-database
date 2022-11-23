@@ -7,7 +7,7 @@ interface Req {
 	};
 }
 
-export async function get({ params }: Req) {
+export async function GET({ params }: Req) {
 	const API_KEY = import.meta.env.VITE_TMDB_KEY;
 	const type = params.type;
 	const q = params.query.replace(' ', '%20');

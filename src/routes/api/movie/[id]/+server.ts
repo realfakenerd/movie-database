@@ -6,7 +6,7 @@ import { TMDB_URL, load, parseMd } from '$lib/utils';
  * @param req - The request object.
  * @returns The movie and reviews data.
  */
-export async function get(req) {
+export async function GET(req) {
 	const API_KEY = import.meta.env.VITE_TMDB_KEY;
 	const id = req.params.id;
 	const url = `${TMDB_URL}/movie/${id}?api_key=${API_KEY}&language=en-US&append_to_response=reviews`;

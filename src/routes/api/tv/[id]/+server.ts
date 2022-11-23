@@ -1,7 +1,7 @@
 import type { MovieDef, TvShow } from '$lib/types';
 import { load, parseMd, TMDB_URL } from '$lib/utils';
 
-export async function get(req) {
+export async function GET(req) {
 	const API_KEY = import.meta.env.VITE_TMDB_KEY;
 	const id = req.params.id;
 	const url = `${TMDB_URL}/tv/${id}?api_key=${API_KEY}&language=en-US&append_to_response=reviews`;

@@ -1,5 +1,7 @@
 <script lang="ts" context="module">
-	throw new Error("@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)");
+	throw new Error(
+		'@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)'
+	);
 
 	// import type { LoadInput } from '@sveltejs/kit';
 
@@ -30,7 +32,9 @@
 </script>
 
 <script lang="ts">
-	throw new Error("@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)");
+	throw new Error(
+		'@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)'
+	);
 
 	import Stats from '$lib/components/SearchPage/Stats.svelte';
 	export let searchLength: readonly [number, number, number];

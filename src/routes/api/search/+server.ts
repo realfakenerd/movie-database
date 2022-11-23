@@ -1,4 +1,4 @@
-export async function get(req) {
+export async function GET(req) {
 	return {
 		body: {
 			param: req
