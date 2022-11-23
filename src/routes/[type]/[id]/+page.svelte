@@ -47,8 +47,10 @@
 						<div class="stat-desc">Movie status: <span class="badge">{movie.status}</span></div>
 					</div>
 
-					<div class="stat">
-						<div class="stat-figure text-primary">
+					<div class="stat place-items-center">
+						<div class="stat-title">Movie score</div>
+						<div class="stat-value text-yellow-300">
+							<span>{movie.vote_average}</span>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								class="inline-block w-8 h-8  text-yellow-300"
@@ -60,8 +62,6 @@
 								/>
 							</svg>
 						</div>
-						<div class="stat-title">Movie score</div>
-						<div class="stat-value text-yellow-300">{movie.vote_average}</div>
 						<div class="stat-desc">base on {movie.vote_count} votes</div>
 					</div>
 				</div>
