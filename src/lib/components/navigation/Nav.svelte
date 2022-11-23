@@ -10,6 +10,7 @@
 	onMount(() => {
 		init = true;
 		const observed = document.getElementById('mainContainer');
+		const heroPage = document.getElementById('mainHeroContainer');
 		const observer = new IntersectionObserver(
 			(entry) => {
 				if (entry[0].isIntersecting) {
@@ -23,6 +24,7 @@
 		);
 
 		if (observed) observer.observe(observed);
+		if (heroPage) observer.observe(heroPage)
 	});
 
 	const urls = [
