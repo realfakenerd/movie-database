@@ -53,8 +53,8 @@
 			"purpose": "maskable"
 		}
 	],
-	"theme_color": "#d24e4a",
-	"background_color": "#d24e4a",
+	"theme_color": "#ff0040",
+	"background_color": "#0e1014",
 	"start_url": "/?source=pwa",
 	"scope": "/",
 	"id": "/?popkorn",
