@@ -1,24 +1,30 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	// import Movie from '$lib/components/MoviePage/Movie.svelte';
-	// import TvShowCard from '$lib/components/TvShow/TvShowCard.svelte';
-	// import PersonCard from '$lib/components/PersonPage/PersonCard.svelte';
+	import Movie from '../../../lib/components/cards/Movie.svelte';
+	import TV from '$lib/components/cards/TV.svelte';
+	import Person from '$lib/components/cards/PersonCard.svelte';
 
 	import { page } from '$app/stores';
 	export let data: PageData;
-	const { movie} = data;
-	
+	const { movie, tv, person, config } = data;
+
 </script>
 
-<ul class=" grid grid-cols-3 gap-5">
+<ul class=" grid grid-cols-1 md:grid-cols-3 gap-3">
 	{#if $page.params.type === 'movie'}
-		{#each movie as data (data.id)}
-			<div class="card">
-				<div class="card-body">
-					<div class="card-title">{data.title}</div>
-				</div>
-			</div>
+		{#each movie.results as data (data.id)}
+			<Movie movie={data} images={config.images} />
 		{/each}
 	{/if}
-	
+	{#if $page.params.type === 'tv'}
+		{#each tv.results as data (data.id)}
+			<TV tv={data} images={config.images} />
+		{/each}
+	{/if}
+	{#if $page.params.type === 'person'}
+		{#each person.results as data (data.id)}
+			<Person person={data} images={config.images} />
+		{/each}
+	{/if}
 </ul>
+

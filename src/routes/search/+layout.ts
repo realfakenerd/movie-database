@@ -16,6 +16,7 @@ export const load: LayoutLoad = async ({ url, fetch }) => {
 			movie: (await movieRes.json()) as MovieSearch,
 			tv: (await tvRes.json()) as TVSearch,
 			person: (await personRes.json()) as PersonSearch
-		}
+		},
+		query: searchQuery
 	};
 };

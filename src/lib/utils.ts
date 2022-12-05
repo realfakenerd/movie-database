@@ -1,4 +1,3 @@
-
 /* A constant that is readonly. */
 export const TMDB_URL: Readonly<string> = 'https://api.themoviedb.org/3';
 /* A constant that is readonly. */
@@ -9,9 +8,10 @@ export const Img_URL: Readonly<string> = 'https://image.tmdb.org/t/p/';
  * @returns A string with the date in the format of "MM/DD/YYYY"
  */
 export function formatDate(dateStr: string | Date) {
-	const d = dateStr.split('-');
-	if (d.length > 0) return d.reverse().join('/');
-	else return 'no release date yet :(';
+	if (dateStr != undefined && dateStr.length > 0) {
+		const d = dateStr.split('-');
+		return d.reverse().join('/');
+	} else return 'no release date yet :(';
 }
 /**
  * It takes a number, formats it to a currency, and returns it as a string
@@ -41,7 +41,6 @@ export async function load<T = any>(url: string): Promise<Awaited<T>> {
 	const res = await fetch(url);
 	return await res.json();
 }
-
 
 /**
  * It takes a string of Markdown and returns a string of HTML

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Movie from '$lib/components/MoviePage/Movie.svelte';
+	import Movie from '$lib/components/cards/Movie.svelte';
 	import { backOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
 	import IndexHero from '../lib/components/IndexHero.svelte';
