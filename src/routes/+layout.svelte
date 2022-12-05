@@ -8,7 +8,7 @@
 	export let data: LayoutData;
 </script>
 
-<header class="fixed z-10 w-full py-5 px-10">
+<header class="fixed bottom-0 md:top-0 z-10 w-full py-5 px-10">
 	<Nav />
 </header>
 
@@ -127,9 +127,9 @@
 		<p>Popkorn Industries Ltd.<br />Providing reliable entertainment since 2021</p>
 	</div>
 	<div class="flex">
-		<a data-sveltekit-prefetch href="/" class="link link-hover">Home</a>
-		<a data-sveltekit-prefetch href="/movies" class="link link-hover">Movies</a>
-		<a data-sveltekit-prefetch href="/tvshows" class="link link-hover">Tv Shows</a>
+		<a href="/" class="link link-hover">Home</a>
+		<a href="/movies" class="link link-hover">Movies</a>
+		<a href="/tvshows" class="link link-hover">Tv Shows</a>
 		
 	</div>
 	
