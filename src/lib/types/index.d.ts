@@ -1,5 +1,13 @@
 export * from './movies';
 export * from './movie';
+export * from './search';
+
+export interface RequestToken {
+	success: boolean;
+	expires_at: string;
+	request_token: string;
+}
+
 export interface Config {
 	images: Images;
 	change_keys: [

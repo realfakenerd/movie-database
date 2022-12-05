@@ -39,7 +39,6 @@
 		{#if init}
 			{#each urls as url, index (index)}
 				<a
-					data-sveltekit-prefetch
 					in:fly={{ delay: 200 * index, y: -20, easing: backOut }}
 					class="btn btn-ghost"
 					href={url.path}
@@ -53,9 +52,6 @@
 	<div class="hidden flex-none lg:flex text-white space-x-3">
 		<Searchbar />
 		<a class="btn btn-ghost hover:bg-secondary border-secondary" href="/login">Log in</a>
-		<a class="btn btn-ghost bg-secondary hover:bg-[transparent] border-secondary" href="/login"
-			>Sign in</a
-		>
 	</div>
 
 	<div class="lg:hidden">

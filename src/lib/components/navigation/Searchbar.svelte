@@ -1,17 +1,7 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
-	import { searchVal } from '$lib/stores/statsStore';
 	import { fly } from 'svelte/transition';
-	let inputVal = '';
+	let query = '';
 	let show = false;
-	const search = () => {
-		goto('/search/movie/' + inputVal);
-		console.log(inputVal);
-
-		searchVal.set(inputVal);
-		show = false;
-		inputVal = '';
-	};
 	const showInput = () => {
 		show ? (show = false) : (show = true);
 	};
@@ -21,16 +11,17 @@
 	<form
 		transition:fly={{ x: -20, delay: 180, duration: 200 }}
 		id="searchForm"
-		on:submit|preventDefault={search}
+		data-sveltekit-reload
+		action="/search/movie?"
 	>
 		<div class="relative mr-3">
 			<label class="sr-only" for="searchBar"> Search </label>
 
 			<input
-				bind:value={inputVal}
-				class="w-full rounded border-2 border-secondary py-3 text-sm text-neutral"
+				class="input input-bordered input-secondary w-full max-w-md"
 				id="searchBar"
-				type="text"
+				type="search"
+				name="q"
 				placeholder="Search movies, tv or people..."
 			/>
 		</div>
@@ -39,7 +30,7 @@
 <button
 	type="button"
 	on:click={showInput}
-	class="transition-color mr-2 inline-flex items-center rounded-lg p-2.5 text-center text-sm font-medium text-secondary duration-200 hover:bg-secondary hover:text-white focus:outline-none focus:ring-4 focus:ring-secondary/30"
+	class="mr-2 btn btn-ghost hover:bg-secondary text-secondary hover:text-white focus:outline-none focus:ring-4 focus:ring-secondary/30"
 >
 	<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
 		<path

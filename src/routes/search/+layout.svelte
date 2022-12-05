@@ -1,50 +1,31 @@
-<script lang="ts" context="module">
-	throw new Error(
-		'@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)'
-	);
-
-	// import type { LoadInput } from '@sveltejs/kit';
-
-	// export async function load({ fetch, params }: LoadInput) {
-	// 	const urlMovie = '/api/search/movie/' + params.id;
-	// 	const urlTv = '/api/search/tv/' + params.id;
-	// 	const urlPerson = '/api/search/person/' + params.id;
-
-	// 	const resMovie = await fetch(urlMovie);
-	// 	const resTv = await fetch(urlTv);
-	// 	const resPerson = await fetch(urlPerson);
-
-	// 	const dataMovie = await resMovie.json();
-	// 	const dataTv = await resTv.json();
-	// 	const dataPerson = await resPerson.json();
-
-	// 	console.log(params);
-
-	// 	if (resMovie.ok) {
-	// 		return {
-	// 			props: {
-	// 				searchLength: [dataMovie.results.length, dataTv.results.length, dataPerson.results.length]
-	// 			},
-	// 			stuff: { dataMovie, dataTv, dataPerson }
-	// 		};
-	// 	}
-	// }
-</script>
-
 <script lang="ts">
-	throw new Error(
-		'@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)'
-	);
+	import type { LayoutData } from './$types';
+	export let data: LayoutData;
 
-	import Stats from '$lib/components/SearchPage/Stats.svelte';
-	export let searchLength: readonly [number, number, number];
+	const { searchData } = data;
+	const { movie, tv, person } = searchData;
 </script>
 
-<section class="px-10 py-20">
-	<section class="grid grid-cols-1 gap-3 md:grid-cols-4 md:gap-8">
-		<div class="col-span-1">
-			<Stats {searchLength} />
-		</div>
-		<slot />
-	</section>
-</section>
+<div class="grid grid-cols-3 gap-3 container mx-auto py-32 px-10">
+	<div class="bg-base-300 h-max p-5 rounded-box">
+		<h2>Search results</h2>
+		<ul class="menu menu-compact lg:menu-normal bg-base-100 w-full p-2 rounded-box">
+			<li>
+				<a class="justify-between" href="/"
+					>Movies : <span class="badge badge-primary">{movie.total_results}</span></a
+				>
+			</li>
+			<li>
+				<a class="justify-between" href="/"
+					>Tv Shows : <span class="badge badge-primary">{tv.total_results}</span></a
+				>
+			</li>
+			<li>
+				<a class="justify-between" href="/"
+					>Person : <span class="badge badge-primary">{person.total_results}</span></a
+				>
+			</li>
+		</ul>
+	</div>
+	<div class="col-span-2"><slot /></div>
+</div>

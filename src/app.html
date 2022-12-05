@@ -20,11 +20,21 @@
 		<meta name="application-name" content="PopKorn" />
 		<meta name="msapplication-TileColor" content="#da532c" />
 		<meta name="theme-color" content="#d24e4a" />
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-R9NB9VQ6DQ"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
 
+			gtag('config', 'G-R9NB9VQ6DQ');
+		</script>
 		%sveltekit.head%
 	</head>
 
-	<body class="scroll-smooth">
+	<body data-sveltekit-preload-data class="scroll-smooth">
 		<div>%sveltekit.body%</div>
 	</body>
 </html>

@@ -1,6 +1,8 @@
-import { expect, test } from '@playwright/test';
+import { chromium, expect, test } from '@playwright/test';
 
-test('index page has expected h1', async ({ page }) => {
-	await page.goto('/');
-	expect(await page.textContent('h1')).toBe('Welcome to SvelteKit');
+test('click on step 3', async ({page}) => {
+	
+	await page.goto('https://popkorn.vercel.app/');
+	await page.hover("'go to step 3'");
+	await page.screenshot({ path: 'example.png' });
 });

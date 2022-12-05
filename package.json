@@ -1,8 +1,8 @@
 {
-	"name": "movie-list",
+	"name": "popkorn",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "vite dev --host",
 		"build": "vite build",
 		"package": "vite package",
 		"preview": "vite preview",
@@ -15,7 +15,7 @@
 	},
 	"devDependencies": {
 		"@fontsource/metropolis": "^4.5.3",
-		"@playwright/test": "^1.21.1",
+		"@playwright/test": "^1.28.1",
 		"@sveltejs/adapter-vercel": "next",
 		"@sveltejs/kit": "next",
 		"autoprefixer": "^10.4.7",
@@ -23,7 +23,7 @@
 		"cssnano": "^5.1.9",
 		"daisyui": "^2.14.3",
 		"husky": "^7.0.4",
-		"ioredis": "^5.0.4",
+		"ioredis": "^5.2.4",
 		"postcss": "^8.4.13",
 		"postcss-nested": "^5.0.6",
 		"prettier": "^2.6.2",
