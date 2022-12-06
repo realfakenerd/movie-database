@@ -1,6 +1,6 @@
 import { clientsClaim, cacheNames, setCacheNameDetails } from 'workbox-core';
-import { pageCache, imageCache, googleFontsCache, staticResourceCache } from 'workbox-recipes';
-import { version, build, files } from '$service-worker';
+import { pageCache, googleFontsCache, staticResourceCache } from 'workbox-recipes';
+import { version, build } from '$service-worker';
 
 clientsClaim();
 
@@ -12,11 +12,6 @@ setCacheNameDetails({
 	prefix: 'popkorn-',
 	suffix: `-v${version}`,
 	googleFontsCache: 'ga'
-});
-
-imageCache({
-	cacheName: cacheNames.prefix + 'images' + cacheNames.suffix,
-	warmCache: files
 });
 
 pageCache({

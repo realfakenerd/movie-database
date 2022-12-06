@@ -1,15 +1,12 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import { backOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
 	import Searchbar from './Searchbar.svelte';
-	import { page } from '$app/stores';
 
 	let init = false;
-
-
 	onMount(() => (init = true));
-
 	const urls = [
 		{
 			title: 'Home',
@@ -55,14 +52,16 @@
 		{/if}
 
 		{#if $page.data.user}
-			<div class="avatar">
+			<a href="/profile" class="avatar">
 				<div class="w-12 rounded-full">
 					<img
 						alt="profile"
-						src={'https://www.gravatar.com/avatar/' + $page.data.user.avatar.gravatar.hash}
+						src={'https://www.gravatar.com/avatar/' +
+							$page.data.user.avatar.gravatar.hash +
+							'.webp'}
 					/>
 				</div>
-			</div>
+			</a>
 		{/if}
 	</div>
 	<nav class="w-full flex flex-col md:hidden">
