@@ -5,25 +5,11 @@
 	import Searchbar from './Searchbar.svelte';
 
 	let init = false;
-	let navbar: HTMLDivElement;
-	onMount(() => {
-		init = true;
-		const observed = document.getElementById('mainContainer');
-		const heroPage = document.getElementById('mainHeroContainer');
-		const observer = new IntersectionObserver(
-			(entry) => {
-				if (entry[0].isIntersecting) {
-					navbar.classList.replace('bg-transparent', 'bg-base-100/60');
-					navbar.classList.add('backdrop-blur-md');
-				}
-			},
-			{
-				threshold: 0.1
-			}
-		);
 
-		if (observed) observer.observe(observed);
-		if (heroPage) observer.observe(heroPage);
+	onMount(() => {
+		
+		init = true;
+		
 	});
 
 	const urls = [
@@ -45,7 +31,7 @@
 	];
 </script>
 
-<div bind:this={navbar} class="navbar rounded-box bg-transparent transition-colors duration-500">
+<div class="navbar bg-base-100/60 rounded-box backdrop-blur-md transition-colors duration-500">
 	<nav class="hidden flex-1 md:flex">
 		{#if init}
 			{#each urls as url, index (index)}
