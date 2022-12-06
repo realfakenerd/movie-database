@@ -112,7 +112,7 @@
 				<h1
 					class=" bg-gradient-to-r from-primary to-secondary bg-clip-text text-5xl font-extrabold text-transparent"
 				>
-					Pop Korn
+					Popkorn
 				</h1>
 			</div>
 			<p class="mt-4 max-w-lg text-xl">Watch, review, see what's new, repeat.</p>

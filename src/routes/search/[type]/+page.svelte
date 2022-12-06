@@ -9,7 +9,7 @@
 	const { movie, tv, person, config } = data;
 </script>
 
-<ul class=" grid grid-cols-1 gap-3 md:grid-cols-3">
+<ul class="grid place-items-center grid-cols-1 md:grid-cols-2 gap-3 md:gap-5 lg:gap-3 lg:grid-cols-3">
 	{#if $page.params.type === 'movie'}
 		{#each movie.results as data (data.id)}
 			<Movie movie={data} images={config.images} />

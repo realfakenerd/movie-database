@@ -14,7 +14,7 @@
 </script>
 
 <a
-	class="card-compact group card image-full transform transition duration-300 ease-out hover:-translate-y-2 hover:shadow-lg hover:shadow-primary/30 lg:w-56"
+	class="card-compact group card image-full transform transition duration-300 ease-out hover:-translate-y-2 hover:shadow-lg hover:shadow-primary/30 w-72 md:w-48 lg:w-52 xl:w-56"
 	href={'/tv/' + tv.id}
 >
 	<figure>

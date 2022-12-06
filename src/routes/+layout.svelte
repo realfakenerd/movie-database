@@ -12,9 +12,6 @@
 	<Nav />
 </header>
 
-<svelte:head>
-	<title>Pop Korn</title>
-</svelte:head>
 
 {#key data.currentRoute}
 	<main in:fly={{ y: -5, duration: 250, delay: 250 }} out:fly={{ y: 5, duration: 250 }}>

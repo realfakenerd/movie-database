@@ -11,7 +11,7 @@
 </script>
 
 <svelte:head>
-	<title>Pop Korn</title>
+	<title>Popkorn</title>
 </svelte:head>
 
 <IndexHero />

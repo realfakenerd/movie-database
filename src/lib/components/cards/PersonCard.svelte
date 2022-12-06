@@ -14,7 +14,7 @@
 </script>
 
 <div
-	class="card-compact card transform transition duration-300 ease-out hover:-translate-y-2 hover:shadow-lg hover:shadow-primary/30 lg:w-60"
+	class="card-compact card transform transition duration-300 ease-out hover:-translate-y-2 hover:shadow-lg hover:shadow-primary/30 w-72 md:w-48 lg:w-52 xl:w-56"
 >
 	<figure>
 		{#if person.profile_path}

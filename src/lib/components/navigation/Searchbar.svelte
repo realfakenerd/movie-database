@@ -14,23 +14,22 @@
 		data-sveltekit-reload
 		action="/search/movie?"
 	>
-		<div class="relative mr-3">
+		<fieldset class="relative mr-3">
 			<label class="sr-only" for="searchBar"> Search </label>
-
 			<input
-				class="input input-bordered input-secondary w-full max-w-md"
+				class="input input-bordered input-secondary"
 				id="searchBar"
 				type="search"
 				name="q"
 				placeholder="Search movies, tv or people..."
 			/>
-		</div>
+		</fieldset>
 	</form>
 {/if}
 <button
 	type="button"
 	on:click={showInput}
-	class="btn btn-ghost mr-2 text-secondary hover:bg-secondary hover:text-white focus:outline-none focus:ring-4 focus:ring-secondary/30"
+	class="btn btn-ghost text-secondary hover:bg-secondary hover:text-white focus:outline-none focus:ring-4 focus:ring-secondary/30"
 >
 	<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
 		<path

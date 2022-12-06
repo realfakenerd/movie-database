@@ -64,15 +64,13 @@
 		<Searchbar />
 		<a class="btn btn-ghost border-secondary hover:bg-secondary" href="/login">Log in</a>
 	</div>
-
-	<nav class="w-full justify-between md:hidden">
-		{#if init}
-			{#each urls as url, index (index)}
-				<a
-					in:fly={{ delay: 200 * index, y: -20, easing: backOut }}
-					class="btn btn-ghost"
-					href={url.path}
-				>
+	<nav class="w-full flex flex-col md:hidden">
+		<div class="inline-flex w-full justify-end">
+			<Searchbar />
+		</div>
+		<ul class="inline-flex w-full justify-between">
+			<li>
+				<a class="btn btn-ghost" href={urls[0].path}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
@@ -81,10 +79,38 @@
 						stroke="currentColor"
 						class="h-6 w-6"
 					>
-						<path stroke-linecap="round" stroke-linejoin="round" d={url.d} />
+						<path stroke-linecap="round" stroke-linejoin="round" d={urls[0].d} />
 					</svg>
 				</a>
-			{/each}
-		{/if}
+			</li>
+			<li>
+				<a class="btn btn-ghost" href={urls[1].path}>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="h-6 w-6"
+					>
+						<path stroke-linecap="round" stroke-linejoin="round" d={urls[1].d} />
+					</svg>
+				</a>
+			</li>
+			<li>
+				<a class="btn btn-ghost" href={urls[2].path}>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="h-6 w-6"
+					>
+						<path stroke-linecap="round" stroke-linejoin="round" d={urls[2].d} />
+					</svg>
+				</a>
+			</li>
+		</ul>
 	</nav>
 </div>
