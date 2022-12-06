@@ -3,14 +3,12 @@
 	import { backOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
 	import Searchbar from './Searchbar.svelte';
+	import { page } from '$app/stores';
 
 	let init = false;
 
-	onMount(() => {
-		
-		init = true;
-		
-	});
+
+	onMount(() => (init = true));
 
 	const urls = [
 		{
@@ -48,7 +46,24 @@
 
 	<div class="hidden flex-none space-x-3 text-white lg:flex">
 		<Searchbar />
-		<a class="btn btn-ghost border-secondary hover:bg-secondary" href="/login">Log in</a>
+		{#if !$page.data.user}
+			<form action="/login" method="GET">
+				<button type="submit" class="btn btn-ghost border-secondary hover:bg-secondary"
+					>Log in</button
+				>
+			</form>
+		{/if}
+
+		{#if $page.data.user}
+			<div class="avatar">
+				<div class="w-12 rounded-full">
+					<img
+						alt="profile"
+						src={'https://www.gravatar.com/avatar/' + $page.data.user.avatar.gravatar.hash}
+					/>
+				</div>
+			</div>
+		{/if}
 	</div>
 	<nav class="w-full flex flex-col md:hidden">
 		<div class="inline-flex w-full justify-end">

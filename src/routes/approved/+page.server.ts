@@ -1,7 +1,8 @@
 import { TMDB_KEY } from '$env/static/private';
+import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async ({ url, fetch }) => {
+export const load: PageServerLoad = async ({ url, fetch, cookies }) => {
 	const data = url.searchParams;
 	const request_token = data.get('request_token');
 	const approved = Boolean(data.get('approved'));
@@ -19,7 +20,20 @@ export const load: PageServerLoad = async ({ url, fetch }) => {
 				})
 			}
 		);
+        const session = await res.json();
+        if(session.success) {
+            cookies.set('session', session.session_id, {
+                path: '/',
+                httpOnly: true,
+                sameSite: 'strict',
+                secure: process.env.NODE_ENV === 'production',
+                maxAge: 60 * 60 * 24 * 30
+            })
 
-		console.log('token', await res.json());
+            throw redirect(307, '/profile')
+        }
 	}
+
+	
+	
 };

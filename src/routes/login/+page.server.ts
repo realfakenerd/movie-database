@@ -12,7 +12,7 @@ export const load: PageServerLoad = async ({ fetch }) => {
 	if (token.success) {
 		throw redirect(
 			307,
-			`https://www.themoviedb.org/authenticate/${token.request_token}?redirect_to=http://localhost:5173/profile`
+			`https://www.themoviedb.org/authenticate/${token.request_token}?redirect_to=http://localhost:5173/approved`
 		);
 	}
 };
