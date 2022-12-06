@@ -8,7 +8,9 @@ export const GET: RequestHandler = async ({ url, params }) => {
 	const query = url.searchParams;
 	const searchQuery = query.get('q');
 	const page = query.get('page') ?? 1;
-	const res = await fetch(`${TMDB_URL}/search/${params.type}?api_key=${TMDB_KEY}&language=en-US&query=${searchQuery}&page=${page}&include_adult=false`);
+	const res = await fetch(
+		`${TMDB_URL}/search/${params.type}?api_key=${TMDB_KEY}&language=en-US&query=${searchQuery}&page=${page}&include_adult=false`
+	);
 	const data = await res.json();
 	return json(data);
 };

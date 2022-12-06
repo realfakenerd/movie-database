@@ -1,14 +1,14 @@
 <script lang="ts">
 	import Nav from '$lib/components/navigation/Nav.svelte';
 	import '../app.css';
-	import "@fontsource/metropolis"
+	import '@fontsource/metropolis';
 	import type { LayoutData } from './$types';
 	import { fly } from 'svelte/transition';
 
 	export let data: LayoutData;
 </script>
 
-<header class="fixed bottom-0 md:top-0 z-10 w-full py-5 px-10">
+<header class="fixed bottom-0 z-10 w-full py-5 px-5 md:top-0 md:bottom-full md:px-10">
 	<Nav />
 </header>
 
@@ -22,7 +22,7 @@
 	</main>
 {/key}
 
-<footer class="footer p-10 bg-base-300 text-base-content">
+<footer class="footer bg-base-300 p-10 text-base-content">
 	<div>
 		<svg class="w-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 449"
 			><path d="M137 47h206v130H137z" fill="#FDDB87" /><circle
@@ -130,7 +130,5 @@
 		<a href="/" class="link link-hover">Home</a>
 		<a href="/movies" class="link link-hover">Movies</a>
 		<a href="/tvshows" class="link link-hover">Tv Shows</a>
-		
 	</div>
-	
 </footer>

@@ -45,7 +45,7 @@
 	];
 </script>
 
-<div bind:this={navbar} class="navbar bg-transparent transition-colors duration-500 rounded-box">
+<div bind:this={navbar} class="navbar rounded-box bg-transparent transition-colors duration-500">
 	<nav class="hidden flex-1 md:flex">
 		{#if init}
 			{#each urls as url, index (index)}
@@ -60,12 +60,12 @@
 		{/if}
 	</nav>
 
-	<div class="hidden flex-none lg:flex text-white space-x-3">
+	<div class="hidden flex-none space-x-3 text-white lg:flex">
 		<Searchbar />
-		<a class="btn btn-ghost hover:bg-secondary border-secondary" href="/login">Log in</a>
+		<a class="btn btn-ghost border-secondary hover:bg-secondary" href="/login">Log in</a>
 	</div>
 
-	<nav class="justify-between md:hidden">
+	<nav class="w-full justify-between md:hidden">
 		{#if init}
 			{#each urls as url, index (index)}
 				<a
@@ -79,7 +79,7 @@
 						viewBox="0 0 24 24"
 						stroke-width="1.5"
 						stroke="currentColor"
-						class="w-6 h-6"
+						class="h-6 w-6"
 					>
 						<path stroke-linecap="round" stroke-linejoin="round" d={url.d} />
 					</svg>

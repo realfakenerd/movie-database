@@ -7,10 +7,9 @@
 	import { page } from '$app/stores';
 	export let data: PageData;
 	const { movie, tv, person, config } = data;
-
 </script>
 
-<ul class=" grid grid-cols-1 md:grid-cols-3 gap-3">
+<ul class=" grid grid-cols-1 gap-3 md:grid-cols-3">
 	{#if $page.params.type === 'movie'}
 		{#each movie.results as data (data.id)}
 			<Movie movie={data} images={config.images} />
@@ -27,4 +26,3 @@
 		{/each}
 	{/if}
 </ul>
-

@@ -14,7 +14,7 @@
 </script>
 
 <div
-	class="lg:w-60 card card-compact transition duration-300 ease-out transform hover:-translate-y-2 hover:shadow-lg hover:shadow-primary/30"
+	class="card-compact card transform transition duration-300 ease-out hover:-translate-y-2 hover:shadow-lg hover:shadow-primary/30 lg:w-60"
 >
 	<figure>
 		{#if person.profile_path}
@@ -43,7 +43,7 @@
 			</svg>
 		{/if}
 	</figure>
-	<div class="card-body items-center text-center bg-base-300">
+	<div class="card-body items-center bg-base-300 text-center">
 		<div class="card-title">
 			<h3 class="text-center">
 				{person.name}

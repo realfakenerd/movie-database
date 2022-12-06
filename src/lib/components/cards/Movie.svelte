@@ -14,7 +14,7 @@
 </script>
 
 <a
-	class="lg:w-56 card card-compact image-full transition duration-300 ease-out transform hover:-translate-y-2 hover:shadow-lg hover:shadow-primary/30 group"
+	class="group card image-full card-compact transform transition duration-300 ease-out hover:-translate-y-2 hover:shadow-lg hover:shadow-primary/30 lg:w-56"
 	href={'/movie/' + movie.id}
 >
 	<figure>
@@ -47,12 +47,12 @@
 
 	<div class="card-body">
 		<h1 class="card-title text-center">{movie.title}</h1>
-		<div class="h-full flex flex-col justify-between">
+		<div class="flex h-full flex-col justify-between">
 			<div class="badge gap-1">
 				<span>{movie.vote_average}</span>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
-					class="group-hover:animate-spin h-4 w-4 text-yellow-300"
+					class="h-4 w-4 text-yellow-300 group-hover:animate-spin"
 					viewBox="0 0 20 20"
 					fill="currentColor"
 				>

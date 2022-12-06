@@ -123,7 +123,7 @@
 				href="#mainContainer"
 			>
 				<span
-					class="block transition duration-500 ease-out rounded-lg bg-base-100 px-8 py-3 text-sm font-medium hover:bg-transparent"
+					class="block rounded-lg bg-base-100 px-8 py-3 text-sm font-medium transition duration-500 ease-out hover:bg-transparent"
 				>
 					go to step 3
 				</span>

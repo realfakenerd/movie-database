@@ -15,11 +15,11 @@
 </svelte:head>
 
 <IndexHero />
-<section id="mainContainer" class="mt-16 px-10 min-h-screen scroll-mt-16 text-center">
+<section id="mainContainer" class="mt-16 min-h-screen scroll-mt-16 px-10 text-center">
 	<div class="divider">
 		<div class="text-2xl">See what's upcoming</div>
 	</div>
-	<section class="carousel carousel-center p-4 space-x-4 bg-base-300 rounded-box">
+	<section class="carousel carousel-center rounded-box space-x-4 bg-base-300 p-4">
 		{#each upcoming.results as movie (movie.id)}
 			<div class="carousel-item">
 				<Movie images={config.images} {movie} />

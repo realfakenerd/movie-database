@@ -7,6 +7,6 @@ export enum OriginalLanguage {
 	En = 'en',
 	Es = 'es',
 	Ru = 'ru',
-    Fr = "fr",
-    Ja = "ja"
+	Fr = 'fr',
+	Ja = 'ja'
 }

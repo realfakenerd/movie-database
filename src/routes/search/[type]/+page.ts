@@ -1,11 +1,11 @@
-import type { PageLoad } from "./$types";
+import type { PageLoad } from './$types';
 
-export const load: PageLoad = async ({parent}) => {
-    const {searchData} = await parent();
+export const load: PageLoad = async ({ parent }) => {
+	const { searchData } = await parent();
 
-    return {
-        movie: searchData.movie,
-        tv: searchData.tv,
-        person: searchData.person,
-    }
-}
+	return {
+		movie: searchData.movie,
+		tv: searchData.tv,
+		person: searchData.person
+	};
+};

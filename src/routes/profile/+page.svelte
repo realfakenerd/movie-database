@@ -10,7 +10,10 @@
 				<div
 					class="w-24 rounded-full bg-primary ring ring-primary ring-offset-2 ring-offset-base-100"
 				>
-					<img alt="profile art" src="{'https://avatars.dicebear.com/api/croodles-neutral/' + $userInfo.name}.svg" />
+					<img
+						alt="profile art"
+						src="{'https://avatars.dicebear.com/api/croodles-neutral/' + $userInfo.name}.svg"
+					/>
 				</div>
 			</div>
 			<h2 class="card-title">{$userInfo.name}</h2>

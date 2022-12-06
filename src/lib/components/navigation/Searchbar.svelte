@@ -30,7 +30,7 @@
 <button
 	type="button"
 	on:click={showInput}
-	class="mr-2 btn btn-ghost hover:bg-secondary text-secondary hover:text-white focus:outline-none focus:ring-4 focus:ring-secondary/30"
+	class="btn btn-ghost mr-2 text-secondary hover:bg-secondary hover:text-white focus:outline-none focus:ring-4 focus:ring-secondary/30"
 >
 	<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
 		<path
