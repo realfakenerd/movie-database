@@ -1,9 +1,8 @@
 import type { Config } from '$lib/types';
 import type { LayoutLoad } from './$types';
-
+import { fetchAll } from '$lib/utils';
 export const load: LayoutLoad = async ({ fetch, url }) => {
-	const res = await fetch('/api/config');
-	const resUser = await fetch('/api/user');
+	const [res, resUser] = await fetchAll(fetch('/api/config'), fetch('/api/user'));
 	const userData = await resUser.json();
 	const data = await res.json();
 	return {
@@ -12,3 +11,4 @@ export const load: LayoutLoad = async ({ fetch, url }) => {
 		currentRoute: url.pathname
 	};
 };
+

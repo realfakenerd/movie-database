@@ -8,8 +8,8 @@ export const Img_URL: Readonly<string> = 'https://image.tmdb.org/t/p/';
  * @returns A string with the date in the format of "MM/DD/YYYY"
  */
 export function formatDate(dateStr: string | Date) {
-	if (dateStr != undefined && dateStr.length > 0) {
-		const d = dateStr.split('-');
+	if (dateStr != undefined && (dateStr as string).length > 0) {
+		const d = (dateStr as string).split('-');
 		return d.reverse().join('/');
 	} else return 'no release date yet :(';
 }
@@ -40,6 +40,10 @@ export function random(min: number, max: number): number {
 export async function load<T = any>(url: string): Promise<Awaited<T>> {
 	const res = await fetch(url);
 	return await res.json();
+}
+
+export async function fetchAll<T>(...fetchs: T[]) {
+	return Promise.all(fetchs);
 }
 
 /**
