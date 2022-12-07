@@ -1,16 +1,13 @@
 <script lang="ts">
-	import type { Images, PersonResult } from '$lib/types';
+	import type { Config, PersonResult } from '$lib/types';
 
-	import { formatDate } from '$lib/utils';
+	import { formatDate, getImagePath } from '$lib/utils';
 
 	let person: PersonResult;
-	let images: Images;
+	let config: Config;
 
-	export { images, person };
+	export { config, person };
 
-	const sizeOne = images.secure_base_url + images.poster_sizes[4] + person.profile_path;
-	const sizeTwo = images.secure_base_url + images.poster_sizes[5] + person.profile_path;
-	const sizeOriginal = images.secure_base_url + images.poster_sizes[6] + person.profile_path;
 </script>
 
 <div
@@ -21,8 +18,12 @@
 			<img
 				width="300"
 				height="450"
-				srcset={`${sizeOne} 500w, ${sizeTwo} 780w`}
-				src={sizeOriginal}
+				srcset={`
+					${getImagePath('profile', 0, person.profile_path, config)} 45w,
+					${getImagePath('profile', 1, person.profile_path, config)} 185w,
+					${getImagePath('profile', 2, person.profile_path, config)} 632w
+				   `}
+		   		src={getImagePath('profile', 3, person.profile_path, config)}
 				loading="lazy"
 				alt="Movie poster"
 			/>

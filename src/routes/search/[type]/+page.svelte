@@ -12,17 +12,17 @@
 <ul class="grid place-items-center grid-cols-1 md:grid-cols-2 gap-3 md:gap-5 lg:gap-3 lg:grid-cols-3">
 	{#if $page.params.type === 'movie'}
 		{#each movie.results as data (data.id)}
-			<Movie movie={data} images={config.images} />
+			<Movie movie={data} {config} />
 		{/each}
 	{/if}
 	{#if $page.params.type === 'tv'}
 		{#each tv.results as data (data.id)}
-			<TV tv={data} images={config.images} />
+			<TV tv={data} {config} />
 		{/each}
 	{/if}
 	{#if $page.params.type === 'person'}
 		{#each person.results as data (data.id)}
-			<Person person={data} images={config.images} />
+			<Person person={data} {config} />
 		{/each}
 	{/if}
 </ul>

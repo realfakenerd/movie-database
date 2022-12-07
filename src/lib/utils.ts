@@ -1,7 +1,23 @@
-/* A constant that is readonly. */
-export const TMDB_URL: Readonly<string> = 'https://api.themoviedb.org/3';
-/* A constant that is readonly. */
-export const Img_URL: Readonly<string> = 'https://image.tmdb.org/t/p/';
+import type { Config } from "./types";
+
+type imageType = 'backdrop' | 'logo' | 'poster' | 'profile' | 'still';
+export function getImagePath(type: imageType, size: number, path: string, config: Config) {
+	const secure_base_url = 'https://image.tmdb.org/t/p/';
+	const { images } = config;
+	switch (type) {
+		case 'backdrop':
+			return secure_base_url + images.backdrop_sizes[size] + path;
+		case 'logo':
+			return secure_base_url + images.logo_sizes[size] + path;
+		case 'poster':
+			return secure_base_url + images.poster_sizes[size] + path;
+		case 'profile':
+			return secure_base_url + images.profile_sizes[size] + path;
+		case 'still':
+			return secure_base_url + images.still_sizes[size] + path;
+	}
+}
+
 /**
  * It takes a string in the format of MM-DD-YYYY and returns a string in the format of MM/DD/YYYY
  * @param {string} dateStr - the date string that we want to format

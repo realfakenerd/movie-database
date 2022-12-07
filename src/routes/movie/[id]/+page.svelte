@@ -1,16 +1,17 @@
 <script lang="ts">
-	import { formatDate } from '$lib/utils';
-	import type { PageData } from './$types';
+	import { formatDate, getImagePath } from '$lib/utils';
+	import type { PageData } from '../../[type]/[id]/$types';
 
 	export let data: PageData;
 	const { movie, config } = data;
 
 	const trailer = movie.videos.results.find((m) => m.type === 'Trailer');
 
-	const backdrop_path =
-		config.images.secure_base_url + config.images.backdrop_sizes[3] + movie.backdrop_path;
-
-	console.log(data);
+	const profile_path_srcset = (str) => `
+		${getImagePath('profile', 0, str, config)} 45w,
+		${getImagePath('profile', 1, str, config)} 185w,
+		${getImagePath('profile', 2, str, config)} 632w
+		`;
 </script>
 
 <svelte:head>
@@ -20,7 +21,7 @@
 <section
 	class="hero min-h-screen"
 	style="background-image: url({movie.backdrop_path
-		? backdrop_path
+		? getImagePath('backdrop', 3, movie.backdrop_path, config)
 		: 'https://www.jennybeaumont.com/wp-content/uploads/2015/03/placeholder-800x423.gif'});"
 >
 	<div class="hero-overlay backdrop-blur-sm bg-opacity-90" />
@@ -28,16 +29,21 @@
 		<div class="grid grid-cols-1 gap-10 lg:grid-cols-4">
 			<div class="col-span-3 grid grid-cols-3 gap-10">
 				<div class="col-span-3 grid grid-cols-1 md:grid-cols-2">
-					<div class="md:col-span-2">With</div>
+					<span class="md:col-span-2">With</span>
 					<div>
-						<div>{movie.credits.cast[0].name}</div>
-						<div>{movie.credits.cast[1].name}</div>
+						{#if movie.credits.cast.length > 0}
+							<h2>{movie.credits.cast[0].name}</h2>
+							<h2>{movie.credits.cast[1].name}</h2>
+						{:else}
+							<h2>''</h2>
+							<h2>''</h2>
+						{/if}
 					</div>
 					<div>
 						<span class="font-semibold">{movie.runtime}min</span>
 						<div class="space-x-3">
 							{#each movie.genres as genre (genre.id)}
-								<span>{genre.name}</span>
+								<h3>{genre.name}</h3>
 							{/each}
 						</div>
 					</div>
@@ -82,7 +88,7 @@
 				<section class="w-full">
 					<h2 class="text-8xl font-bold">{movie.vote_average.toFixed(1)}</h2>
 
-					<div class="w-full inline-flex justify-between">
+					<div class="w-full inline-flex gap-5">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							class=" h-6 w-6  text-yellow-300"
@@ -155,9 +161,8 @@
 								{#if cast.profile_path}
 									<img
 										alt="cast profile"
-										src={config.images.secure_base_url +
-											config.images.profile_sizes[3] +
-											cast.profile_path}
+										srcset={profile_path_srcset(cast.profile_path)}
+										src={getImagePath('profile', 3, cast.profile_path, config)}
 									/>
 								{:else}
 									<svg

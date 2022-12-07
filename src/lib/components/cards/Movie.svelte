@@ -1,16 +1,14 @@
 <script lang="ts">
-	import type { Images, MovieResult } from '$lib/types';
+	import type { Config, MovieResult } from '$lib/types';
 
-	import { formatDate } from '$lib/utils';
+	import { formatDate, getImagePath } from '$lib/utils';
 
 	let movie: MovieResult;
-	let images: Images;
+	let config: Config;
 
-	export { images, movie };
+	export { config, movie };
 
-	const sizeOne = images.secure_base_url + images.poster_sizes[4] + movie.poster_path;
-	const sizeTwo = images.secure_base_url + images.poster_sizes[5] + movie.poster_path;
-	const sizeOriginal = images.secure_base_url + images.poster_sizes[6] + movie.poster_path;
+	
 </script>
 
 <a
@@ -22,8 +20,15 @@
 			<img
 				width="300"
 				height="450"
-				srcset={`${sizeOne} 500w, ${sizeTwo} 780w`}
-				src={sizeOriginal}
+				srcset={`
+					${getImagePath('poster', 0, movie.poster_path, config)} 92w,
+					${getImagePath('poster', 1, movie.poster_path, config)} 154w,
+					${getImagePath('poster', 2, movie.poster_path, config)} 185w,
+					${getImagePath('poster', 3, movie.poster_path, config)} 342w,
+					${getImagePath('poster', 4, movie.poster_path, config)} 500w,
+					${getImagePath('poster', 5, movie.poster_path, config)} 780w,
+				   `}
+				src={getImagePath('poster', 6, movie.poster_path, config)}
 				loading="lazy"
 				alt="Movie poster"
 			/>

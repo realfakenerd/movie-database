@@ -53,6 +53,21 @@
 			"purpose": "maskable"
 		}
 	],
+	"shortcuts": [
+		{
+			"icons": [
+				{
+					"src": "icons/profile.svg",
+					"purpose": "maskable",
+					"type": "image/svg"
+				}
+			],
+			"description": "Shortcut to profile page.",
+			"name": "profile",
+			"short_name": "profile",
+			"url": "/profile"
+		}
+	],
 	"theme_color": "#ff0040",
 	"background_color": "#0e1014",
 	"start_url": "/?source=pwa",

@@ -18,18 +18,17 @@
 <section id="mainContainer" class="mt-16 scroll-mt-16 px-10 text-center space-y-16">
 	<div class="space-y-10">
 		<h1 class="text-left text-4xl">See what's upcoming</h1>
-		
+
 		<section class="carousel carousel-center rounded-box space-x-4 bg-base-300 p-4">
 			{#each upcoming.results as movie (movie.id)}
 				<div class="carousel-item">
-					<Movie images={config.images} {movie} />
+					<Movie {config} {movie} />
 				</div>
 			{/each}
 		</section>
 	</div>
 
-	<div class="divider">
-	</div>
+	<div class="divider" />
 	<section class="space-y-10">
 		<h1 class="text-left text-4xl">See what's popular</h1>
 
@@ -38,7 +37,7 @@
 		>
 			{#each popular.results.slice(0, currentItems) as movie, index (movie.id)}
 				<div in:fly={{ delay: 150 * index, y: 50, easing: backOut }}>
-					<Movie images={config.images} {movie} />
+					<Movie {config} {movie} />
 				</div>
 			{/each}
 		</section>

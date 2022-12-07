@@ -1,16 +1,13 @@
 <script lang="ts">
-	import type { Images, TVResult } from '$lib/types';
+	import type { Config, TVResult } from '$lib/types';
 
-	import { formatDate } from '$lib/utils';
+	import { formatDate, getImagePath } from '$lib/utils';
 
 	let tv: TVResult;
-	let images: Images;
+	let config: Config;
 
-	export { images, tv };
+	export { config, tv };
 
-	const sizeOne = images.secure_base_url + images.poster_sizes[4] + tv.poster_path;
-	const sizeTwo = images.secure_base_url + images.poster_sizes[5] + tv.poster_path;
-	const sizeOriginal = images.secure_base_url + images.poster_sizes[6] + tv.poster_path;
 </script>
 
 <a
@@ -22,10 +19,17 @@
 			<img
 				width="300"
 				height="450"
-				srcset={`${sizeOne} 500w, ${sizeTwo} 780w`}
-				src={sizeOriginal}
+				srcset={`
+					${getImagePath('poster', 0, tv.poster_path, config)} 92w,
+					${getImagePath('poster', 1, tv.poster_path, config)} 154w,
+					${getImagePath('poster', 2, tv.poster_path, config)} 185w,
+					${getImagePath('poster', 3, tv.poster_path, config)} 342w,
+					${getImagePath('poster', 4, tv.poster_path, config)} 500w,
+					${getImagePath('poster', 5, tv.poster_path, config)} 780w,
+				   `}
+				src={getImagePath('poster', 6, tv.poster_path, config)}
 				loading="lazy"
-				alt="Movie poster"
+				alt="tv poster"
 			/>
 		{:else}
 			<svg
