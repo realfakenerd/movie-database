@@ -5,7 +5,7 @@ import viteCompression from 'vite-plugin-compression';
 const config = {
 	define: {
     'process.env': {}
-  }
+  },
 	build: {
 		reportCompressedSize: false,
 		target: 'esnext',
