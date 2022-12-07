@@ -3,6 +3,9 @@ import removeConsole from 'vite-plugin-remove-console';
 import viteCompression from 'vite-plugin-compression';
 /** @type {import('vite').UserConfig} */
 const config = {
+	define: {
+    'process.env': {}
+  }
 	build: {
 		reportCompressedSize: false,
 		target: 'esnext',
