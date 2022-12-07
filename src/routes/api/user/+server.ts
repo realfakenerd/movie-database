@@ -9,8 +9,5 @@ export const GET: RequestHandler = async ({fetch, cookies}) => {
         const data = await res.json();
         return json(data);
     }
-
-    return json({
-        user: 'try again'
-    })
+    return new Response(String(null))
 }

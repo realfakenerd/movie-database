@@ -6,6 +6,7 @@
 	import Searchbar from './Searchbar.svelte';
 
 	let init = false;
+	console.log($page)
 	onMount(() => (init = true));
 	const urls = [
 		{
