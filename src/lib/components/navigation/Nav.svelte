@@ -64,10 +64,10 @@
 			</a>
 		{/if}
 	</div>
+	<div class="fixed bottom-[120%] right-0 inline-flex w-full justify-end">
+		<Searchbar />
+	</div>
 	<nav class="w-full flex flex-col md:hidden">
-		<div class="inline-flex w-full justify-end">
-			<Searchbar />
-		</div>
 		<ul class="inline-flex w-full justify-between">
 			<li>
 				<a class="btn btn-ghost" href={urls[0].path}>
@@ -110,6 +110,28 @@
 						<path stroke-linecap="round" stroke-linejoin="round" d={urls[2].d} />
 					</svg>
 				</a>
+			</li>
+			<li>
+				{#if !$page.data.user}
+					<form action="/login" method="GET">
+						<button type="submit" class="btn btn-ghost border-secondary hover:bg-secondary"
+							>Log in</button
+						>
+					</form>
+				{/if}
+
+				{#if $page.data.user}
+					<a href="/profile" class="avatar">
+						<div class="w-12 rounded-full">
+							<img
+								alt="profile"
+								src={'https://www.gravatar.com/avatar/' +
+									$page.data.user.avatar.gravatar.hash +
+									'.webp'}
+							/>
+						</div>
+					</a>
+				{/if}
 			</li>
 		</ul>
 	</nav>
