@@ -25,12 +25,12 @@
 		: 'https://www.jennybeaumont.com/wp-content/uploads/2015/03/placeholder-800x423.gif'});"
 >
 	<div class="hero-overlay backdrop-blur-sm bg-opacity-90" />
-	<section class="hero-content px-10">
-		<div class="grid grid-cols-1 gap-10 lg:grid-cols-4">
+	<section class="hero-content w-full md:px-10">
+		<div class="grid w-full grid-cols-1 gap-y-10 md:gap-10 lg:grid-cols-4">
 			<div class="col-span-3 grid grid-cols-3 gap-10">
 				<div class="col-span-3 grid grid-cols-1 md:grid-cols-2">
-					<span class="md:col-span-2">With</span>
-					<div>
+					<span class="md:col-span-2 font-semibold">With</span>
+					<div class="flex flex-row md:flex-col justify-evenly">
 						{#if movie.credits.cast.length > 0}
 							<h2>{movie.credits.cast[0].name}</h2>
 							<h2>{movie.credits.cast[1].name}</h2>
@@ -41,7 +41,7 @@
 					</div>
 					<div>
 						<span class="font-semibold">{movie.runtime}min</span>
-						<div class="space-x-3">
+						<div class="flex flex-row gap-3">
 							{#each movie.genres as genre (genre.id)}
 								<h3>{genre.name}</h3>
 							{/each}
@@ -50,7 +50,7 @@
 				</div>
 				<div class="col-span-3 text-center">
 					<h1
-						class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-3xl font-extrabold text-transparent md:text-7xl"
+						class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-5xl font-extrabold text-transparent md:text-7xl"
 					>
 						{movie.title}
 					</h1>
@@ -84,8 +84,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="flex flex-col justify-around items-center w-full">
-				<section class="w-full">
+			<div class="flex flex-row md:flex-col justify-around items-center w-full">
+				<section>
 					<h2 class="text-8xl font-bold">{movie.vote_average.toFixed(1)}</h2>
 
 					<div class="w-full inline-flex gap-5">
