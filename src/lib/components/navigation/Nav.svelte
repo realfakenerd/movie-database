@@ -53,7 +53,7 @@
 
 		{#if $page.data.user}
 			<a href="/profile" class="avatar">
-				<div class="w-12 rounded-full">
+				<div class="w-8 rounded-full">
 					<img
 						alt="profile"
 						src={'https://www.gravatar.com/avatar/' +

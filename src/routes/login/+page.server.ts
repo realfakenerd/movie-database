@@ -8,11 +8,13 @@ export const load: PageServerLoad = async ({ fetch }) => {
 		`https://api.themoviedb.org/3/authentication/token/new?api_key=${TMDB_KEY}`
 	);
 	const token = (await resToken.json()) as RequestToken;
-
 	if (token.success) {
+		const redirectLink = import.meta.env.DEV
+			? 'http://localhost:5173'
+			: 'https://popkorn.vercel.app';
 		throw redirect(
 			307,
-			`https://www.themoviedb.org/authenticate/${token.request_token}?redirect_to=https://popkorn.vercel.app//approved`
+			`https://www.themoviedb.org/authenticate/${token.request_token}?redirect_to=${redirectLink}/approved`
 		);
 	}
 };

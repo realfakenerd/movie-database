@@ -1,10 +1,9 @@
 <script lang="ts">
+	import { preloadData } from '$app/navigation';
 	import { fly } from 'svelte/transition';
-	let query = '';
+
 	let show = false;
-	const showInput = () => {
-		show ? (show = false) : (show = true);
-	};
+	const showInput = () => (show ? (show = false) : (show = true));
 </script>
 
 {#if show === true}

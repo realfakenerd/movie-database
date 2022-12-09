@@ -10,7 +10,7 @@ export const load: LayoutLoad = async ({ url, fetch }) => {
 		fetch(`/api/search/tv?q=${searchQuery}&page=${resultPage}`),
 		fetch(`/api/search/person?q=${searchQuery}&page=${resultPage}`)
 	);
-	
+
 	return {
 		searchData: {
 			movie: (await movieRes.json()) as MovieSearch,

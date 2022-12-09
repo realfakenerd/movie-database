@@ -160,6 +160,7 @@
 							<div class="w-16 rounded-full group-hover:shadow-md group-hover:shadow-slate-500/30">
 								{#if cast.profile_path}
 									<img
+										loading="lazy"
 										alt="cast profile"
 										srcset={profile_path_srcset(cast.profile_path)}
 										src={getImagePath('profile', 3, cast.profile_path, config)}

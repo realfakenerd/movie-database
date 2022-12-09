@@ -1,4 +1,4 @@
-import type { Config } from '$lib/types';
+import type { Config, UserDetails } from '$lib/types';
 import type { LayoutLoad } from './$types';
 import { fetchAll } from '$lib/utils';
 export const load: LayoutLoad = async ({ fetch, url }) => {

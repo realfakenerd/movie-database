@@ -1,6 +1,3 @@
-export * from './movies';
-export * from './movie';
-export * from './search';
 
 export interface RequestToken {
 	success: boolean;
@@ -75,4 +72,27 @@ export interface Images {
 	poster_sizes: ['w92', 'w154', 'w185', 'w342', 'w500', 'w780', 'original'];
 	profile_sizes: ['w45', 'w185', 'h632', 'original'];
 	still_sizes: ['w92', 'w185', 'w300', 'original'];
+}
+
+export interface UserDetails {
+    avatar:        Avatar;
+    id:            number;
+    iso_639_1:     string;
+    iso_3166_1:    string;
+    name:          string;
+    include_adult: boolean;
+    username:      string;
+}
+
+export interface Avatar {
+    gravatar: Gravatar;
+    tmdb:     Tmdb;
+}
+
+export interface Gravatar {
+    hash: string;
+}
+
+export interface Tmdb {
+    avatar_path: null;
 }

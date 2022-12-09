@@ -1,9 +1,9 @@
 <script lang="ts">
 	import Nav from '$lib/components/navigation/Nav.svelte';
-	import '../app.css';
 	import '@fontsource/metropolis';
-	import type { LayoutData } from './$types';
 	import { fly } from 'svelte/transition';
+	import '../app.css';
+	import type { LayoutData } from './$types';
 
 	export let data: LayoutData;
 </script>
