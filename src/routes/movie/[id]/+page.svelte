@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Icon from '$lib/components/utils/Icon.svelte';
 	import { formatDate, getImagePath } from '$lib/utils';
 	import type { PageData } from '../../[type]/[id]/$types';
 
@@ -12,6 +13,12 @@
 		${getImagePath('profile', 1, str, config)} 185w,
 		${getImagePath('profile', 2, str, config)} 632w
 		`;
+
+	async function favorIt () {
+		await fetch(`/api/favorite/${movie.id}`);
+		console.log('fetched');
+		
+	}
 </script>
 
 <svelte:head>
@@ -67,20 +74,26 @@
 
 					<div class="stat place-items-center">
 						<div class="stat-title">Movie score</div>
-						<div class="stat-value text-yellow-300">
-							<span>{movie.vote_average.toFixed(1)}</span>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								class="inline-block h-8 w-8  text-yellow-300"
-								viewBox="0 0 20 20"
-								fill="currentColor"
-							>
-								<path
-									d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-								/>
-							</svg>
+						<div class="stat-value ">
+							<ul class="inline-flex gap-3">
+								<li>
+									<button on:click={favorIt} class="btn btn-ghost btn-sm">
+										<Icon
+											extraClass="text-red-400"
+											d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+										/>
+									</button>
+								</li>
+								<li>
+									<button class="btn btn-ghost btn-sm">
+										<Icon
+											d="M12 10.5v6m3-3H9m4.06-7.19l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z"
+										/>
+									</button>
+								</li>
+							</ul>
 						</div>
-						<div class="stat-desc">base on {movie.vote_count} votes</div>
+						
 					</div>
 				</div>
 			</div>

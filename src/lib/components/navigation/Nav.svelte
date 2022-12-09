@@ -26,7 +26,7 @@
 	];
 </script>
 
-<div class="navbar bg-base-100/60 rounded-box backdrop-blur-md transition-colors duration-500">
+<div class="navbar bg-base-100/60 rounded-box backdrop-blur-md">
 	<nav class="hidden flex-1 md:flex">
 		{#if init}
 			{#each urls as url, index (index)}
@@ -52,16 +52,25 @@
 		{/if}
 
 		{#if $page.data.user}
-			<a href="/profile" class="avatar">
-				<div class="w-8 rounded-full">
-					<img
-						alt="profile"
-						src={'https://www.gravatar.com/avatar/' +
-							$page.data.user.avatar.gravatar.hash +
-							'.webp'}
-					/>
-				</div>
-			</a>
+			<div class="dropdown dropdown-end">
+				<!-- svelte-ignore a11y-label-has-associated-control -->
+				<label tabindex="0" class="btn btn-ghost m-1">
+					<span class="avatar">
+						<div class="w-8 rounded-full">
+							<img
+								alt="profile"
+								src={'https://www.gravatar.com/avatar/' +
+									$page.data.user.avatar.gravatar.hash +
+									'.webp'}
+							/>
+						</div>
+					</span>
+				</label>
+				<ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100/60 backdrop-blur-md rounded-box w-52">
+					<li><a href="/profile"> profile </a></li>
+					<li><a href="/logout"> logout </a></li>
+				</ul>
+			</div>
 		{/if}
 	</div>
 	<div class="fixed bottom-[120%] right-0 inline-flex w-full justify-end">
@@ -121,16 +130,25 @@
 				{/if}
 
 				{#if $page.data.user}
-					<a href="/profile" class="avatar">
-						<div class="w-12 rounded-full">
-							<img
-								alt="profile"
-								src={'https://www.gravatar.com/avatar/' +
-									$page.data.user.avatar.gravatar.hash +
-									'.webp'}
-							/>
-						</div>
-					</a>
+					<div class="dropdown dropdown-top dropdown-end">
+						<!-- svelte-ignore a11y-label-has-associated-control -->
+						<label tabindex="0" class="btn btn-ghost m-1">
+							<span class="avatar">
+								<div class="w-8 rounded-full">
+									<img
+										alt="profile"
+										src={'https://www.gravatar.com/avatar/' +
+											$page.data.user.avatar.gravatar.hash +
+											'.webp'}
+									/>
+								</div>
+							</span>
+						</label>
+						<ul tabindex="0" class="dropdown-content menu p-2 shadow backdrop-blur-md bg-base-100/60 rounded-box w-52">
+							<li><a href="/profile"> profile </a></li>
+							<li><a href="/logout"> logout </a></li>
+						</ul>
+					</div>
 				{/if}
 			</li>
 		</ul>
