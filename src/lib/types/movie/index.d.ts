@@ -1,7 +1,7 @@
 export interface Movie {
 	adult: boolean;
 	backdrop_path: string;
-	belongs_to_collection: null;
+	belongs_to_collection: null | Collection;
 	budget: number;
 	genres: Genre[];
 	homepage: string;
@@ -24,9 +24,13 @@ export interface Movie {
 	video: boolean;
 	vote_average: number;
 	vote_count: number;
-	reviews: Reviews;
-	credits: Credits;
-	videos: Videos;
+}
+
+export interface Collection {
+	id: number;
+	backdrop_path: string;
+	poster_path: string;
+	name: string;
 }
 
 export interface Credits {

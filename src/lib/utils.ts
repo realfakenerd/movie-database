@@ -1,4 +1,10 @@
-import type { Config } from "./types";
+import type { Config } from './types';
+
+type DateStyle = Intl.DateTimeFormatOptions['dateStyle'];
+export function formatDate(date: string | Date, dateStyle: DateStyle = 'medium', locale = 'pt-br') {
+	const formatter = new Intl.DateTimeFormat(locale, { dateStyle });
+	return formatter.format(new Date(date));
+}
 
 type imageType = 'backdrop' | 'logo' | 'poster' | 'profile' | 'still';
 export function getImagePath(type: imageType, size: number, path: string, config: Config) {
@@ -18,17 +24,6 @@ export function getImagePath(type: imageType, size: number, path: string, config
 	}
 }
 
-/**
- * It takes a string in the format of MM-DD-YYYY and returns a string in the format of MM/DD/YYYY
- * @param {string} dateStr - the date string that we want to format
- * @returns A string with the date in the format of "MM/DD/YYYY"
- */
-export function formatDate(dateStr: string | Date) {
-	if (dateStr != undefined && (dateStr as string).length > 0) {
-		const d = (dateStr as string).split('-');
-		return d.reverse().join('/');
-	} else return 'no release date yet :(';
-}
 /**
  * It takes a number, formats it to a currency, and returns it as a string
  * @param {number} num - number - The number to format
@@ -115,7 +110,7 @@ export function parseMd(md: string) {
 	md = md.replace(/[\`]{1}([^\`]+)[\`]{1}/g, '<code>$1</code>');
 
 	//p
-	md = md.replace(/^\s*(\n)?(.+)/gm, function (m) {
+	md = md.replace(/^\s*(\n)?(.+)/gm, function(m) {
 		return /\<(\/)?(h\d|ul|ol|li|blockquote|pre|img)/.test(m) ? m : '<p>' + m + '</p>';
 	});
 

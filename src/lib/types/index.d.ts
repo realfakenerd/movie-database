@@ -1,8 +1,36 @@
+export * from './movie';
 
 export interface RequestToken {
 	success: boolean;
 	expires_at: string;
 	request_token: string;
+}
+
+export interface Collection {
+	id: number;
+	name: string;
+	overview: string;
+	poster_path: string;
+	backdrop_path: string;
+	parts: Part[];
+}
+
+export interface Part {
+	adult: boolean;
+	backdrop_path: null | string;
+	id: number;
+	title: string;
+	original_language: string;
+	original_title: string;
+	overview: string;
+	poster_path: string;
+	media_type: string;
+	genre_ids: number[];
+	popularity: number;
+	release_date: Date;
+	video: boolean;
+	vote_average: number;
+	vote_count: number;
 }
 
 export interface Config {
@@ -75,24 +103,24 @@ export interface Images {
 }
 
 export interface UserDetails {
-    avatar:        Avatar;
-    id:            number;
-    iso_639_1:     string;
-    iso_3166_1:    string;
-    name:          string;
-    include_adult: boolean;
-    username:      string;
+	avatar: Avatar;
+	id: number;
+	iso_639_1: string;
+	iso_3166_1: string;
+	name: string;
+	include_adult: boolean;
+	username: string;
 }
 
 export interface Avatar {
-    gravatar: Gravatar;
-    tmdb:     Tmdb;
+	gravatar: Gravatar;
+	tmdb: Tmdb;
 }
 
 export interface Gravatar {
-    hash: string;
+	hash: string;
 }
 
 export interface Tmdb {
-    avatar_path: null;
+	avatar_path: null;
 }

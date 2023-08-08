@@ -7,7 +7,7 @@ export const GET: RequestHandler = async ({ fetch, params, setHeaders }) => {
 		'Cache-Control': `max-age=0, s-maxage=${60 * 60}`
 	});
 	const res = await fetch(
-		`https://api.themoviedb.org/3/tv/${params.id}?api_key=${TMDB_KEY}&language=en-US`
+		`https://api.themoviedb.org/3/tv/${params.id}/credits?api_key=${TMDB_KEY}&language=en-US`
 	);
 	const data = await res.json();
 

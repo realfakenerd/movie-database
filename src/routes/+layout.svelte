@@ -1,17 +1,69 @@
 <script lang="ts">
-	import Nav from '$lib/components/navigation/Nav.svelte';
-	import '@fontsource/metropolis';
+	import Icon from '$lib/components/utils/Icon.svelte';
 	import { fly } from 'svelte/transition';
 	import '../app.css';
+	import '@fontsource/metropolis';
 	import type { LayoutData } from './$types';
 
 	export let data: LayoutData;
+
+	const routes = [
+		{
+			title: 'Home',
+			path: '/',
+			d: `M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z`
+		},
+		{
+			title: 'Movies',
+			path: '/movies',
+			d: `M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z`
+		},
+		{
+			title: 'Tv Shows',
+			path: '/tvshows',
+			d: `M21 6h-7.59l3.29-3.29L16 2l-4 4-4-4-.71.71L10.59 6H3c-1.1 0-2 .89-2 2v12c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.11-.9-2-2-2zm0 14H3V8h18v12zM9 10v8l7-4z`
+		},
+		{
+			title: 'Search',
+			path: 'search',
+			d: `M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z`
+		}
+	];
 </script>
 
-<header class="fixed bottom-0 z-10 w-full py-5 px-5 md:top-0 md:bottom-full md:px-10">
-	<Nav />
-</header>
+<header class="fixed bottom-0 z-50 w-full md:bottom-full md:top-0">
+	<nav class="hidden flex-1 md:flex">
+		{#each routes as url, index (index)}
+			<a class="btn" href={url.path}>
+				{url.title}
+			</a>
+		{/each}
+	</nav>
 
+	<nav
+		class="flex h-20 flex-none flex-grow-0 flex-row items-start gap-2 bg-surface-variant py-0 px-2 md:hidden"
+	>
+		{#each routes as url}
+			<a
+				href={url.path}
+				class="flex h-20 flex-none flex-grow flex-col items-center justify-center gap-1 px-0 pt-3 pb-4"
+			>
+				<div
+					class="group-hover:bg-secondary flex h-8 w-16 flex-col items-center justify-center rounded-2xl p-0 transition-all duration-300"
+				>
+					<span
+						class="fill-on-background group-hover:fill-on-secondary flex h-8 w-16 flex-col items-center justify-center rounded-2xl p-0"
+					>
+						<Icon d={url.d} />
+					</span>
+					<h3 class="order-1 h-4 flex-none flex-grow-0 self-stretch text-center text-label-small">
+						{url.title}
+					</h3>
+				</div>
+			</a>
+		{/each}
+	</nav>
+</header>
 
 {#key data.currentRoute}
 	<main in:fly={{ y: -5, duration: 250, delay: 250 }} out:fly={{ y: 5, duration: 250 }}>
@@ -124,8 +176,8 @@
 		<p>Popkorn Industries Ltd.<br />Providing reliable entertainment since 2021</p>
 	</div>
 	<div class="flex">
-		<a href="/" class="link link-hover">Home</a>
-		<a href="/movies" class="link link-hover">Movies</a>
-		<a href="/tvshows" class="link link-hover">Tv Shows</a>
+		<a href="/" class="link-hover link">Home</a>
+		<a href="/movies" class="link-hover link">Movies</a>
+		<a href="/tvshows" class="link-hover link">Tv Shows</a>
 	</div>
 </footer>

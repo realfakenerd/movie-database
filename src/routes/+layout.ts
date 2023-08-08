@@ -11,4 +11,3 @@ export const load: LayoutLoad = async ({ fetch, url }) => {
 		currentRoute: url.pathname
 	};
 };
-

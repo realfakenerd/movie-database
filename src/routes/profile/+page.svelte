@@ -16,7 +16,7 @@
 				</div>
 			</figure>
 			<div class="flex flex-col justify-evenly">
-				<h1 class="uppercase font-semibold text-2xl">{user.username}</h1>
+				<h1 class="text-2xl font-semibold uppercase">{user.username}</h1>
 				<h2 class="text-xl">{user.name}</h2>
 			</div>
 		</section>

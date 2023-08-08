@@ -20,20 +20,17 @@ export const load: PageServerLoad = async ({ url, fetch, cookies }) => {
 				})
 			}
 		);
-        const session = await res.json();
-        if(session.success) {
-            cookies.set('session', session.session_id, {
-                path: '/',
-                httpOnly: true,
-                sameSite: 'strict',
-                secure: process.env.NODE_ENV === 'production',
-                maxAge: 60 * 60 * 24 * 30
-            })
+		const session = await res.json();
+		if (session.success) {
+			cookies.set('session', session.session_id, {
+				path: '/',
+				httpOnly: true,
+				sameSite: 'strict',
+				secure: process.env.NODE_ENV === 'production',
+				maxAge: 60 * 60 * 24 * 30
+			});
 
-            throw redirect(307, '/profile')
-        }
+			throw redirect(307, '/profile');
+		}
 	}
-
-	
-	
 };

@@ -1,4 +1,4 @@
-import type { MovieSearch, PersonSearch, TVSearch } from '$lib/types';
+import type { MovieSearch, PersonSearch, TVSearch } from '$lib/types/search';
 import type { LayoutLoad } from './$types';
 import { fetchAll } from '$lib/utils';
 export const load: LayoutLoad = async ({ url, fetch }) => {

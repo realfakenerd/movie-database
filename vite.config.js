@@ -4,8 +4,8 @@ import viteCompression from 'vite-plugin-compression';
 /** @type {import('vite').UserConfig} */
 const config = {
 	define: {
-    'process.env': {}
-  },
+		'process.env': {}
+	},
 	build: {
 		reportCompressedSize: false,
 		target: 'esnext',
@@ -25,4 +25,4 @@ const config = {
 	]
 };
 
-export default config
+export default config;

@@ -19,7 +19,7 @@
 			</h1>
 			<p>looks like you're into some trouble...</p>
 			<p>
-				maybe going to the <a class="link link-primary decoration-wavy" href="/">home screen</a> helps
+				maybe going to the <a class="link-primary link decoration-wavy" href="/">home screen</a> helps
 			</p>
 		</div>
 		<iframe
@@ -32,7 +32,7 @@
 			title="surprise surprise"
 		/>
 		<p>
-			<a class="link link-primary" href="https://giphy.com/gifs/original-hEc4k5pN17GZq">via GIPHY</a
+			<a class="link-primary link" href="https://giphy.com/gifs/original-hEc4k5pN17GZq">via GIPHY</a
 			>
 		</p>
 	</div>

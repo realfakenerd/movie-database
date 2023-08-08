@@ -8,12 +8,9 @@ const config = {
 		postcss: true
 	}),
 	kit: {
-		adapter: adapter(),
-		version: {
-			name: Math.ceil(Math.random() * Date.now())
-				.toString()
-				.slice(0, 3)
-		}
+		adapter: adapter({
+			runtime: 'edge'
+		})
 	}
 };
 
