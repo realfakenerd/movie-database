@@ -3,7 +3,6 @@ import type { PageLoad } from './$types';
 
 type F = (input: URL | RequestInfo, init?: RequestInit) => Promise<Response>;
 async function fetchData<T>(fetch: F, url: string, params: string | number): Promise<T> {
-	console.log(params, `/api/movie/${params}/${url}`)
 	const res = await fetch(`/api/movie/${params}/${url}`);
 	return await res.json();
 }

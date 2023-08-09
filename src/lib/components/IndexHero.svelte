@@ -3,9 +3,9 @@
 </script>
 
 <section class="card justify-center items-center bg-transparent relative min-h-[100dvh]">
-	<figure class="inset-0 h-full absolute -z-10">
+	<figure class="inset-0 h-[100dvh] absolute -z-10">
 		<img
-			class="h-full object-cover"
+			class="h-[100dvh] md:h-auto object-cover"
 			src="https://image.tmdb.org/t/p/original/tRS6jvPM9qPrrnx2KRp3ew96Yot.jpg"
 			alt=""
 		/>

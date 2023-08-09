@@ -26,29 +26,31 @@
 			</fieldset>
 		</form>
 		<div class="rounded-box flex flex-grow flex-col gap-2 bg-surface-1 p-4 md:flex-grow-0">
-			<h2 class="text-title-medium">
-				Search results for <span class="capitalize text-primary">{query}</span>
-			</h2>
-			<ul class="flex flex-row items-center justify-between gap-2">
-				<li class="rounded-lg border border-outline-variant bg-background px-2 py-1">
-					<a class="text-label-medium underline" href={'/search/movie?q=' + query}>
-						<span>Movies</span>
-						<span class="text-label-small">{movie.total_results}</span>
-					</a>
-				</li>
-				<li class="rounded-lg border border-outline-variant bg-background px-2 py-1">
-					<a class="text-label-medium underline" href={'/search/tv?q=' + query}>
-						<span>Tv Shows</span>
-						<span class="text-label-small">{tv.total_results}</span>
-					</a>
-				</li>
-				<li class="rounded-lg border border-outline-variant bg-background px-2 py-1">
-					<a class="text-label-medium underline" href={'/search/person?q=' + query}>
-						<span>Person</span>
-						<span class="text-label-small">{person.total_results}</span>
-					</a>
-				</li>
-			</ul>
+			{#if query}
+				<h2 class="text-title-medium">
+					Search results for <span class="capitalize text-primary">{query}</span>
+				</h2>
+				<ul class="flex flex-row items-center justify-between gap-2">
+					<li class="rounded-lg border border-outline-variant bg-background px-2 py-1">
+						<a class="text-label-medium underline" href={'/search/movie?q=' + query}>
+							<span>Movies</span>
+							<span class="text-label-small">{movie.total_results}</span>
+						</a>
+					</li>
+					<li class="rounded-lg border border-outline-variant bg-background px-2 py-1">
+						<a class="text-label-medium underline" href={'/search/tv?q=' + query}>
+							<span>Tv Shows</span>
+							<span class="text-label-small">{tv.total_results}</span>
+						</a>
+					</li>
+					<li class="rounded-lg border border-outline-variant bg-background px-2 py-1">
+						<a class="text-label-medium underline" href={'/search/person?q=' + query}>
+							<span>Person</span>
+							<span class="text-label-small">{person.total_results}</span>
+						</a>
+					</li>
+				</ul>
+			{/if}
 		</div>
 	</div>
 	<div><slot /></div>
