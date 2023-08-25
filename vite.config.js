@@ -1,6 +1,7 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import removeConsole from 'vite-plugin-remove-console';
 import viteCompression from 'vite-plugin-compression';
+import lightningcss from 'vite-plugin-lightningcss';
 /** @type {import('vite').UserConfig} */
 const config = {
 	define: {
@@ -13,6 +14,9 @@ const config = {
 	},
 	plugins: [
 		sveltekit(),
+		lightningcss({
+			browserslist: '>= 1%',
+		}),
 		removeConsole(),
 		viteCompression({
 			algorithm: 'brotliCompress',

@@ -43,6 +43,7 @@
 		"uuid": "^8.3.2",
 		"vite": "^4.4.8",
 		"vite-plugin-compression": "^0.5.1",
+		"vite-plugin-lightningcss": "^0.0.5",
 		"vite-plugin-remove-console": "^0.0.7",
 		"workbox-core": "^7.0.0",
 		"workbox-recipes": "^7.0.0"
