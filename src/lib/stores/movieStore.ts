@@ -1,4 +1,3 @@
-import type { Credits, MovieDef, Reviews, TvShow } from '$lib/types';
 import { load } from '$lib/utils';
 import { writable } from 'svelte/store';
 

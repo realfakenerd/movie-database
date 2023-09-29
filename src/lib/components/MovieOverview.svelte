@@ -1,9 +1,5 @@
 <script lang="ts">
-	import type { Collection, Config, Movie } from '$lib/types';
-	import { getImagePath } from '$lib/utils';
 	export let src: Movie;
-	export let config: Config;
-	export let collection: Promise<Collection>;
 </script>
 
 <section class="flex w-full flex-col gap-4">
@@ -35,9 +31,3 @@
 		<a class="text-label-large underline" href={src.homepage}>Homepage</a>
 	</div>
 </section>
-
-<style>
-	.partslist > li:last-child span {
-		opacity: 0;
-	}
-</style>

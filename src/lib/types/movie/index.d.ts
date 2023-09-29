@@ -1,7 +1,7 @@
-export interface Movie {
+interface Movie {
 	adult: boolean;
 	backdrop_path: string;
-	belongs_to_collection: null | Collection;
+	belongs_to_collection?: Collection;
 	budget: number;
 	genres: Genre[];
 	homepage: string;
@@ -26,19 +26,19 @@ export interface Movie {
 	vote_count: number;
 }
 
-export interface Collection {
+interface Collection {
 	id: number;
 	backdrop_path: string;
 	poster_path: string;
 	name: string;
 }
 
-export interface Credits {
+interface Credits {
 	cast: Cast[];
 	crew: Cast[];
 }
 
-export interface Cast {
+interface Cast {
 	adult: boolean;
 	gender: number;
 	id: number;
@@ -55,7 +55,7 @@ export interface Cast {
 	job?: string;
 }
 
-export enum Department {
+declare enum Department {
 	Acting = 'Acting',
 	Art = 'Art',
 	Camera = 'Camera',
@@ -69,39 +69,35 @@ export enum Department {
 	Writing = 'Writing'
 }
 
-export interface Genre {
+interface Genre {
 	id: number;
 	name: string;
 }
 
-export enum OriginalLanguage {
-	En = 'en'
-}
-
-export interface ProductionCompany {
+interface ProductionCompany {
 	id: number;
 	logo_path: null | string;
 	name: string;
 	origin_country: OriginCountry;
 }
 
-export enum OriginCountry {
+declare enum OriginCountry {
 	Us = 'US'
 }
 
-export interface ProductionCountry {
+interface ProductionCountry {
 	iso_3166_1: OriginCountry;
 	name: string;
 }
 
-export interface Reviews {
+interface Reviews {
 	page: number;
 	results: ReviewsResult[];
 	total_pages: number;
 	total_results: number;
 }
 
-export interface ReviewsResult {
+interface ReviewsResult {
 	author: string;
 	author_details: AuthorDetails;
 	content: string;
@@ -111,24 +107,24 @@ export interface ReviewsResult {
 	url: string;
 }
 
-export interface AuthorDetails {
+interface AuthorDetails {
 	name: string;
 	username: string;
 	avatar_path: null | string;
 	rating: number | null;
 }
 
-export interface SpokenLanguage {
+interface SpokenLanguage {
 	english_name: string;
 	iso_639_1: string;
 	name: string;
 }
 
-export interface Videos {
+interface Videos {
 	results: VideosResult[];
 }
 
-export interface VideosResult {
+interface VideosResult {
 	iso_639_1: OriginalLanguage;
 	iso_3166_1: OriginCountry;
 	name: string;
@@ -141,6 +137,23 @@ export interface VideosResult {
 	id: string;
 }
 
-export enum Site {
+declare enum Site {
 	YouTube = 'YouTube'
+}
+
+ interface ImagesFromApi {
+	backdrops: Image[];
+	id: number;
+	logos: Image[];
+	posters: Image[];
+}
+
+ interface Image {
+	aspect_ratio: number;
+	height: number;
+	iso_639_1: null | string;
+	file_path: string;
+	vote_average: number;
+	vote_count: number;
+	width: number;
 }

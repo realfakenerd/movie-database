@@ -1,11 +1,13 @@
 <script lang="ts">
-	import Card from '$lib/components/Card.svelte';
+	import Card from '$lib/components/cards/Card.svelte';
+	import MovieCard from '$lib/components/cards/MovieCard.svelte';
 	import Carousel from '$lib/components/Carousel.svelte';
-	import { formatDate, getImagePath } from '$lib/utils';
 	import IndexHero from '../lib/components/IndexHero.svelte';
 	import type { PageData } from './$types';
 	export let data: PageData;
 	const { upcoming, streamed, config } = data;
+
+	console.log(upcoming);
 </script>
 
 <svelte:head>
@@ -15,94 +17,88 @@
 <div class="p-2">
 	<IndexHero />
 </div>
-<section id="mainContainer" class="space-y-2 p-4">
-	<div class="space-y-10">
-		<h1 class="text-left text-display-small">See what's upcoming</h1>
+<section id="mainContainer" class="flex flex-col gap-10 p-2">
+	<section class="flex flex-col gap-2">
+		<h1 class="text-left text-headline-medium">Upcoming</h1>
 		<section>
 			<Carousel arrayData={upcoming.results} let:data>
-				<div class="snap-start">
-					<Card
-						class="relative bg-surface-variant/70 min-w-[16rem] text-on-surface-variant hover:bg-surface-variant-hover"
-						href={'/movie/' + data.id}
-					>
-						<figure class="absolute inset-0 -z-10">
-							<img
-								loading="lazy"
-								width="224"
-								height="336"
-								class="h-full w-full object-cover object-center"
-								srcset={`
-										${getImagePath('poster', 0, data.poster_path, config)} 92w,
-										${getImagePath('poster', 1, data.poster_path, config)} 154w,
-										${getImagePath('poster', 2, data.poster_path, config)} 185w,
-										${getImagePath('poster', 3, data.poster_path, config)} 342w,
-										${getImagePath('poster', 4, data.poster_path, config)} 500w,
-										${getImagePath('poster', 5, data.poster_path, config)} 780w,
-									`}
-								src={getImagePath('poster', 6, data.poster_path, config)}
-								alt="movie"
-							/>
-						</figure>
-
-						<div class="flex w-full flex-col items-start px-2">
-							<h1 class="text-title-large">{data.title}</h1>
-							<h2 class="text-label-medium">Release Date: {formatDate(data.release_date)}</h2>
-						</div>
-					</Card>
-				</div>
+				<MovieCard
+					href={'/movie/' + data.id}
+					class="snap-start min-w-[16rem]"
+					{config}
+					poster_path={data.poster_path}
+					release_date={data.release_date}
+					title={data.title}
+					vote_average={data.vote_average}
+					overview={data.overview}
+				/>
 			</Carousel>
 		</section>
-	</div>
+	</section>
 
-	<section class="space-y-10">
-		<h1 class="text-left text-display-small">See what's popular</h1>
-
-		<section class="grid place-items-center gap-2 px-8 md:px-4">
+	<section class="flex flex-col gap-2">
+		<h1 class="text-left text-headline-medium">Popular</h1>
+		<section>
 			{#await streamed.popular}
 				<p>loading</p>
 			{:then popular}
-				{#each popular.results as movie (movie.id)}
-					<Card
-						class="relative bg-surface-variant/70 text-on-surface-variant hover:bg-surface-variant-hover"
-						href={'/movie/' + movie.id}
-					>
-						<figure class="absolute inset-0 -z-10">
-							<img
-								loading="lazy"
-								width="224"
-								height="336"
-								class="w-full h-full object-center object-cover"
-								srcset={`
-									${getImagePath('poster', 0, movie.poster_path, config)} 92w,
-									${getImagePath('poster', 1, movie.poster_path, config)} 154w,
-									${getImagePath('poster', 2, movie.poster_path, config)} 185w,
-									${getImagePath('poster', 3, movie.poster_path, config)} 342w,
-									${getImagePath('poster', 4, movie.poster_path, config)} 500w,
-									${getImagePath('poster', 5, movie.poster_path, config)} 780w,
-								   `}
-								src={getImagePath('poster', 6, movie.poster_path, config)}
-								alt="movie"
-							/>
-						</figure>
-
-						<div class="w-full flex flex-col items-start px-2">
-							<h1 class="text-title-large">{movie.title}</h1>
-							<h2 class="text-label-medium">Release Date: {formatDate(movie.release_date)}</h2>
-						</div>
+				<Carousel arrayData={popular.results} let:data>
+					<Card href={'/movie/' + data.id} class="snap-start min-w-[16rem]">
+						<MovieCard
+							{config}
+							poster_path={data.poster_path}
+							release_date={data.release_date}
+							title={data.title}
+							vote_average={data.vote_average}
+							overview={data.overview}
+						/>
 					</Card>
-				{/each}
+				</Carousel>
 			{/await}
 		</section>
-		<!-- <div class="divider py-10">
-			{#if currentItems < streamed.popular.results.length}
-				<button on:click={() => (currentItems += 5)} class="btn btn-primary"> load more </button>
-			{/if}
-		</div> -->
+	</section>
+	<section class="flex flex-col gap-2">
+		<h1 class="text-left text-headline-medium">Now Playing</h1>
+
+		<section>
+			{#await streamed.nowPlaying}
+				<p>loading</p>
+			{:then popular}
+				<Carousel arrayData={popular.results} let:data>
+					<Card href={'/movie/' + data.id} class="snap-start min-w-[16rem]">
+						<MovieCard
+							{config}
+							poster_path={data.poster_path}
+							release_date={data.release_date}
+							title={data.title}
+							vote_average={data.vote_average}
+							overview={data.overview}
+						/>
+					</Card>
+				</Carousel>
+			{/await}
+		</section>
+	</section>
+	<section class="flex flex-col gap-2">
+		<h1 class="text-left text-headline-medium">Top Rated</h1>
+
+		<section>
+			{#await streamed.topRated}
+				<p>loading</p>
+			{:then popular}
+				<Carousel arrayData={popular.results} let:data>
+					<Card href={'/movie/' + data.id} class="snap-start min-w-[16rem]">
+						<MovieCard
+							{config}
+							poster_path={data.poster_path}
+							release_date={data.release_date}
+							title={data.title}
+							vote_average={data.vote_average}
+							overview={data.overview}
+						/>
+					</Card>
+				</Carousel>
+			{/await}
+		</section>
 	</section>
 </section>
-
-<style>
-	section.grid {
-		grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
-	}
-</style>

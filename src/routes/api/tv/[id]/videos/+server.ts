@@ -4,7 +4,7 @@ import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = async ({ fetch, params }) => {
 	const res = await fetch(
-		`https://api.themoviedb.org/3/tv/${params.id}/videos?api_key=${TMDB_KEY}&language=en-US`
+		`https://api.themoviedb.org/3/tv/${params.id}/videos?api_key=${TMDB_KEY}`
 	);
 	const data = await res.json();
 

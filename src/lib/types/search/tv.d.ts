@@ -1,13 +1,11 @@
-import type { OriginalLanguage } from '.';
-
-export interface TVSearch {
+interface TVSearch {
 	page: number;
 	results: TVResult[];
 	total_pages: number;
 	total_results: number;
 }
 
-export interface TVResult {
+interface TVResult {
 	backdrop_path: null | string;
 	first_air_date?: Date;
 	genre_ids: number[];
@@ -21,10 +19,4 @@ export interface TVResult {
 	poster_path: string;
 	vote_average: number;
 	vote_count: number;
-}
-
-export enum OriginCountry {
-	CA = 'CA',
-	Jp = 'JP',
-	Us = 'US'
 }

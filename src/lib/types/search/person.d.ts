@@ -1,13 +1,11 @@
-import type { OriginalLanguage } from '.';
-
-export interface PersonSearch {
+interface PersonSearch {
 	page: number;
 	results: PersonResult[];
 	total_pages: number;
 	total_results: number;
 }
 
-export interface PersonResult {
+interface PersonResult {
 	adult: boolean;
 	gender: number;
 	id: number;
@@ -18,7 +16,7 @@ export interface PersonResult {
 	profile_path: null | string;
 }
 
-export interface KnownFor {
+interface KnownFor {
 	adult?: boolean;
 	backdrop_path?: string;
 	genre_ids: number[];
@@ -39,7 +37,7 @@ export interface KnownFor {
 	original_name?: string;
 }
 
-export enum MediaType {
+enum MediaType {
 	Movie = 'movie',
 	Tv = 'tv'
 }

@@ -1,27 +1,22 @@
-import type { Config } from './types';
-
 type DateStyle = Intl.DateTimeFormatOptions['dateStyle'];
-export function formatDate(date: string | Date, dateStyle: DateStyle = 'medium', locale = 'pt-br') {
+export function formatDate(date: string | Date, dateStyle: DateStyle = 'medium', locale = 'en') {
+	if (!date) return 'no date :(';
+
 	const formatter = new Intl.DateTimeFormat(locale, { dateStyle });
 	return formatter.format(new Date(date));
 }
 
-type imageType = 'backdrop' | 'logo' | 'poster' | 'profile' | 'still';
-export function getImagePath(type: imageType, size: number, path: string, config: Config) {
+export function capitalize(word: string) {
+	return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+}
+
+export function getImagePath(type: keyof Images, size: number, path: string, config: Config) {
 	const secure_base_url = 'https://image.tmdb.org/t/p/';
 	const { images } = config;
-	switch (type) {
-		case 'backdrop':
-			return secure_base_url + images.backdrop_sizes[size] + path;
-		case 'logo':
-			return secure_base_url + images.logo_sizes[size] + path;
-		case 'poster':
-			return secure_base_url + images.poster_sizes[size] + path;
-		case 'profile':
-			return secure_base_url + images.profile_sizes[size] + path;
-		case 'still':
-			return secure_base_url + images.still_sizes[size] + path;
-	}
+	const imgType = images[type];
+	const imgSize = imgType[size];
+
+	return `${secure_base_url}${imgSize}${path}`;
 }
 
 /**
@@ -55,6 +50,57 @@ export async function load<T = any>(url: string): Promise<Awaited<T>> {
 
 export async function fetchAll<T>(...fetchs: T[]) {
 	return Promise.all(fetchs);
+}
+
+const animationTimingFunction = 'cubic-bezier(0.291, 0.281, 0, 1.2)';
+const initialBottomValue = ['0px 0px', '6rem'];
+const scrolledDownBottomValue = ['0px 80px', '0 1rem'];
+
+type DebounceFunction = (...args: unknown[]) => void;
+function debounce(fn: DebounceFunction, delay: number) {
+	let timer: ReturnType<typeof setTimeout>;
+
+	return (...args: unknown[]) => {
+		if (timer) clearTimeout(timer);
+
+		timer = setTimeout(() => {
+			fn(...args);
+		}, delay);
+	};
+}
+
+/**
+ * The `handleScroll` function adjusts the position of a node and a floating action button based on the
+ * scroll direction.
+ * @param {HTMLElement} node - The `node` parameter is an HTMLElement that represents the element whose
+ * position will be adjusted based on the scroll direction.
+ * @param {HTMLElement} [fab] - The `fab` parameter is an optional parameter that represents a floating
+ * action button. It is of type `HTMLElement`, which means it can be any HTML element. If a `fab`
+ * element is provided, the function will adjust its position based on the scroll direction. If no
+ * `fab` element is
+ */
+export function handleScroll(node: HTMLElement, fab?: HTMLElement) {
+	let lastScrollTop = 0;
+
+	node.style.animationTimingFunction = animationTimingFunction;
+	node.style.translate = initialBottomValue[0];
+	if (fab) fab.style.animationTimingFunction = animationTimingFunction;
+
+	/**
+	 * The function updates the scroll position and adjusts the position of a node and a floating action
+	 * button based on the scroll direction.
+	 */
+	function updateScroll() {
+		const scrollTop = window.scrollY || document.documentElement.scrollTop;
+		const isScrollingDown = scrollTop > lastScrollTop;
+		node.style.translate = isScrollingDown ? scrolledDownBottomValue[0] : initialBottomValue[0];
+
+		if (fab)
+			fab.style.translate = isScrollingDown ? scrolledDownBottomValue[1] : initialBottomValue[1];
+		lastScrollTop = scrollTop;
+	}
+
+	addEventListener('scroll', debounce(updateScroll, 100), { passive: true });
 }
 
 /**
@@ -110,7 +156,7 @@ export function parseMd(md: string) {
 	md = md.replace(/[\`]{1}([^\`]+)[\`]{1}/g, '<code>$1</code>');
 
 	//p
-	md = md.replace(/^\s*(\n)?(.+)/gm, function(m) {
+	md = md.replace(/^\s*(\n)?(.+)/gm, function (m) {
 		return /\<(\/)?(h\d|ul|ol|li|blockquote|pre|img)/.test(m) ? m : '<p>' + m + '</p>';
 	});
 

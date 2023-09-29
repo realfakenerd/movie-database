@@ -1,6 +1,5 @@
-import { withMaterialColors } from 'tailwind-material-colors'
 import tmd from 'tail-material-design';
-import daisyui from 'daisyui';
+import { withMaterialColors } from 'tailwind-material-colors';
 export default withMaterialColors({
 	content: ['./src/**/*.{html,js,svelte,ts,scss}'],
 	mode: 'jit',

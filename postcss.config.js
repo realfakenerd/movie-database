@@ -1,14 +1,13 @@
-import autoprefixer from 'autoprefixer';
-import cssDeclarationSorter from 'css-declaration-sorter';
+import { cssDeclarationSorter } from './postcssPlugin/cssDeclarationSorter/index.js';
 import tailwindcss from 'tailwindcss';
 import tailwindcssNested from 'tailwindcss/nesting/index.js';
+
+
+
 export default {
 	plugins: [
 		tailwindcssNested,
 		tailwindcss,
-		autoprefixer,
-		cssDeclarationSorter({
-			order: 'concentric-css'
-		})
+		cssDeclarationSorter(),
 	]
 } 

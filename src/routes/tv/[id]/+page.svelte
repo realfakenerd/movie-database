@@ -8,7 +8,7 @@
 	export let data: PageData;
 	const { tv, streamed, config } = data;
 
-	console.log(tv);
+	console.log(data);
 </script>
 
 <svelte:head>
@@ -16,7 +16,7 @@
 </svelte:head>
 
 <Hero {config} imgPath={tv.backdrop_path}>
-	<Poster poster_path={tv.poster_path} {config} networks={tv.networks} />
+	<Poster poster_path={tv.poster_path} {config} networks={streamed.providers} />
 	<TvOverview src={tv} />
 </Hero>
 
@@ -33,7 +33,7 @@
 						height="240"
 						width="160"
 						src={cast.profile_path
-							? getImagePath('profile', 3, cast.profile_path, config)
+							? getImagePath('profile_sizes', 3, cast.profile_path, config)
 							: 'https://fakeimg.pl/160x240/?retina=1&text=No+Photo&font=noto'}
 						alt=""
 					/>

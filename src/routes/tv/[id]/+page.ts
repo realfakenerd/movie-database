@@ -1,4 +1,3 @@
-import type { Credits, Reviews, Tv } from '$lib/types/tv';
 import type { PageLoad } from './$types';
 export const load: PageLoad = async ({ params, fetch, setHeaders }) => {
 	setHeaders({
@@ -10,7 +9,8 @@ export const load: PageLoad = async ({ params, fetch, setHeaders }) => {
 		tv: data,
 		streamed: {
 			credits: fetch(`/api/tv/${params.id}/credits`).then((r) => r.json() as Promise<Credits>),
-			reviews: fetch(`/api/tv/${params.id}/reviews`).then((r) => r.json() as Promise<Reviews>)
+			reviews: fetch(`/api/tv/${params.id}/reviews`).then((r) => r.json() as Promise<Reviews>),
+			providers: fetch(`/api/tv/${params.id}/providers`).then((r) => r.json() as Promise<Provider>)
 		}
 	};
 };

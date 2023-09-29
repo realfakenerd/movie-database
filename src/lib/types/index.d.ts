@@ -1,12 +1,10 @@
-export * from './movie';
-
-export interface RequestToken {
+interface RequestToken {
 	success: boolean;
 	expires_at: string;
 	request_token: string;
 }
 
-export interface Collection {
+interface Collection {
 	id: number;
 	name: string;
 	overview: string;
@@ -15,7 +13,7 @@ export interface Collection {
 	parts: Part[];
 }
 
-export interface Part {
+interface Part {
 	adult: boolean;
 	backdrop_path: null | string;
 	id: number;
@@ -33,7 +31,7 @@ export interface Part {
 	vote_count: number;
 }
 
-export interface Config {
+interface Config {
 	images: Images;
 	change_keys: [
 		'adult',
@@ -92,7 +90,7 @@ export interface Config {
 	];
 }
 
-export interface Images {
+interface Images {
 	base_url: string;
 	secure_base_url: string;
 	backdrop_sizes: ['w300', 'w780', 'w1280', 'original'];
@@ -102,7 +100,7 @@ export interface Images {
 	still_sizes: ['w92', 'w185', 'w300', 'original'];
 }
 
-export interface UserDetails {
+interface UserDetails {
 	avatar: Avatar;
 	id: number;
 	iso_639_1: string;
@@ -112,15 +110,37 @@ export interface UserDetails {
 	username: string;
 }
 
-export interface Avatar {
+interface Avatar {
 	gravatar: Gravatar;
 	tmdb: Tmdb;
 }
 
-export interface Gravatar {
+interface Gravatar {
 	hash: string;
 }
 
-export interface Tmdb {
+interface Tmdb {
 	avatar_path: null;
+}
+
+declare enum OriginalLanguage {
+	En = 'en',
+	Ja = 'ja',
+	Ko = 'ko',
+	Vi = 'vi'
+}
+
+interface Provider {
+	link: string;
+	buy?: ProviderData[];
+	ads?: ProviderData[];
+	flatrate?: ProviderData[];
+	rent?: ProviderData[];
+}
+
+interface ProviderData {
+	logo_path: string;
+	provider_id: number;
+	provider_name: string;
+	display_priority: number;
 }

@@ -2,14 +2,14 @@
 	import type { PageData } from './$types';
 
 	import { page } from '$app/stores';
-	import Card from '$lib/components/Card.svelte';
+	import { Card } from '$lib/components/cards';
 	import { formatDate, getImagePath } from '$lib/utils';
 	export let data: PageData;
 	const { movie, tv, person, config } = data;
 
-	console.log('tv', tv);
-	console.log('movie', movie);
-	console.log('person', person);
+	// console.log('tv', tv);
+	// console.log('movie', movie);
+	// console.log('person', person);
 </script>
 
 <ul class="grid place-items-center gap-2">
@@ -25,7 +25,7 @@
 						height="336"
 						class="w-full h-full object-center object-cover"
 						src={data.poster_path
-							? getImagePath('poster', 4, data.poster_path, config)
+							? getImagePath('poster_sizes', 4, data.poster_path, config)
 							: 'https://fakeimg.pl/224x336/?retina=1&text=No+Photo&font=noto'}
 						alt="movie"
 					/>
@@ -33,7 +33,7 @@
 
 				<div class="flex w-full flex-col items-start">
 					<h1 class="text-title-large">{data.title}</h1>
-					<h2 class="text-label-medium">Release Date: {formatDate(data.release_date)}</h2>
+					<h2 class="text-label-medium">Release Date: {data.release_date}</h2>
 				</div>
 			</Card>
 		{/each}
@@ -50,7 +50,7 @@
 						height="336"
 						class="w-full h-full object-center object-cover"
 						src={data.poster_path
-							? getImagePath('poster', 4, data.poster_path, config)
+							? getImagePath('poster_sizes', 4, data.poster_path, config)
 							: 'https://fakeimg.pl/224x336/?retina=1&text=No+Photo&font=noto'}
 						alt="movie"
 					/>
@@ -73,7 +73,7 @@
 							height="336"
 							class="max-h-[336px] w-56 rounded-xl bg-background object-cover object-center"
 							src={data.profile_path
-								? getImagePath('profile', 2, data.profile_path, config)
+								? getImagePath('profile_sizes', 2, data.profile_path, config)
 								: 'https://fakeimg.pl/224x336/?retina=1&text=No+Photo&font=noto'}
 							alt="movie"
 						/>
@@ -111,6 +111,6 @@
 	}
 
 	ul.grid {
-		grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
 	}
 </style>

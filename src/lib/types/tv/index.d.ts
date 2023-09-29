@@ -1,4 +1,4 @@
-export interface Tv {
+interface Tv {
 	adult: boolean;
 	backdrop_path: string;
 	created_by: CreatedBy[];
@@ -36,7 +36,7 @@ export interface Tv {
 	credits: Credits;
 }
 
-export interface CreatedBy {
+interface CreatedBy {
 	id: number;
 	credit_id: string;
 	name: string;
@@ -44,12 +44,12 @@ export interface CreatedBy {
 	profile_path: string;
 }
 
-export interface Credits {
+interface Credits {
 	cast: Cast[];
 	crew: Cast[];
 }
 
-export interface Cast {
+interface Cast {
 	adult: boolean;
 	gender: number;
 	id: number;
@@ -65,12 +65,12 @@ export interface Cast {
 	job?: string;
 }
 
-export interface Genre {
+interface Genre {
 	id: number;
 	name: string;
 }
 
-export interface LastEpisodeToAir {
+interface LastEpisodeToAir {
 	air_date: Date;
 	episode_number: number;
 	id: number;
@@ -85,26 +85,26 @@ export interface LastEpisodeToAir {
 	vote_count: number;
 }
 
-export interface Network {
+interface Network {
 	id: number;
 	name: string;
 	logo_path: string;
 	origin_country: string;
 }
 
-export interface ProductionCountry {
+interface ProductionCountry {
 	iso_3166_1: string;
 	name: string;
 }
 
-export interface Reviews {
+interface Reviews {
 	page: number;
 	results: any[];
 	total_pages: number;
 	total_results: number;
 }
 
-export interface Season {
+interface Season {
 	air_date: Date;
 	episode_count: number;
 	id: number;
@@ -114,12 +114,12 @@ export interface Season {
 	season_number: number;
 }
 
-export interface SpokenLanguage {
+interface SpokenLanguage {
 	english_name: string;
 	iso_639_1: string;
 	name: string;
 }
 
-export interface Videos {
+interface Videos {
 	results: any[];
 }

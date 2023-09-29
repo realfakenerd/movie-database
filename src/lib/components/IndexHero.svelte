@@ -20,7 +20,7 @@
 					Popkorn
 				</h1>
 			</div>
-			<hr class="divide-y-2" />
+			<hr class="divide-y-2 my-2" />
 			<p class="max-w-lg text-body-large">Watch, review, see what's new, repeat.</p>
 		</div>
 		<a class="btn interactive-bg-background text-label-large" href="#mainContainer">
