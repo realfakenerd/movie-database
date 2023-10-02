@@ -15,7 +15,7 @@
 		getImagePath('poster_sizes', i, poster_path, config)
 	);
 
-	export { config, poster_path, release_date, title, vote_average, overview };
+	export { config, poster_path, release_date, title, vote_average, overview, href };
 </script>
 
 <Card isLink class="h-[336px] w-full group {$$props.class??''}" {href}>
