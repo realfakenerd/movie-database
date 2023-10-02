@@ -2,8 +2,8 @@
 	import type { PageData } from './$types';
 
 	import { page } from '$app/stores';
-	import { Card } from '$lib/components/cards';
-	import { formatDate, getImagePath } from '$lib/utils';
+	import { getImagePath } from '$lib/utils';
+	import Card from '$lib/components/cards/Card.svelte';
 	export let data: PageData;
 	const { movie, tv, person, config } = data;
 
