@@ -19,7 +19,7 @@
 	export { config, poster_path, release_date, title, vote_average, overview, media_type, href };
 </script>
 
-<Card isLink class="h-[336px] group w-full" {href}>
+<Card isLink class="h-[336px] group w-full {$$props.class??''}" {href}>
 	<figure class="absolute inset-0 -z-10">
 		<img
 			loading="lazy"

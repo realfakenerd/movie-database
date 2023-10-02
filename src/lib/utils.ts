@@ -82,6 +82,9 @@ function debounce(fn: DebounceFunction, delay: number) {
 export function handleScroll(node: HTMLElement, fab?: HTMLElement) {
 	let lastScrollTop = 0;
 
+	console.log('HANDLESCROLL',fab);
+	
+
 	node.style.animationTimingFunction = animationTimingFunction;
 	node.style.translate = initialBottomValue[0];
 	if (fab) fab.style.animationTimingFunction = animationTimingFunction;

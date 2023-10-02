@@ -1,4 +1,4 @@
-import { ACCESS_TOKEN_AUTH, TMDB_KEY } from '$env/static/private';
+import { ACCESS_TOKEN_AUTH } from '$env/static/private';
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 

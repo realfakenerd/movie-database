@@ -43,16 +43,16 @@
 				<p>loading</p>
 			{:then popular}
 				<Carousel arrayData={popular.results} let:data>
-					<Card href={'/movie/' + data.id} class="snap-start min-w-[16rem]">
-						<MovieCard
-							{config}
-							poster_path={data.poster_path}
-							release_date={data.release_date}
-							title={data.title}
-							vote_average={data.vote_average}
-							overview={data.overview}
-						/>
-					</Card>
+					<MovieCard
+						href={'/movie/' + data.id}
+						class="snap-start min-w-[16rem]"
+						{config}
+						poster_path={data.poster_path}
+						release_date={data.release_date}
+						title={data.title}
+						vote_average={data.vote_average}
+						overview={data.overview}
+					/>
 				</Carousel>
 			{/await}
 		</section>
@@ -65,16 +65,16 @@
 				<p>loading</p>
 			{:then popular}
 				<Carousel arrayData={popular.results} let:data>
-					<Card href={'/movie/' + data.id} class="snap-start min-w-[16rem]">
-						<MovieCard
-							{config}
-							poster_path={data.poster_path}
-							release_date={data.release_date}
-							title={data.title}
-							vote_average={data.vote_average}
-							overview={data.overview}
-						/>
-					</Card>
+					<MovieCard
+						href={'/movie/' + data.id}
+						class="snap-start min-w-[16rem]"
+						{config}
+						poster_path={data.poster_path}
+						release_date={data.release_date}
+						title={data.title}
+						vote_average={data.vote_average}
+						overview={data.overview}
+					/>
 				</Carousel>
 			{/await}
 		</section>
@@ -87,16 +87,16 @@
 				<p>loading</p>
 			{:then popular}
 				<Carousel arrayData={popular.results} let:data>
-					<Card href={'/movie/' + data.id} class="snap-start min-w-[16rem]">
-						<MovieCard
-							{config}
-							poster_path={data.poster_path}
-							release_date={data.release_date}
-							title={data.title}
-							vote_average={data.vote_average}
-							overview={data.overview}
-						/>
-					</Card>
+					<MovieCard
+						href={'/movie/' + data.id}
+						class="snap-start min-w-[16rem]"
+						{config}
+						poster_path={data.poster_path}
+						release_date={data.release_date}
+						title={data.title}
+						vote_average={data.vote_average}
+						overview={data.overview}
+					/>
 				</Carousel>
 			{/await}
 		</section>

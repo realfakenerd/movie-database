@@ -1,13 +1,14 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import { easeEmphasizedAccel, easeEmphasizedDecel } from '$lib/easing';
 	import { enterExit } from '$lib/transition';
 	import Icon from '@iconify/svelte';
 	let hidden = true;
-    let value = ''
+	let value = '';
+
+	
 </script>
 
-<section>
+<section class="{$$props.class??''}">
 	<form method="post" action="/search?q={value}">
 		<label class="sr-only" for="searchBar"> Search </label>
 		{#if !hidden}
@@ -17,12 +18,12 @@
 				id="searchBar"
 				name="q"
 				type="search"
-                bind:value
+				bind:value
 				placeholder="Search movies, tv or people..."
 			/>
 		{/if}
 	</form>
-	<button class="btn icon-full" on:click={() => (hidden = !hidden)}>
+	<button class:value={!hidden} class="btn icon-full" on:click={() => (hidden = !hidden)}>
 		<Icon icon="mdi:search" />
 	</button>
 </section>
@@ -53,6 +54,16 @@
 	}
 
 	button {
-		@apply interactive-bg-primary;
+		@apply ring-1 ring-primary text-primary;
+	}
+
+	@media (hover: hover) {
+		button:is(:hover) {
+			@apply bg-primary-hover text-on-primary;
+		}
+	}
+
+	button:is(.value, :focus-within) {
+		@apply bg-primary-focus text-on-primary;
 	}
 </style>
