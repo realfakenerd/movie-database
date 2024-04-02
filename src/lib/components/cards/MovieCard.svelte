@@ -8,52 +8,49 @@
 	let release_date: string | Date = '';
 	let title = '';
 	let vote_average = 0;
-	let overview = '';
 	let href = '';
 
 	const imagePaths = Array.from({ length: 7 }, (_, i) =>
 		getImagePath('poster_sizes', i, poster_path, config)
 	);
 
-	export { config, poster_path, release_date, title, vote_average, overview, href };
+	export { config, poster_path, release_date, title, vote_average, href };
 </script>
 
-<Card isLink class="h-[336px] w-full group {$$props.class??''}" {href}>
-	<figure class="absolute inset-0 -z-10">
+<Card class={$$props.class ?? ''}>
+	<figure class="max-w-[204px]">
 		<img
 			loading="lazy"
-			width="224"
-			height="336"
-			class="h-full w-full object-cover object-center"
-			srcset={`
-                    ${imagePaths[0]} 92w,
-                    ${imagePaths[1]} 154w,
-                    ${imagePaths[2]} 185w,
-                    ${imagePaths[3]} 342w,
-                    ${imagePaths[4]} 500w,
-                    ${imagePaths[5]} 780w,
-                    `.trim() || 'https://fakeimg.pl/160x240/?retina=1&text=No+Photo&font=noto'}
-			src={imagePaths[6]}
+			height="298"
+			width="204"
+			class="object-cover object-center w-full rounded-md shadow-lg shadow-surface/30"
+			src={imagePaths[4] || 'https://fakeimg.pl/160x240/?retina=1&text=No+Photo&font=noto'}
 			alt="movie"
 		/>
 	</figure>
 
-	<section class="flex w-full flex-col justify-between h-full group-hover:text-primary">
+	<section class="flex w-full flex-col justify-between h-full">
 		<div class="flex flex-col gap-2">
-			<h1 class="text-title-large">{title}</h1>
+			<a {href}>
+				<h1 class="text-title-large">{title}</h1>
+			</a>
 
-			<div class="inline-flex gap-2 items-center text-label-medium">
-				<Icon icon="ic:round-star" width="18" />
-				<span>{vote_average}</span>
+			<div class="inline-flex justify-between items-center text-title-medium">
+				<div class="inline-flex items-center gap-1">
+					<Icon icon="ic:round-star" width="18" class="text-primary" />
+					<span>{vote_average}</span>
+				</div>
+				<button class="inline-flex items-center gap-1">
+					<Icon icon="ic:round-star-outline" width="18" class="text-on-surface" />
+					<span>Rate</span>
+				</button>
+				<Icon icon="mdi:info" width="18" class="text-on-surface" />
 			</div>
-
-			{#if overview}
-				<p class="text-body-medium hidden group-hover:inline group-hover:text-on-surface">
-					{overview.slice(0, 144)}...
-				</p>
-			{/if}
 		</div>
 
-		<span class="text-label-large">{formatDate(release_date, 'long')}</span>
+		<button class="btn justify-start bg-surface text-label-large">
+			<Icon icon="mdi:play" width="24" />
+			Trailer
+		</button>
 	</section>
 </Card>

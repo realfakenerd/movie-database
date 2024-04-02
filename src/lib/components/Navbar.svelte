@@ -1,46 +1,41 @@
 <script lang="ts">
 	import routes from '$lib/routes';
-	import { handleScroll } from '$lib/utils';
 	import Icon from '@iconify/svelte';
-	import Searchbar from './Searchbar.svelte';
-
 </script>
 
-<header class="fixed bottom-0 z-50 w-full md:bottom-full md:top-0">
-	<nav class="hidden flex-1 md:flex py-4">
-		{#each routes as url, index (index)}
-			<a class="btn" href={url.path}>
-				{url.title}
-			</a>
-		{/each}
-		<Searchbar />
-	</nav>
-	<section class="flex flex-col gap-2">
-		<Searchbar class="self-end pr-2" />
-		<nav
-			use:handleScroll
-			class="transition-all duration-200 flex h-20 flex-none flex-grow-0 flex-row items-start gap-2 bg-surface-variant py-0 px-2 md:hidden"
-		>
-			{#each routes as { path, title, icon } (title)}
-				<a
-					href={path}
-					class="flex h-20 flex-none flex-grow flex-col items-center justify-center gap-1 px-0 pt-3 pb-4"
-				>
-					<div
-						class="group-hover:bg-secondary flex h-8 w-16 flex-col items-center justify-center rounded-2xl p-0 transition-all duration-300"
-					>
-						<span
-							class="fill-on-background group-hover:fill-on-secondary flex h-8 w-16 flex-col items-center justify-center rounded-2xl p-0"
-						>
-							<Icon {icon} width="24px" />
-						</span>
-						<h3 class="order-1 h-4 flex-none flex-grow-0 self-stretch text-center text-label-small">
-							{title}
-						</h3>
-					</div>
-				</a>
+<header class="bg-background inline-flex justify-center w-full text-title-medium min-h-16">
+	<section class="inline-flex items-center gap-7">
+		<a href="/">
+			<Icon class="text-primary" height="30px" width="62px" icon="la:imdb" />
+		</a>
+		<nav class="inline-flex items-center">
+			{#each routes as { title, path }, i (i)}
+				<a class="px-4 py-2" href={path}>{title}</a>
 			{/each}
 		</nav>
+		<div class="rounded-xl bg-surface-variant min-w-96 inline-flex items-center px-6">
+			<div
+				class="inline-flex gap-2 items-center hover:text-on-surface transition-colors py-2"
+			>
+				<span>All </span>
+				<Icon width="24px" icon="mdi:chevron-down" />
+			</div>
+			<input placeholder="Search Popkorn" type="text" class="appearance-none outline-none bg-surface-variant w-full placeholder:text-on-surface-variant" />
+			<Icon width="24px" icon="mdi:search" />
+		</div>
+		<div class="inline-flex items-center gap-4">
+			<div class="inline-flex gap-2">
+				<Icon width="24px" icon="mdi:account-circle" />
+				<span>User</span>
+			</div>
+			<div class="inline-flex gap-2">
+				<span>EN</span>
+				<Icon width="24px" icon="mdi:chevron-down" />
+			</div>
+			<div>
+				<Icon width="24px" icon="mdi:lightbulb" />
+			</div>
+		</div>
 	</section>
 </header>
 

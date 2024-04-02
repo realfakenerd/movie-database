@@ -1,13 +1,19 @@
-import { clientsClaim } from 'workbox-core';
-import { googleFontsCache, pageCache, staticResourceCache } from 'workbox-recipes';
+import { version } from '$service-worker';
+import { cacheNames, setCacheNameDetails } from 'workbox-core';
+import { pageCache, staticResourceCache } from 'workbox-recipes';
 self.__WB_DISABLE_DEV_LOGS = true;
 
-clientsClaim();
+const {prefix,suffix} = cacheNames
 
-pageCache();
+setCacheNameDetails({
+	prefix: 'popkorn',
+	suffix: `v${version}`,
+})
 
-pageCache();
+pageCache({
+	cacheName: `${prefix}-page-${suffix}`,
+});
 
-googleFontsCache();
-
-staticResourceCache();
+staticResourceCache({
+	cacheName: `${prefix}-static-${suffix}`,
+});

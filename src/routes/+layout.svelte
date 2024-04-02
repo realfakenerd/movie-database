@@ -25,7 +25,7 @@
 </main>
 
 
-<style>
+<style lang="postcss">
 	:global(:root) {
 		color-scheme: light dark;
 	}

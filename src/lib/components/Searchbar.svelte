@@ -42,11 +42,11 @@
 	}
 
 	input:focus {
-		@apply bg-surface-focus ring-2 ring-primary-focus;
+		@apply bg-surface/70 ring-2 ring-primary;
 	}
 
 	input:hover {
-		@apply bg-surface-hover ring-primary-hover;
+		@apply bg-surface ring-primary;
 	}
 
 	input:is(:focus, :hover) {
@@ -59,11 +59,11 @@
 
 	@media (hover: hover) {
 		button:is(:hover) {
-			@apply bg-primary-hover text-on-primary;
+			@apply bg-primary text-on-primary;
 		}
 	}
 
 	button:is(.value, :focus-within) {
-		@apply bg-primary-focus text-on-primary;
+		@apply bg-primary text-on-primary;
 	}
 </style>

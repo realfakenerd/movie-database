@@ -15,7 +15,7 @@
 <svelte:element
 	this={tag}
 	{...isLink ? a : {}}
-	class="card relative bg-surface/70 text-on-surface hover:bg-surface-hover {$$props.class ?? ''}"
+	class="rounded-xl p-2 relative bg-surface-variant gap-3 text-on-surface flex flex-col items-center min-w-[228px] {$$props.class ?? ''}"
 >
 	<slot />
 </svelte:element>
