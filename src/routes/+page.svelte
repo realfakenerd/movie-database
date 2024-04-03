@@ -1,24 +1,103 @@
 <script lang="ts">
-	import Card from '$lib/components/cards/Card.svelte';
-	import MovieCard from '$lib/components/cards/MovieCard.svelte';
-	import Carousel from '$lib/components/Carousel.svelte';
+	import { Root as Carousel, Content, Item, Next, Previous } from '$lib/components/ui/carousel';
+	import type { CarouselAPI } from '$lib/components/ui/carousel/context';
 	import Icon from '@iconify/svelte';
-	import IndexHero from '../lib/components/IndexHero.svelte';
+	import AutoPlay from 'embla-carousel-autoplay';
+	import ClassNames from 'embla-carousel-class-names'
 	import type { PageData } from './$types';
 	export let data: PageData;
 	const { upcoming, streamed, config } = data;
 
-	console.log(upcoming);
+	const upcomingHero = upcoming.results.splice(0, 3);
+	console.log(upcomingHero);
+
+	let api: CarouselAPI;
+	let current;
+
+	$: if (api) {
+		current = api.selectedScrollSnap() + 1;
+		api.on('select', () => {
+			current = api.slidesInView();
+
+		});
+
+		console.log(current);
+	}
 </script>
 
 <svelte:head>
 	<title>Popkorn</title>
 </svelte:head>
 
-<div class="p-2">
-	<IndexHero />
-</div>
-<section id="mainContainer" class="flex flex-col justify-center gap-10 p-20">
+<section class="relative flex flex-row gap-4 p-4">
+	<div class="bg-primary/30 z-0 absolute inset-0 min-h-dvh w-full blur-[500px]"></div>
+	<Carousel plugins={[AutoPlay({ delay: 3000 }), ClassNames({inView: 'ring'})]} opts={{ loop: true }} bind:api>
+		<Content class="-ml-0">
+			{#each upcomingHero as movie, i (i)}
+				<Item class="basis-full relative h-[90dvh] w-full pl-0">
+					<div class="w-full absolute z-[-1] overflow-hidden">
+						<img
+							width="1041"
+							height="747"
+							style="mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));"
+							class="w-full h-[90dvh] rounded-lg object-cover"
+							src="https://image.tmdb.org/t/p/original/{movie.poster_path}"
+							alt="poster for {movie.title}"
+						/>
+					</div>
+					<section class="p-4 h-full w-full flex flex-col justify-end gap-4 text-white">
+						<div class="inline-flex gap-4 items-center">
+							<figure>
+								<img
+									height="384px"
+									class="rounded-lg h-96 w-72 object-cover bg-background"
+									src="https://image.tmdb.org/t/p/original/{movie.poster_path}"
+									alt="poster for {movie.title}"
+								/>
+							</figure>
+							<div class="inline-flex items-center gap-4 self-end">
+								<div class="p-6 rounded-full bg-surface-variant items-center justify-center">
+									<Icon icon="ic:baseline-play-arrow" width="40px" />
+								</div>
+								<div>
+									<h1 class="text-display-small font-bold">{movie.title}</h1>
+									<p>Watch the trailer</p>
+								</div>
+							</div>
+						</div>
+					</section>
+				</Item>
+			{/each}
+		</Content>
+	</Carousel>
+	<div class="basis-1/3 flex flex-col justify-between">
+		{#each upcomingHero as movie, i (i)}
+			<button
+				on:click={() => api?.scrollTo(i)}
+				class="w-96 h-44 rounded-xl flex flex-row p-4 gap-4 overflow-hidden relative bg-center bg-cover hover:ring ring-primary"
+				style="background-image: url(https://image.tmdb.org/t/p/original/{movie.backdrop_path});"
+			>
+				<div class="inset-0 absolute bg-background/60 backdrop-blur-md" />
+				<img
+					class="w-24 h-36 rounded z-10"
+					alt="poster for {movie.title}"
+					src="https://image.tmdb.org/t/p/original/{movie.poster_path}"
+				/>
+				<div class="z-10 flex flex-col justify-end gap-4 h-full">
+					<div class="text-title-medium text-left">
+						{movie.title}
+					</div>
+					<div class="inline-flex items-center gap-3 w-fit px-2 bg-background rounded-md">
+						<Icon class="text-primary" icon="ic:round-star" width="18" />
+						<span>{movie.vote_average.toFixed(1)}</span>
+					</div>
+				</div>
+			</button>
+		{/each}
+	</div>
+</section>
+
+<!-- <section id="mainContainer" class="flex flex-col justify-center gap-10 p-20">
 	<section class="flex flex-col gap-8">
 		<hgroup class="flex flex-col gap-4">
 			<div class="inline-flex gap-2 items-center">
@@ -108,4 +187,4 @@
 			{/await}
 		</section>
 	</section>
-</section>
+</section> -->

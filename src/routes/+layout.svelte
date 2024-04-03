@@ -15,12 +15,12 @@
 		});
 	});
 
-	enableCache('local');
+	enableCache('all');
 </script>
 
 <Navbar />
 
-<main>
+<main class="container mx-auto">
 	<slot />
 </main>
 

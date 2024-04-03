@@ -3,7 +3,7 @@
 	import Icon from '@iconify/svelte';
 </script>
 
-<header class="bg-background inline-flex justify-center w-full text-title-medium min-h-16">
+<header class="bg-background z-50 inline-flex justify-center w-full text-title-medium min-h-16">
 	<section class="inline-flex items-center gap-7">
 		<a href="/">
 			<Icon class="text-primary" height="30px" width="62px" icon="la:imdb" />
